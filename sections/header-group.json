@@ -8,7 +8,8 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Announce something here"
+            "text": "Free U.S. Shipping on $19+",
+            "url": "https:\/\/www.sudscrub.com\/policies\/shipping-policy"
           }
         }
       },
@@ -17,10 +18,13 @@
       ],
       "settings": {
         "enable_sticky": false,
+        "autoplay": false,
+        "cycle_speed": 6,
         "text_size": "text-xs",
-        "navigation_mode": "scrolling",
+        "navigation_mode": "arrows",
         "scrolling_speed": 10,
         "background": "#1a1a1a",
+        "background_gradient": "",
         "text_color": "#ffffff"
       }
     },
@@ -28,16 +32,20 @@
       "type": "header",
       "settings": {
         "enable_sticky": true,
-        "hide_on_scroll": false,
+        "hide_on_scroll": true,
         "logo": "{{shop.brand.logo}}",
         "logo_max_width": 120,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
+        "sidebar_menu": "",
+        "secondary_menu": "",
         "menu_open_trigger": "click",
-        "opening_from": "bottom",
+        "opening_from": "left",
         "layout": "logo_left_navigation_center",
         "show_social_media": true,
-        "show_country_flag": true,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
         "show_country_name": false,
         "transparent_header_text_color": "#ffffff",
         "reduce_padding": false,
