@@ -1,22 +1,22 @@
 {%- comment -%}
-----------------------------------------------------------------------------------------------------------------------
-SOCIAL MEDIA
-----------------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------------
+  SOCIAL MEDIA
+  ----------------------------------------------------------------------------------------------------------------------
 
-Output a list of social media icons based on the social URL settings.
+  Output a list of social media icons based on the social URL settings.
 
-********************************************
-Supported variables
-********************************************
+  ********************************************
+  Supported variables
+  ********************************************
 
-* size: can be "sm" or nothing. When setting is set to "sm", this only impacts the mobile (desktop uses the same size)
+  * size: can be "sm" or nothing. When setting is set to "sm", this only impacts the mobile (desktop uses the same size)
 {%- endcomment -%}
 
 {%- capture social_media -%}
   {%- if settings.social_facebook != blank or shop.brand.metafields.social_links.facebook != blank -%}
     <li>
       <a href="{{ settings.social_facebook | default: shop.brand.metafields.social_links.facebook }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'Facebook' }}">
-        {%- render 'icon' with 'facebook' -%}
+        {%- render 'icon' with 'facebook_solid' -%}
       </a>
     </li>
   {%- endif -%}
@@ -28,11 +28,18 @@ Supported variables
       </a>
     </li>
   {%- endif -%}
-
+  {%- if settings.social_pinterest != blank or shop.brand.metafields.social_links.pinterest != blank -%}
+    <li>
+      <a href="{{ settings.social_pinterest | default: shop.brand.metafields.social_links.pinterest }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'Pinterest' }}">
+        {%- render 'icon' with 'pinterest_solid' -%}
+      </a>
+    </li>
+  {%- endif -%}
+  
   {%- if settings.social_instagram != blank or shop.brand.metafields.social_links.instagram != blank -%}
     <li>
       <a href="{{ settings.social_instagram | default: shop.brand.metafields.social_links.instagram }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'Instagram' }}">
-        {%- render 'icon' with 'instagram' -%}
+        {%- render 'icon' with 'instagram_solid' -%}
       </a>
     </li>
   {%- endif -%}
@@ -45,18 +52,10 @@ Supported variables
     </li>
   {%- endif -%}
 
-  {%- if settings.social_pinterest != blank or shop.brand.metafields.social_links.pinterest != blank -%}
-    <li>
-      <a href="{{ settings.social_pinterest | default: shop.brand.metafields.social_links.pinterest }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'Pinterest' }}">
-        {%- render 'icon' with 'pinterest' -%}
-      </a>
-    </li>
-  {%- endif -%}
-
   {%- if settings.social_youtube != blank or shop.brand.metafields.social_links.youtube != blank -%}
     <li>
       <a href="{{ settings.social_youtube | default: shop.brand.metafields.social_links.youtube }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'YouTube' }}">
-        {%- render 'icon' with 'youtube' -%}
+        {%- render 'icon' with 'youtube_solid' -%}
       </a>
     </li>
   {%- endif -%}
@@ -64,7 +63,7 @@ Supported variables
   {%- if settings.social_tiktok != blank or shop.brand.metafields.social_links.tiktok != blank -%}
     <li>
       <a href="{{ settings.social_tiktok | default: shop.brand.metafields.social_links.tiktok }}" class="tap-area" target="_blank" rel="noopener" aria-label="{{ 'general.social.follow_on' | t: social_media: 'TikTok' }}">
-        {%- render 'icon' with 'tiktok' -%}
+        {%- render 'icon' with 'tiktok_solid' -%}
       </a>
     </li>
   {%- endif -%}

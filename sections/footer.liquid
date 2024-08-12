@@ -1,26 +1,268 @@
 {%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
 
 {%- if section.blocks.size > 3 -%}
-<style>
-  @media screen and (min-width: 1000px) {
-    #shopify-section-{{ section.id }} {
-      {%- if newsletter_block != blank -%}
-        --footer-block-list-gap: var(--spacing-10);
-      {%- endif -%}
-
-      --footer-block-list-justify-content: space-between;
+  <style>
+    /* footer */
+    .footer_aboutus p {
+      font-family: var(--text-font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      width: auto;
     }
-  }
-</style>
+
+    .footer__block--menu p {
+      font-family: var(--heading-font-family);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .footer__block--menu li a {
+      font-family: var(--text-font-family);
+      font-weight: 450;
+      font-size: 16px;
+      line-height: 16px;
+      color: black;
+      opacity: 1;
+    }
+
+    .footer__block--menu {
+      height: 230px;
+      gap: 20px;
+    }
+
+    .footer__block-list div:nth-child(3) .bold {
+      font-family: var(--heading-font-family);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .footer__block-list div:nth-child(3) .footer_aboutus p {
+      font-family: var(--text-font-family);
+      font-weight: 450;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    .footer__block-list div:nth-child(3) {
+      width: 260px;
+      gap: 20px;
+    }
+
+    .footer__block--newsletter p:nth-child(1) {
+      font-family: var(--heading-font-family);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 23.36px;
+    }
+
+    .footer__wrapper {
+      justify-content: center;
+      gap: var(--footer-part-gap);
+    }
+
+    .footer__copyright {
+      font-family: var(--btn-font-family);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+      color: black;
+      text-align: center;
+    }
+
+    .text-subdued-mobile {
+      display: block;
+    }
+
+    .text-subdued-desktop {
+      display: none;
+    }
+
+    .footer__block-list {
+      gap: 32px;
+    }
+
+    .footer__wrapper .form-control .floating-label {
+      padding: 18.13px 21.46px;
+      margin: 0px;
+      font-size: 14px;
+    }
+
+    .footer__aside {
+      gap: 0;
+    }
+
+    .social-media {
+      gap: var(--spacing-3) var(--spacing-3);
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .self-submit-button {
+      display: none;
+    }
+
+    .footer .form-control input {
+      border-radius: 50px;
+      background-color: white;
+      font-size: 18px;
+      width: 296px;
+      height: 59px;
+    }
+
+    .footer .form-control label {
+      color: black;
+      opacity: 1;
+    }
+
+    .footer__block-list div:nth-child(1) img {
+      position: relative;
+      margin-block-start: -18px;
+    }
+
+    /* Style the newsletter submit button */
+    .newsletter-submit-button {
+      background-color: #FCD817;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      font-family: var(--btn-font-family);
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 21px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      border-radius: 50px;
+      width: 296px;
+      height: 64px;
+    }
+
+    .footer__block--newsletter {
+      width: 296px;
+      /* height: 207px; */
+      gap: 20px;
+    }
+
+    .footer__aside-bottom {
+      justify-content: center;
+    }
+
+    .newsletter-submit-button:hover {
+      /* background-color: #0056b3; */
+    }
+
+    .footer-form-privacy-description {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-form-privacy-description p {
+      font-family: var(--text-font-family);
+      font-weight: 510;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    @media screen and (min-width:700px) {
+      .footer__block-list {
+          width: 640px;
+          gap: var(--footer-block-list-gap);
+      }
+
+      .footer__wrapper .form-control .floating-label {
+          padding: 17.75px 29px;
+          margin: 0px;
+          font-size: 18px;
+      }
+
+      .footer__copyright {
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 400;
+      }
+
+      .text-subdued-mobile {
+          display: none;
+      }
+
+      .text-subdued-desktop {
+          display: block;
+      }
+
+      .footer .form-control input {
+          border-radius: 50px;
+          background-color: #fff;
+          width: 400px;
+          font-size: 18px;
+          height: 59px;
+      }
+
+      .newsletter-submit-button {
+          padding: 10px 20px;
+          font-size: 20px;
+          line-height: 28px;
+          width: 400px;
+      }
+
+      .footer__block--newsletter {
+          width: 400px;
+          height: 207px;
+          gap: 20px;
+      }
+
+      .footer__aside-bottom {
+          justify-content: space-between !important;
+          flex-flow: row-reverse;
+      }
+
+      .footer__block-list div:nth-child(1) .footer_aboutus p {
+          width: 260px;
+      }
+    }
+
+    @media screen and (min-width:900px) {
+      .footer__block-list {
+          width: 864px
+      }
+    }
+
+    @media screen and (max-width:1300px) {
+      .footer__block-list {
+          flex-wrap: wrap;
+      }
+    }
+
+    @media screen and (min-width:1300px) {
+      .footer__block-list {
+          width: 1280px;
+          flex-wrap: nowrap;
+      }
+    }
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} {
+        {%- if newsletter_block != blank -%}
+          --footer-block-list-gap: var(--spacing-10);
+        {%- endif -%}
+
+        --footer-block-list-justify-content: space-between;
+      }
+    }
+  </style>
 {%- endif -%}
 
 <div class="footer">
   <div class="container">
     <div class="footer__wrapper">
       {%- comment -%}
-      ------------------------------------------------------------------------------------------------------------------
-      BLOCK AREA
-      ------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------------------------------
+        BLOCK AREA
+        ------------------------------------------------------------------------------------------------------------------
       {%- endcomment -%}
 
       {%- if section.blocks.size > 0 -%}
@@ -28,18 +270,45 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'text' -%}
-                {%- if block.settings.title != blank or block.settings.content != blank or shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                {%- if block.settings.title != blank
+                  or block.settings.content != blank
+                  or shop.features.follow_on_shop?
+                  and block.settings.enable_follow_on_shop
+                -%}
                   <div class="footer__block footer__block--text" {{ block.shopify_attributes }}>
+                    {%- if block.settings.logo_image != blank -%}
+                      <img
+                        src="{{ block.settings.logo_image | img_url: '182x38' }}"
+                        alt="{{ shop.name }}"
+                        width="182"
+                        height="38"
+                      >
+                    {%- endif -%}
                     {%- if block.settings.title != blank -%}
                       <p class="bold">{{ block.settings.title | escape }}</p>
                     {%- endif -%}
 
                     {%- if block.settings.content != blank -%}
-                      <div class="prose text-subdued">
+                      <div class="prose text-subdued footer_aboutus">
                         {{- block.settings.content -}}
                       </div>
                     {%- endif -%}
 
+                    {%- if block.settings.show_social_media -%}
+                      {%- capture social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
+                      {{- social_media -}}
+                    {%- endif -%}
+                    {%- if block.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+                      <div class="footer__payment-icons wrap gap-2">
+                        {% assign enabled_payment_types = 'american_express,google_pay,master,paypal,opay,visa'
+                          | remove: ' '
+                          | split: ','
+                        %}
+                        {% for type in enabled_payment_types %}
+                          {{- type | payment_type_svg_tag -}}
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
                     {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
                       <div class="follow-on-shop">
                         {{- shop | login_button: action: 'follow' -}}
@@ -64,14 +333,17 @@
                     </ul>
                   </div>
                 {%- endif -%}
-
               {%- when 'newsletter' -%}
                 <div class="footer__block footer__block--newsletter" {{ block.shopify_attributes }}>
                   {%- if block.settings.image != blank -%}
                     {%- capture sizes -%}{{ block.settings.image_width }}px{%- endcapture -%}
                     {%- capture widths -%}{{ block.settings.image_width }}, {{ block.settings.image_width | times: 2 | at_most: block.settings.image.width }}{%- endcapture -%}
                     {%- capture style -%}max-width: {{ block.settings.image_width }}px{%- endcapture -%}
-                    {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', style: style, sizes: sizes, widths: widths -}}
+                    {{-
+                      block.settings.image
+                      | image_url: width: block.settings.image.width
+                      | image_tag: loading: 'lazy', style: style, sizes: sizes, widths: widths
+                    -}}
                   {%- endif -%}
 
                   <div class="v-stack gap-6">
@@ -97,8 +369,25 @@
 
                         <input type="hidden" name="contact[tags]" value="newsletter">
 
-                        {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%}
-                        {%- render 'input', name: 'contact[email]', label: label, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send', self_submit: true -%}
+                        {% comment %} {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%} {% endcomment %}
+                        {%- capture label -%}Enter your email{%- endcapture -%}
+                        {%- render 'input',
+                          name: 'contact[email]',
+                          label: label,
+                          type: 'email',
+                          required: true,
+                          autocomplete: 'email',
+                          enterkeyhint: 'send',
+                          self_submit: true
+                        -%}
+                        <button type="submit" class="newsletter-submit-button">
+                          SUBSCRIBE NOW
+                          {%- render 'footer-form-arrow-right-icon' -%}
+                        </button>
+                        <div class="footer-form-privacy-description">
+                          {%- render 'footer-form-lock-icon' -%}
+                          <p>Your privacy is safe with us.</p>
+                        </div>
                       {%- endif -%}
                     {%- endform -%}
                   </div>
@@ -109,22 +398,12 @@
       {%- endif -%}
 
       {%- comment -%}
-      ------------------------------------------------------------------------------------------------------------------
-      SECONDARY AREA
-      ------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------------------------------
+        SECONDARY AREA
+        ------------------------------------------------------------------------------------------------------------------
       {%- endcomment -%}
 
       <div class="footer__aside empty:hidden">
-        {%- comment -%}
-        ----------------------------------------------------------------------------------------------------------------
-        SOCIAL MEDIA + LOCALIZATION
-        ----------------------------------------------------------------------------------------------------------------
-        {%- endcomment -%}
-
-        {%- if section.settings.show_social_media -%}
-          {%- capture social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
-        {%- endif -%}
-
         {%- if section.settings.show_country_selector and localization.available_countries.size > 1 -%}
           {%- assign country_selector = true -%}
         {%- endif -%}
@@ -135,8 +414,6 @@
 
         {%- if social_media != blank or country_selector or locale_selector -%}
           <div class="footer__aside-top">
-            {{- social_media -}}
-
             {%- if country_selector or locale_selector -%}
               <div class="h-stack gap-6">
                 {%- if social_media == blank -%}
@@ -146,11 +423,19 @@
                 {%- endif -%}
 
                 {%- if country_selector -%}
-                  {%- render 'localization-selector', type: 'country', show_country_name: section.settings.show_country_name, show_country_flag: section.settings.show_country_flag, popover_horizontal_position: popover_horizontal_position -%}
+                  {%- render 'localization-selector',
+                    type: 'country',
+                    show_country_name: section.settings.show_country_name,
+                    show_country_flag: section.settings.show_country_flag,
+                    popover_horizontal_position: popover_horizontal_position
+                  -%}
                 {%- endif -%}
 
                 {%- if locale_selector -%}
-                  {%- render 'localization-selector', type: 'locale', popover_horizontal_position: popover_horizontal_position -%}
+                  {%- render 'localization-selector',
+                    type: 'locale',
+                    popover_horizontal_position: popover_horizontal_position
+                  -%}
                 {%- endif -%}
               </div>
             {%- endif -%}
@@ -158,21 +443,34 @@
         {%- endif -%}
 
         {%- comment -%}
-        ----------------------------------------------------------------------------------------------------------------
-        COPYRIGHT + PAYMENT METHODS
-        ----------------------------------------------------------------------------------------------------------------
+          ----------------------------------------------------------------------------------------------------------------
+          COPYRIGHT + PAYMENT METHODS
+          ----------------------------------------------------------------------------------------------------------------
         {%- endcomment -%}
 
         <div class="footer__aside-bottom">
-          {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
-            <div class="footer__payment-icons h-stack wrap gap-2">
-              {%- for type in shop.enabled_payment_types -%}
-                {{- type | payment_type_svg_tag -}}
-              {%- endfor -%}
-            </div>
-          {%- endif -%}
-
-          <p class="footer__copyright text-sm text-subdued">© {{ 'now' | date: '%Y' }}, {{ shop.name }}. {{ powered_by_link }}</p>
+          <p class="footer__copyright text-sm text-subdued text-subdued-desktop">
+            {%- for link in section.settings.support_link.links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+              {%- if forloop.index != section.settings.support_link.links.size -%}
+                &nbsp|&nbsp
+              {%- endif -%}
+            {%- endfor -%}
+            {% comment %} Term and Conditions | Privacy Policy | Return Policy {% endcomment %}
+          </p>
+          <p class="footer__copyright text-sm text-subdued text-subdued-mobile">
+            {%- for link in section.settings.support_link.links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+              {%- if forloop.index == 1 -%}
+                <br>
+              {%- elsif forloop.index != section.settings.support_link.links.size -%}
+                &nbsp|&nbsp
+              {%- endif -%}
+            {%- endfor -%}
+          </p>
+          <p class="footer__copyright text-sm text-subdued">
+            © {{ 'now' | date: '%Y' }}, {{ shop.name }}. {{ powered_by_link }}
+          </p>
         </div>
       </div>
     </div>
@@ -186,19 +484,6 @@
   "tag": "footer",
   "max_blocks": 5,
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_social_media",
-      "label": "Show social media",
-      "info": "To configure social media, go to your social media settings.",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Show payment icons",
-      "default": true
-    },
     {
       "type": "header",
       "content": "Country/region selector",
@@ -232,6 +517,13 @@
       "id": "show_locale_selector",
       "label": "Show language selector",
       "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "support_link",
+      "label": "Support Menu",
+      "info": "This menu won't show dropdown items.",
+      "default": "footer"
     }
   ],
   "blocks": [
@@ -239,6 +531,12 @@
       "type": "text",
       "name": "Text",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image for About Us",
+          "info": "182 x 38px .jpg recommended"
+        },
         {
           "type": "text",
           "id": "title",
@@ -257,6 +555,18 @@
           "label": "Show Follow on Shop",
           "info": "To allow customers to follow your store on the Shop app from your storefront, Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
           "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social_media",
+          "label": "Show social media",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "label": "Show payment icons",
+          "default": false
         }
       ]
     },
@@ -346,6 +656,11 @@
           "label": "Content"
         }
       ]
+    },
+    {
+      "type": "social_media_icon",
+      "name": "Social Media Icon",
+      "limit": 1
     }
   ]
 }

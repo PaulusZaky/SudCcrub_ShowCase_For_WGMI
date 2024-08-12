@@ -1,0 +1,24 @@
+/* global */
+.full-bleed {
+    margin: 0;
+    padding: 0;
+}
+
+.bleed {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* footer */
+.footer {
+    background-image: url('footer-gradient-bg.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    --footer-part-gap: var(--spacing-10);
+}
+
+.text-subdued {
+    color: #000;
+}

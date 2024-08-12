@@ -8,13 +8,16 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Free U.S. Shipping on $19+",
+            "text": "FREE US SHIPPING ON ALL $19+ ORDERS!",
             "url": "https:\/\/www.sudscrub.com\/policies\/shipping-policy"
           }
         }
       },
       "block_order": [
         "message"
+      ],
+      "custom_css": [
+
       ],
       "settings": {
         "enable_sticky": false,
@@ -34,7 +37,7 @@
         "enable_sticky": true,
         "hide_on_scroll": true,
         "logo": "{{shop.brand.logo}}",
-        "logo_max_width": 120,
+        "logo_max_width": 180,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
         "sidebar_menu": "",

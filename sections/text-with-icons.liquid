@@ -2,44 +2,121 @@
   {%- render 'section-spacing-collapsing' -%}
 
   <style>
-    #shopify-section-{{ section.id }} {
-      --text-with-icons-template: {% if section.settings.stack_on_mobile %}minmax(0, 1fr){% else %}auto-flow 100%{% endif %};
-      --text-with-icons-justify: center;
-      --text-with-icons-text-align: center;
-      --text-with-icons-gap: {% if section.settings.icon_spacing == 'small' %}var(--spacing-5){% elsif section.settings.icon_spacing == 'medium' %}var(--spacing-6){% else %}var(--spacing-7){% endif %};
+        #shopify-section-{{ section.id }} {
+          --text-with-icons-template: {% if section.settings.stack_on_mobile %}minmax(0, 1fr){% else %}auto-flow 100%{% endif %};
+          --text-with-icons-justify: center;
+          --text-with-icons-text-align: center;
+          --text-with-icons-gap: {% if section.settings.icon_spacing == 'small' %}var(--spacing-5){% elsif section.settings.icon_spacing == 'medium' %}var(--spacing-6){% else %}var(--spacing-7){% endif %};
+        }
+
+        #shopify-section-{{ section.id }} .section {
+          padding: 14px 0px;
+        }
+
+        .text-with-icons__item {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .text-with-icons {
+          display: block;
+        }
+
+        .text-with-icons__text-wrapper p{
+          font-size: 14px;
+        }
+
+        .shape-circle.shape--sm {
+          weight: 0;
+          height: 0;
+        }
+
+
+    /* .text-with-icons */
+    .shopify-section--text-with-icons .text-with-icons__item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    {%- if section.settings.stack_on_mobile -%}
-      @media screen and (min-width: 699px) {
-        #shopify-section-{{ section.id }} {
-          --text-with-icons-template: repeat(2, minmax(0, 1fr));
-        }
+    .shopify-section--text-with-icons .text-with-icons {
+      display: block;
+    }
+
+    .shopify-section--text-with-icons .text-with-icons__text-wrapper p {
+      font-size: 14px;
+      font-family: var(--text-font-family);
+      font-weight: 450;
+    }
+
+    .shopify-section--text-with-icons .shape-circle.shape--sm {
+      width: 0;
+      height: 0;
+    }
+
+    @media screen and (min-width: 699px) {
+      .shopify-section--text-with-icons .text-with-icons__item {
+          gap: 6px;
       }
-    {%- endif -%}
+
+      .shopify-section--text-with-icons .text-with-icons__text-wrapper p {
+          font-size: 16px;
+      }
+
+      .shopify-section--text-with-icons .text-with-icons__list {
+          grid: auto / auto-flow 40%;
+          gap: 20px;
+      }
+
+      .overlay-goshop-btn a {
+        font-size: 20px;
+        padding: 25px 56px;
+      }
+    }
 
     @media screen and (min-width: 1150px) {
-      #shopify-section-{{ section.id }} {
-        --text-with-icons-gap: {% if section.settings.icon_spacing == 'small' %}var(--spacing-5){% elsif section.settings.icon_spacing == 'medium' %}var(--spacing-6){% else %}var(--spacing-8){% endif %};
+      .shopify-section--text-with-icons .text-with-icons__list {
+          display: flex;
+          justify-content: space-between;
       }
     }
-
-    {%- if section.blocks.size <= 3 -%}
-      @media screen and (min-width: 1000px) {
-        #shopify-section-{{ section.id }} {
-          --text-with-icons-template: repeat({{ section.blocks.size }}, minmax(0, 630px));
-          --text-with-icons-justify: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
-          --text-with-icons-text-align: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
+      @media screen and (min-width: 699px) {
+        #shopify-section-{{ section.id }} .section {
+          padding: 18px 0px;
         }
       }
-    {%- else -%}
+      {%- if section.settings.stack_on_mobile -%}
+        @media screen and (min-width: 699px) {
+          #shopify-section-{{ section.id }} {
+            --text-with-icons-template: repeat(2, minmax(0, 1fr));
+          }
+        }
+      {%- endif -%}
+
       @media screen and (min-width: 1150px) {
         #shopify-section-{{ section.id }} {
-          --text-with-icons-template: repeat({{ section.blocks.size }}, 1fr);
-          --text-with-icons-justify: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
-          --text-with-icons-text-align: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
+          --text-with-icons-gap: {% if section.settings.icon_spacing == 'small' %}var(--spacing-5){% elsif section.settings.icon_spacing == 'medium' %}var(--spacing-6){% else %}var(--spacing-8){% endif %};
         }
       }
-    {%- endif -%}
+
+      {%- if section.blocks.size <= 3 -%}
+        @media screen and (min-width: 1000px) {
+          #shopify-section-{{ section.id }} {
+            --text-with-icons-template: repeat({{ section.blocks.size }}, minmax(0, 630px));
+            --text-with-icons-justify: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
+            --text-with-icons-text-align: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
+          }
+        }
+      {%- else -%}
+        @media screen and (min-width: 1150px) {
+          #shopify-section-{{ section.id }} {
+            --text-with-icons-template: repeat({{ section.blocks.size }}, 1fr);
+            --text-with-icons-justify: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
+            --text-with-icons-text-align: {% if section.settings.text_alignment == 'center' %}center{% else %}start{% endif %};
+          }
+        }
+      {%- endif -%}
   </style>
 
   <div {% render 'section-properties' %}>
@@ -51,64 +128,570 @@
       {%- endif -%}
 
       <div class="text-with-icons">
-        <scroll-carousel class="text-with-icons__list scroll-area full-bleed {% if section.blocks.size <= 3 %}md:unbleed{% else %}lg:unbleed{% endif %}" id="carousel-{{ section.id }}" role="region">
-          {%- for block in section.blocks -%}
-            {%- liquid
-              assign loading_strategy = nil
-    
-              if section.index > 3 or forloop.index > 3
-                assign loading_strategy = 'lazy'
-              endif
-            -%}
+        <marquee-text
+          scrolling-speed="10"
+          class="announcement-bar__scrolling-list"
+          style="--marquee-animation-duration: 23.905s;"
+        >
+          <span class="announcement-bar__item">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
 
-            <div id="block-{{ section.id }}-{{ block.id }}" class="text-with-icons__item snap-center" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}" {{ block.shopify_attributes }}>
-              {%- capture icon -%}
-                {%- if block.settings.custom_icon != blank -%}
-                  {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
-                  {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
-                  {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
-                  {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
-                {%- else -%}
-                  {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                  {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
-                {%- endif -%}
-              {%- endcapture -%}
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
 
-              {%- if icon != blank -%}
-                {%- if block.settings.icon_background_type == 'none' -%}
-                  <div {% render 'surface', text_color: block.settings.icon_color %}>
-                    {{- icon -}}
-                  </div>
-                {%- else -%}
-                  {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
-                  <div {% render 'surface', class: surface_class, background: block.settings.icon_background, text_color: block.settings.icon_color, background_fallback: 'bg-secondary' %}>
-                    {{- icon -}}
-                  </div>
-                {%- endif -%}
-              {%- endif -%}
-
-              <div class="text-with-icons__text-wrapper">
-                <div class="prose">
-                  {%- if block.settings.title != blank -%}
-                    <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
                   {%- endif -%}
+                {%- endcapture -%}
 
-                  {{- block.settings.content -}}
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
                 </div>
               </div>
-            </div>
-          {%- endfor -%}
-        </scroll-carousel>
-
-        {%- if section.blocks.size > 1 -%}
-          <page-dots aria-controls="carousel-{{ section.id }}" class="page-dots peer-not-scrollable:hidden">
-            {%- for index in (1..section.blocks.size) -%}
-              <button type="button" class="tap-area" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
-                <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: index }}</span>
-              </button>
+              <span class="shape-circle shape--sm"></span>
             {%- endfor -%}
-          </page-dots>
-        {%- endif -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = null
+
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div
+                id="block-{{ section.id }}-{{ block.id }}"
+                class="text-with-icons__item snap-center"
+                role="group"
+                aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- capture icon -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- if icon != blank -%}
+                  {%- if block.settings.icon_background_type == 'none' -%}
+                    <div {% render 'surface', text_color: block.settings.icon_color %}>
+                      {{- icon -}}
+                    </div>
+                  {%- else -%}
+                    {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
+                    <div
+                      {% render 'surface',
+                        class: surface_class,
+                        background: block.settings.icon_background,
+                        text_color: block.settings.icon_color,
+                        background_fallback: 'bg-secondary'
+                      %}
+                    >
+                      {{- icon -}}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+
+                <div class="text-with-icons__text-wrapper">
+                  <div class="prose">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {{- block.settings.content -}}
+                  </div>
+                </div>
+              </div>
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          </span>
+        </marquee-text>
       </div>
     </div>
   </div>

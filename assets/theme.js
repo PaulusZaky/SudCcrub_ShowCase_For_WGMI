@@ -896,7 +896,23 @@ split_fn = function(force = false) {
   });
   this.shadowRoot.replaceChildren(...Array.from(bounds.values(), (line) => document.createRange().createContextualFragment(`
       <span style="display: inline-block;">
-        <span style="display: block">${line}</span>
+        <style>
+          .split-lines {
+            padding: 0 0.75rem;
+            position: relative;
+          }
+          .split-lines::after {
+            content: "";
+            position: absolute;
+            height: 20px;
+            background-color: #ffc9d0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+          }
+        </style>
+        <span class="split-lines" style="display: ruby; ">${line}</span>
       </span>
     `)));
   __privateSet(this, _requireSplit, false);

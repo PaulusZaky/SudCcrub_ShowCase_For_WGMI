@@ -415,5 +415,10 @@
         "other": "It has received {{ count }} reviews."
       }
     }
+  },
+  "shopify": {
+    "links": {
+      "powered_by_shopify": " "
+    }
   }
 }
