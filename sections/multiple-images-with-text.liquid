@@ -3,9 +3,9 @@
 {%- assign visible_images_count = section.blocks | map: 'settings' | where: 'image' | size -%}
 
 {%- comment -%}
-------------------------------------------------------------------------------------------------------------------------
-CSS
-------------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 
 <style>
@@ -14,6 +14,106 @@ CSS
     --multiple-images-with-text-images-grid-template: {% if section.settings.images_layout != 'stacked' and visible_images_count > 1 %}repeat({% if visible_images_count == 2 %}1{% else %}2{% endif %}, auto) / minmax(0, 0.75fr) minmax(0, 1fr){% else %}none{% endif %};
     --multiple-images-with-text-images-alignment: {% if section.settings.images_layout == 'collage' and section.settings.collage_images_alignment == 'top' or section.settings.collage_images_alignment == 'shifted' %}start{% else %}center{% endif %};
     --multiple-images-with-text-main-image-offset: {% if section.settings.images_layout == 'collage' and section.settings.collage_images_alignment == 'shifted' and visible_images_count > 1 %}{% if visible_images_count == 2 %}40px{% else %}min(145px, 14vw){% endif %}{% else %}0px{% endif %};
+  }
+  #shopify-section-{{ section.id }} .section {
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .overlay-goshop-right p:nth-of-type(1) {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .overlay-goshop-reviewstar-container{
+    line-height: 8px;
+  }
+
+  .multiple-images-with-text {
+    display: flex;
+    flex-direction: column-reverse;
+    gap:0;
+
+    max-width: none;
+  }
+  .multiple-images-with-text__content-with-nav {
+    max-width: none;
+  }
+  #shopify-section-{{ section.id }} .section-blends {
+    background-image: unset !important;
+    background-color: #FFFFFF;
+  }
+
+  .multiple-images-with-text__content-list .styled_text::part(split-lines)::after {
+    background:#B9D6EF;
+  }
+  .multiple-images-with-text__content-list {
+    padding: 33px 24px;
+  }
+  .multiple-images-with-text__content-list .content-text{
+    font-size: 15px;
+    font-weight: 450;
+  }
+
+  .goshop {
+    padding-top: 17px;
+    font-family: var(--heading-font-family);
+    padding: 18px 56px;
+    gap: 12px;
+  }
+  .goshop span {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 15.8px;
+  }
+
+  .goshop svg {
+    width: 16px;
+    height: 16px;
+  }
+  .more-info-with-review svg {
+    width: 16px;
+    height: 16px;
+  }
+  .more-info-with-review {
+    margin-top: 17px;
+  }
+  .more-info-with-review a,
+  .more-info-with-review div {
+    margin: 0;
+  }
+  .more-info-with-review div p {
+    margin: 0;
+  }
+
+  .more-info-with-review {
+    margin-top: 17px !important;
+  }
+
+  .content-text {
+    margin-top: 14px !important;
+  }
+
+  .multiple-images-with-text__image-list>img {
+    max-width: none;
+  }
+
+  @media screen and (min-width: 980px) {
+    .multiple-images-with-text {
+      flex-direction: row;
+      align-items: end;
+    }
+
+    .multiple-images-with-text__content-list .content-text{
+      font-size: 20px;
+      margin-top: 23px !important;
+    }
+
+    .more-info-with-review {
+      flex-direction: row;
+      gap: 22px;
+      margin-top: 30.7px !important;
+    }
+    .more-info-with-review .overlay-goshop-right {
+      margin: 0;
+    }
   }
 
   {%- if section.settings.images_layout == 'stacked' or visible_images_count == 1 -%}
@@ -50,9 +150,9 @@ CSS
 </style>
 
 {%- comment -%}
-------------------------------------------------------------------------------------------------------------------------
-LIQUID
-------------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 
 {%- assign is_narrow = false -%}
@@ -63,7 +163,12 @@ LIQUID
 
 <div {% render 'section-properties', narrow: is_narrow %}>
   <multiple-images-with-text class="multiple-images-with-text">
-    <multiple-images-with-text-image-list reversed swipeable="false" layout="{{ section.settings.images_layout }}" class="multiple-images-with-text__image-list">
+    <multiple-images-with-text-image-list
+      reversed
+      swipeable="false"
+      layout="{{ section.settings.images_layout }}"
+      class="multiple-images-with-text__image-list"
+    >
       {%- if visible_images_count == 0 -%}
         {{- 'collection-1' | placeholder_svg_tag: 'placeholder' -}}
       {%- else -%}
@@ -83,7 +188,16 @@ LIQUID
             {%- capture image_id -%}image-{{ block.id }}{%- endcapture -%}
             {%- capture image_class -%}rounded-sm shadow-sm {% unless section.settings.images_layout == 'stacked' %}reveal{% endunless %}{%- endcapture -%}
 
-            {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: id: image_id, style: style, sizes: 'min(100vw, 500px)', widths: '200,300,400,500,600,700,800,900,1000', class: image_class -}}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag:
+                id: image_id,
+                style: style,
+                sizes: 'min(100vw, 500px)',
+                widths: '200,300,400,500,600,700,800,900,1000',
+                class: image_class
+            -}}
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
@@ -94,26 +208,46 @@ LIQUID
         {%- assign outputted_text_count = 0 -%}
 
         {%- for block in section.blocks -%}
-          {%- if block.settings.subheading != blank or block.settings.title != blank or block.settings.content != blank -%}
-            <div class="prose {% if outputted_text_count == 0 %}is-selected{% else %}reveal-invisible{% endif %}" {% if block.settings.image != blank %}image-id="image-{{ block.id }}"{% endif %} {{ block.shopify_attributes }}>
-              {%- if block.settings.subheading != blank -%}
-                <p class="subheading">{{ block.settings.subheading | escape }}</p>
-              {%- endif -%}
-
-              {%- if block.settings.title != blank -%}
-                <p class="h1" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %}>
-                  {%- render 'styled-text', content: block.settings.title, apparition_effect: true -%}
-                </p>
-              {%- endif -%}
-
-              {{- block.settings.content -}}
-
-              {%- if block.settings.button_text != blank -%}
-                {%- render 'button', href: block.settings.button_url, content: block.settings.button_text, size: 'xl', background: section.settings.button_background, text_color: section.settings.button_text_color -%}
-              {%- endif -%}
-            </div>
-
-            {%- assign outputted_text_count = outputted_text_count | plus: 1 -%}
+          {%- if block.settings.subheading != blank
+            or block.settings.title != blank
+            or block.settings.content != blank
+          -%}
+            <div
+              class="prose {% if outputted_text_count == 0 %}is-selected{% else %}reveal-invisible{% endif %}"
+              {% if block.settings.image != blank %}
+                image-id="image-{{ block.id }}"
+              {% endif %}
+              {{ block.shopify_attributes }}
+            >
+              {%- render 'section-header',
+                subheading: block.settings.subheading,
+                heading: block.settings.title,
+                heading_color: block.settings.heading_color,
+                heading_gradient: block.settings.heading_gradient
+              -%}
+              <div class="content-text">
+                {{- block.settings.content -}}
+              </div>
+              <div class="more-info-with-review">
+                {%- if block.settings.button_text != blank -%}
+                  <a href="{{section.settings.button_url}}" class="goshop">
+                    <span>{{ section.settings.btn_text | default: 'FIND OUT MORE' }}</span>
+                    {%- render 'overlay-shopnow-btn-arrowicon' -%}
+                  </a>
+                {%- endif -%}
+                <div class="overlay-goshop-right">
+                  <div class="overlay-goshop-reviewstar-container">
+                    {%- render 'review-star' -%}
+                    {%- render 'review-star' -%}
+                    {%- render 'review-star' -%}
+                    {%- render 'review-star' -%}
+                    {%- render 'review-star' -%}
+                  </div>
+                  <p>Based on <b>785</b> Reviews</p>
+                </div>
+              </div>
+              <div id="cleanhub-banner"></div>
+              {%- assign outputted_text_count = outputted_text_count | plus: 1 -%}
           {%- endif -%}
         {%- endfor -%}
       </multiple-images-with-text-content-list>
@@ -134,7 +268,30 @@ LIQUID
     </div>
   </multiple-images-with-text>
 </div>
+<!-- Start of cleanhub.io script -->
+<script type="text/javascript" src="https://cdn.cleanhub.io/embed/CleanhubBanner.js"></script>
+<script type="text/javascript">
+  CleanhubBanner.mount({
+    clientId: '1nsdrirct7hl60td3lrku13m5sen8dmn3gefjpqm',
+    elementId: 'cleanhub-banner',
+  });
 
+  const iframe = $('.cleanhub-banner-wrapper iframe');
+  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+  // Create a new style element
+  const style = iframeDoc.createElement('style');
+  style.innerHTML = `
+        .MuiBox-root  {
+            color: red;
+            background-color: yellow;
+        }
+    `;
+
+  // Append the style element to the iframe's head
+  iframeDoc.head.appendChild(style);
+</script>
+<!-- End of cleanhub.io script -->
 {% schema %}
 {
   "name": "Multiple images with text",

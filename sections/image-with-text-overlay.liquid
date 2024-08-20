@@ -18,7 +18,7 @@
   .overlay-heading-text {
     font-family: var(--heading-font-family);
     font-weight: 400;
-    font-size: 23px;
+    font-size: 28px;
     line-height: 32.7px;
     display: inline-block;
   }
@@ -179,18 +179,21 @@
   .overlay-goshop-right p:nth-of-type(2) {
     display: block;
   }
-
+  .overlay-subheading-text {
+    width: auto;
+  }
   @media screen and (min-width:350px) {
-    .overlay-heading-text {
-        font-family: var(--heading-font-family);
-        font-weight: 400;
-        font-size: 28px;
-        line-height: 32.7px;
-        display: inline-block;
-    }
   }
 
   @media screen and (min-width:700px) {
+    .overlay-subheading-text {
+      width: 560px;
+    }
+    .overlay-heading-text {
+        font-size: 46px;
+        line-height: 53.7px;
+        display: inline-block;
+    }
     .overlay-paragraph p {
         margin-block-start: 0px;
         font-family: var(--text-font-family);
@@ -611,22 +614,26 @@
             {%- endfor -%}
           </div>
         </div>
-        <img
-          style="z-index:-5"
-          class="gradient-top-product-bk"
-          width="900px"
-          height="635px"
-          src="https://cdn.shopify.com/s/files/1/0496/2936/4391/files/gradient-top-product-bk.png?v=1723023885"
-          alt="Description of the image"
-        >
-        <img
-          style="z-index:-5"
-          class="gradient-top-product-bk-mobile"
-          width="492px"
-          height="347px"
-          src="https://cdn.shopify.com/s/files/1/0496/2936/4391/files/gradient-top-product-bk-mobile.png?v=1723269536"
-          alt="Description of the image"
-        >
+        {% if section.settings.image_for_content != blank %}
+          <img
+            style="z-index:-5"
+            class="gradient-top-product-bk"
+            width="900px"
+            height="635px"
+            src="https://cdn.shopify.com/s/files/1/0496/2936/4391/files/gradient-top-product-bk.png?v=1723023885"
+            alt="Description of the image"
+          >
+        {% endif %}
+        {% if section.settings.image_for_content_mobile != blank %}
+          <img
+            style="z-index:-5"
+            class="gradient-top-product-bk-mobile"
+            width="492px"
+            height="347px"
+            src="https://cdn.shopify.com/s/files/1/0496/2936/4391/files/gradient-top-product-bk-mobile.png?v=1723269536"
+            alt="Description of the image"
+          >
+        {% endif %}
       </div>
     {%- endif -%}
   </image-banner>
@@ -709,6 +716,12 @@
       "id": "image_for_content",
       "label": "Image for content",
       "info": "3200 x 1600px .jpg recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_for_content_mobile",
+      "label": "Image for mobile content",
+      "info": "1300 x 1500px .jpg recommended"
     },
     {
       "type": "select",

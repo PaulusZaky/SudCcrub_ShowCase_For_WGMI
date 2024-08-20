@@ -7,24 +7,116 @@
     --section-stack-intro: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
     --section-stack-main: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
   }
+  #shopify-section-{{ section.id }} .section {
+    padding: 32px 28px;
+    background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/faq-mobile-bg.jpg?v=1723914144") !important;
+  }
+  .accordion-box {
+    background: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+  }
+
+  .accordion  {
+    background: #FFFFFF;
+    padding: 10px 18px 10px 18px;
+    border: none;
+  }
+  .accordion .accordion__toggle {
+    font-family: var(--btn-font-family);
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0;
+  }
+
+  .accordion  .accordion__content {
+    font-size: 12px;
+    font-weight: 450;
+    line-height:16.8px;
+    padding-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .section-stack__intro {
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .section-header .prose p  {
+    text-align: center;
+  }
+  .section-stack__intro .prose p{
+    font-weight: 700;
+    line-height: 22px;
+    font-size: 16px;
+    font-family:  var(--btn-font-family);
+    margin-top: 14px;
+  }
+
+  .group:hover .circle-chevron.group-hover\:colors:not([disabled]) {
+    background: #FFFFFF;
+  }
+  #shopify-section-{{ section.id }} .section-header {
+    margin: auto;
+  }
+
+  #shopify-section-{{ section.id }} .section-stack__intro {
+    width: unset;
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .section {
+      padding: 80px 120px;
+      background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/faq-desktop-bg.jpg?v=1723836641") !important;
+    }
+    #shopify-section-{{ section.id }} .section-stack {
+      align-items: center;
+    }
+    #shopify-section-{{ section.id }} .section-stack .section-stack--horizontal {
+      align-items: center;
+    }
+    .accordion  {
+      padding: 20px 26px;
+    }
+    .accordion .accordion__toggle {
+      font-family: var(--btn-font-family);
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    .accordion  .accordion__content {
+      font-size: 16px;
+      line-height: 22.5px;
+    }
+  }
+  @media screen and (min-width: 1150px) {
+    #shopify-section-{{ section.id }} .section-stack {
+      gap: 0;
+    }
+    #shopify-section-{{ section.id }} .section-header {
+      grid-template-columns: unset;
+    }
+
+    #shopify-section-{{ section.id }} .section-stack__intro {
+      width: 42%;
+    }
+    #shopify-section-{{ section.id }} .section-stack__main {
+      flex-grow: 1;
+    }
+    #shopify-section-{{ section.id }} .section-header .prose p  {
+      text-align: left;
+    }
+    #shopify-section-{{ section.id }} .section-header {
+      text-align: left;
+    }
+    #shopify-section-{{ section.id }} .section-header h2 {
+      padding-right: 40px;
+    }
+  }
 </style>
 
 <div {% render 'section-properties' %}>
   <div class="section-stack {% if text_position != 'center' %}section-stack--horizontal{% else %}section-stack--center{% endif %} {% if text_position == 'end' %}section-stack--reverse{% endif %}">
-    {%- capture content -%}
-      {%- if section.settings.subheading != blank -%}
-        <p class="subheading">{{ section.settings.subheading | escape }}</p>
-      {%- endif -%}
-
-      {%- if section.settings.title != blank -%}
-        <h2 class="h2">
-          {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
-        </h2>
-      {%- endif -%}
-
-      {{- section.settings.content -}}
-    {%- endcapture -%}
-
     {%- capture subcontent -%}
       <div class="faq-availability">
         {%- if section.settings.team_avatar != blank or section.settings.support_hours != blank or section.settings.answer_time != blank -%}
@@ -54,27 +146,31 @@
       </div>
     {%- endcapture -%}
 
-    {%- if content != blank or subcontent != blank -%}
-      <div class="section-stack__intro">
-        <div class="v-stack gap-10">
-          {%- if content != blank -%}
-            <div class="prose {% if text_position == 'center' %}text-center{% endif %}">
-              {{- content -}}
-            </div>
-          {%- endif -%}
-
-          {%- if text_position != 'center' and subcontent != blank -%}
-            <div class="hidden lg:block">
-              {{- subcontent -}}
-            </div>
-          {%- endif -%}
-        </div>
+    <div class="section-stack__intro">
+      <div class="v-stack gap-10">
+        {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
+        {%- render 'section-header',
+          subheading: section.settings.subheading,
+          heading: section.settings.title,
+          heading_color: section.settings.heading_color,
+          heading_gradient: section.settings.heading_gradient,
+          content: section.settings.content,
+          link_text: section.settings.link_text,
+          link_url: link_url
+        -%}
       </div>
-    {%- endif -%}
+    </div>
 
     {%- if section.blocks.size > 0 -%}
-      <div class="section-stack__main" >
-        <div {% render 'surface', class: 'accordion-box rounded', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
+      <div class="section-stack__main">
+        <div
+          {% render 'surface',
+            class: 'accordion-box rounded',
+            background: section.settings.accordion_background,
+            text_color: section.settings.accordion_text_color,
+            background_fallback: 'bg-secondary'
+          %}
+        >
           {%- for block in section.blocks -%}
             {%- if block.settings.title != blank and block.settings.content != blank -%}
               {%- capture accordion_content -%}
@@ -88,7 +184,11 @@
       </div>
     {%- endif -%}
 
-    <div {% if text_position != 'center' %}class="lg:hidden"{% endif %}>
+    <div
+      {% if text_position != 'center' %}
+        class="lg:hidden"
+      {% endif %}
+    >
       {{- subcontent -}}
     </div>
   </div>

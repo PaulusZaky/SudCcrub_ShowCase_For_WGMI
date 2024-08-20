@@ -2,16 +2,235 @@
   {%- render 'section-spacing-collapsing' -%}
 
   <style>
+    #shopify-section-{{ section.id }} .section-blends {
+      background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/problem-solutions-mobile-bg.jpg?v=1723836640") !important;
+    }
+    .tabs-container {
+      background: #FFFFFF;
+      display: none;
+    }
+    #tabs-swiper {
+      display: block;
+    }
+    .tab-content .img-container{
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .tab-content .img-container img{
+      margin-block: 0 !important;
+    }
+    .tab-content .content-heading {
+      font-family: var(--heading-font-family);
+    }
+    .tab-content .content-desc {
+      font-family: var(--text-font-family);
+    }
+
+    #tabs-swiper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    #tabs-swiper .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    #tabs-swiper .img-container img {
+      width: 290px;
+      height: 290px;
+      object-fit: cover;
+    }
+
+    #tabs-swiper .text-container {
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #tabs-swiper .content-heading {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 16px;
+    }
+
+    #tabs-swiper .content-desc {
+      margin: auto;
+      padding: 0 2rem;
+    }
+    .tab-mobile-footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+    #tabs-swiper .overlay-goshop-right {
+      margin: auto;
+    }
+    #tabs-swiper .overlay-goshop-right svg {
+      width: 16px;
+      height: 16px;
+    }
+    #tabs-swiper .overlay-goshop-right div {
+      line-height: 13px;
+    }
+    #tabs-swiper .overlay-goshop-right p:nth-of-type(1) {
+      display: block;
+    }
+
+    #tabs-swiper .goshop{
+      padding: 18px 40px;
+      gap: 24px;
+    }
+    #tabs-swiper .goshop span{
+      font-size: 16px;
+      line-height: 15.68px;
+      font-weight: 700;
+
+    }
+
+    #tabs-swiper .goshop svg {
+      width: 16px;
+      height: 16px;
+    }
+
     @media screen and (min-width: 700px) {
       #shopify-section-{{ section.id }} {
-        --tabs-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
+        --tabs-max-width: {% if section.settings.content_size == 'small' %}680{% elsif section.settings.content_size == 'medium' %}1170{% elsif section.settings.content_size == 'large' %}1170{% endif %}px;
         --section-stack-spacing-block: var(--spacing-8);
+      }
+      #shopify-section-{{ section.id }} .section-blends {
+        background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/problem-solutions-desktop-bg.jpg?v=1723836642") !important;
+      }
+      .tabs-container {
+        display: block;
+      }
+
+      #tabs-swiper {
+        display: none;
+      }
+
+      .tabs-inner {
+        gap: 0;
+      }
+      .tabs-inner::part(tab-list):after {
+        background: #FFFFFF;
+      }
+      .tabs-nav__button {
+        display: flex;
+        flex-direction: column;
+        flex-flow: wrap;
+        gap: 26px;
+        justify-content: center;
+        height: 195.97px;
+        padding: 0;
+        color: #B6B5C2;
+        margin: auto;
+        background: #F7F8FA;
+        border-left: solid 1px #C3C3CD;
+        border-right: none;
+        border-bottom: solid 1px #C3C3CD;
+        border-top: none;
+        width: 100%;
+      }
+      .tabs-nav__button svg {
+        width: inherit !important;
+        margin: auto;
+      }
+      .tabs-nav__button .active {
+        display: none;
+      }
+      .tabs-nav__button .gray {
+        display: block;
+      }
+      .tabs-nav__button {
+        margin: auto;
+      }
+
+      .tabs-nav__button img {
+          width: 110.59px;
+          height: 70.63px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+
+      .tabs-nav__button[aria-selected=true] {
+          color: #92B9D5;
+          background: #FFFFFF;
+          border: none;
+      }
+      .tabs-nav__button[aria-selected=true] .gray{
+        display: none;
+      }
+      .tabs-nav__button[aria-selected=true] .active{
+        display: block;
+      }
+      .tabs-nav__button[aria-selected=false] .gray{
+        display: block
+      }
+
+      .tabs-nav__button[aria-selected=false] .active{
+        display: none;
+      }
+
+      .tab-content {
+        padding: 32px 42px;
+        display: flex;
+        align-items: center;
+        gap: 58px;
+      }
+
+      .tab-content .img-container img{
+        width: 360.58px;
+        max-width: 320.58px;
+        height: 417.54px;
+        object-fit: cover;
+      }
+
+      .tab-content .solution-img{
+        display: none;
+      }
+
+      .tab-content .text-container {
+        margin: 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 38px;
+      }
+
+      .tab-content .text-container div {
+        margin: 0;
+      }
+      .tab-content .content-heading {
+        line-height: 48px;
+        font-size: 50px;
+      }
+
+      .tab-content .content-desc {
+        font-size: 24px;
+        line-height: 36px;
+      }
+
+      .tab-content .goshop{
+        font-size: 24px;
+        display: inline-block;
+        padding: 23px 73px;
+        width: 304px;
       }
     }
 
     @media screen and (min-width: 1400px) {
       #shopify-section-{{ section.id }} {
-        --section-stack-spacing-block: var(--spacing-10);
+        --section-stack-spacing-block: var(--spacing-12);
       }
     }
   </style>
@@ -64,6 +283,11 @@
 
           <x-tabs class="tabs-inner sm:text-{{ section.settings.text_alignment | replace: 'left', 'start' | replace: 'right', 'end' }}">
             <template shadowrootmode="open">
+              <style>
+                .tab-list::after {
+                  background: #ffffff;
+                }
+              </style>
               <slot role="tablist" part="tab-list" name="title"></slot>
               <slot part="tab-panels" name="content"></slot>
             </template>
@@ -71,7 +295,8 @@
             {%- for block in section.blocks -%}
               {%- assign title = block.settings.title | default: block.settings.page.title -%}
               {%- assign content = block.settings.page.content | default: block.settings.content -%}
-
+              {%- assign proimg = block.settings.proimg -%}
+              {%- assign solimg = block.settings.solimg -%}
               {%- if title != blank and content != blank -%}
                 <button
                   type="button"
@@ -79,10 +304,14 @@
                   class="tabs-nav__button bold text-subdued text-center"
                   {{ block.shopify_attributes }}
                 >
-                  <div>
-                    {% comment %} <img> {% endcomment %}
-                  </div>
-                  {{ title | escape }}
+                  {% if block.settings.icon != blank %}
+                    {%- assign active_icon = block.settings.icon | append: '-active' -%}
+
+                    {%- render 'icon' with block.settings.icon, class: 'gray' -%}
+                    {%- render 'icon' with active_icon -%}
+                  {% else %}
+                    <p>SVG</p>
+                  {% endif %}
                 </button>
                 <div
                   role="tabpanel"
@@ -90,17 +319,174 @@
                   slot="content"
                   {% cycle '', 'hidden', 'hidden', 'hidden', 'hidden' %}
                 >
-                  {{ content }}
+                  <div class="img-container">
+                    {% if proimg != blank %}
+                      <div class="problem-img">
+                        {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                        <div>
+                          {{-
+                            proimg
+                            | image_url: width: proimg.width
+                            | image_tag:
+                              loading: 'lazy',
+                              sizes: sizes,
+                              widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                              class: 'zoom-image'
+                          -}}
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if solimg != blank %}
+                      <div class="solution-img">
+                        {{- solimg | image_url: width: '100%' | image_tag: loading: 'lazy' -}}
+                        {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                        <div>
+                          {{-
+                            solimg
+                            | image_url: width: solimg.width
+                            | image_tag:
+                              loading: 'lazy',
+                              sizes: sizes,
+                              widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                              class: 'zoom-image'
+                          -}}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="text-container">
+                    {% if title != blank %}
+                      <div class="content-heading">{{ title }}</div>
+                    {% endif %}
+                    {% if content != blank %}
+                      <div class="content-desc">{{ content }}</div>
+                    {% endif %}
+                    {% if block.settings.url != blank %}
+                      <div>
+                        <a href="{{block.settings.url}}" class="goshop">
+                          {{ block.settings.text | default: 'SHOP NOW' }}
+                        </a>
+                      </div>
+                    {% endif %}
+                  </div>
                 </div>
               {%- endif -%}
             {%- endfor -%}
           </x-tabs>
         </div>
+        <div class="swiper" id="tabs-swiper">
+          <div class="swiper-wrapper">
+            {%- for block in section.blocks limit: section.blocks.size -%}
+              {%- assign title = block.settings.title | default: block.settings.page.title -%}
+              {%- assign content = block.settings.page.content | default: block.settings.content -%}
+              {%- assign proimg = block.settings.proimg -%}
+              {%- assign solimg = block.settings.solimg -%}
+              <div class="swiper-slide">
+                <div class="img-container">
+                  {% if proimg != blank %}
+                    <div class="problem-img">
+                      {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                      <div>
+                        {{-
+                          proimg
+                          | image_url: width: proimg.width
+                          | image_tag:
+                            loading: 'lazy',
+                            sizes: sizes,
+                            widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                            class: 'zoom-image'
+                        -}}
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% if solimg != blank %}
+                    <div class="solution-img">
+                      {{- solimg | image_url: width: '100%' | image_tag: loading: 'lazy' -}}
+                      {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                      <div>
+                        {{-
+                          solimg
+                          | image_url: width: solimg.width
+                          | image_tag:
+                            loading: 'lazy',
+                            sizes: sizes,
+                            widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                            class: 'zoom-image'
+                        -}}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="text-container">
+                  {% if title != blank %}
+                    <div class="content-heading">{{ title }}</div>
+                  {% endif %}
+                  {% if content != blank %}
+                    <div class="content-desc">{{ content }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            {%- else -%}
+              {%- for i in (1..section.blocks.size) -%}
+                <div class="swiper-slide"></div>
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+          <div class="swiper-footer">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+          <div class="tab-mobile-footer">
+            {% if section.settings.url != blank %}
+              <a href="{{section.settings.url}}" class="goshop">
+                <span>{{ section.settings.btn_text | default: 'SHOP NOW' }}</span>
+                {%- render 'overlay-shopnow-btn-arrowicon' -%}
+              </a>
+            {% endif %}
+            <div class="overlay-goshop-right">
+              <div class="overlay-goshop-reviewstar-container">
+                {%- render 'review-star' -%}
+                {%- render 'review-star' -%}
+                {%- render 'review-star' -%}
+                {%- render 'review-star' -%}
+                {%- render 'review-star' -%}
+              </div>
+              <p>Based on <b>785</b> Reviews</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 {%- endif -%}
-
+<script>
+  var swiper = new Swiper('#tabs-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 12,
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    grabCursor: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+    },
+  });
+</script>
 {% schema %}
 {
   "name": "Tabs",
@@ -154,15 +540,15 @@
     },
     {
       "type": "url",
-      "id": "link_url",
-      "label": "Link URL",
-      "info": "Default to collection URL."
+      "id": "url",
+      "label": "Button URL",
+      "info": "Default to Button URL."
     },
     {
       "type": "text",
-      "id": "link_text",
-      "label": "Link text",
-      "default": "View all"
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "SHOP NOW"
     },
     {
       "type": "text_alignment",
@@ -212,16 +598,62 @@
       "name": "Tab",
       "settings": [
         {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "stubborn",
+              "label": "Stubborn Breakout"
+            },
+            {
+              "value": "bumpy-skin",
+              "label": "Bumpy Skin"
+            },
+            {
+              "value": "sensitive-skin",
+              "label": "Sensitive Skin"
+            },
+            {
+              "value": "pollution",
+              "label": "Pollution"
+            }
+          ],
+          "default": "stubborn"
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Title",
           "default": "Tab"
         },
         {
+          "type": "image_picker",
+          "id": "proimg",
+          "label": "Problem image",
+          "info": "360 x 420px .jpg recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "solimg",
+          "label": "Solution image",
+          "info": "1247 x 1247px .jpg recommended"
+        },
+        {
           "type": "richtext",
           "id": "content",
           "label": "Content",
           "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Hyper Link"
         },
         {
           "type": "page",

@@ -2,35 +2,35 @@
   {%- render 'section-spacing-collapsing' -%}
 
   <style>
-        #shopify-section-{{ section.id }} {
-          --text-with-icons-template: {% if section.settings.stack_on_mobile %}minmax(0, 1fr){% else %}auto-flow 100%{% endif %};
-          --text-with-icons-justify: center;
-          --text-with-icons-text-align: center;
-          --text-with-icons-gap: {% if section.settings.icon_spacing == 'small' %}var(--spacing-5){% elsif section.settings.icon_spacing == 'medium' %}var(--spacing-6){% else %}var(--spacing-7){% endif %};
-        }
+    #shopify-section-{{ section.id }} {
+      --text-with-icons-template: {% if section.settings.stack_on_mobile %}minmax(0, 1fr){% else %}auto-flow 100%{% endif %};
+      --text-with-icons-justify: center;
+      --text-with-icons-text-align: center;
+      --text-with-icons-gap: {% if section.settings.icon_spacing == 'small' %}var(--spacing-5){% elsif section.settings.icon_spacing == 'medium' %}var(--spacing-6){% else %}var(--spacing-7){% endif %};
+    }
 
-        #shopify-section-{{ section.id }} .section {
-          padding: 14px 0px;
-        }
+    #shopify-section-{{ section.id }} .section {
+      padding: 14px 0px;
+    }
 
-        .text-with-icons__item {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
+    .text-with-icons__item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-        .text-with-icons {
-          display: block;
-        }
+    .text-with-icons {
+      display: block;
+    }
 
-        .text-with-icons__text-wrapper p{
-          font-size: 14px;
-        }
+    .text-with-icons__text-wrapper p{
+      font-size: 14px;
+    }
 
-        .shape-circle.shape--sm {
-          weight: 0;
-          height: 0;
-        }
+    .shape-circle.shape--sm {
+      weight: 0;
+      height: 0;
+    }
 
 
     /* .text-with-icons */
@@ -38,6 +38,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      line-height: 14px;
     }
 
     .shopify-section--text-with-icons .text-with-icons {
@@ -158,7 +159,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -220,7 +221,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -282,7 +283,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -344,7 +345,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -406,7 +407,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -468,7 +469,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -530,7 +531,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -592,7 +593,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -654,7 +655,7 @@
                     {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
                   {%- else -%}
                     {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
+                    {% comment %} {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%} {% endcomment %}
                   {%- endif -%}
                 {%- endcapture -%}
 
@@ -800,6 +801,11 @@
               "value": "picto-plane",
               "label": "Plane",
               "group": "Shipping"
+            },
+            {
+              "value": "picto-money-back",
+              "label": "Money Back",
+              "group": "Payment & Security"
             },
             {
               "value": "picto-credit-card",

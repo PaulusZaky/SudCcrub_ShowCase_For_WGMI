@@ -80,9 +80,10 @@
     <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
     <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
     <script type="module" src="{{ 'custom.js' | asset_url }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     {{ content_for_header }}
-
+    {{- 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' | stylesheet_tag -}}
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'global.css' | | asset_url | stylesheet_tag: preload: true -}}
     {%- if template == 'index' -%}

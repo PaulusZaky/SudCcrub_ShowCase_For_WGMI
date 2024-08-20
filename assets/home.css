@@ -3,14 +3,7 @@
     border: #C3C3CD 1px solid;
 }
 
-@media screen and (min-width: 699px) {
-    .tabs-nav__button {
-        width: 294.11px;
-        height: 195.97px;
-        padding: 27.5px 0px;
-
-    }
-}
+@media screen and (min-width: 699px) {}
 
 /* section */
 .section-blends {
@@ -46,6 +39,7 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 36px;
+    padding: 0 20px;
 }
 
 .section-header .prose p {
@@ -54,6 +48,7 @@
     font-size: 16px;
     line-height: 22px;
     text-align: center;
+    padding: 0 26px;
 }
 
 .collection-list-two .floating-controls-container {
@@ -64,10 +59,13 @@
     .section-header .prose h2 {
         font-size: 50px;
         line-height: 58.4px;
+        padding: 0;
+
     }
 
     .section-header .prose p {
         font-size: 20px;
         line-height: 19.6px;
+        padding: 0;
     }
 }

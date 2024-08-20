@@ -13,11 +13,99 @@
       {%- assign controls_color = section.settings.text_color | default: section.settings.heading_color | default: settings.text_color -%}
       --text-color: {{ controls_color.rgb }};
     }
+    .scrollable-with-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .testimonial {
+      box-shadow: 0px 1.84px 9.19px 0px #0000000D;
+      display: flex;
+      width: 253px;
+      align-items: center;
+      padding: 10px 16px;
+      gap: 10px;
+    }
 
+    .testnomial-content {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 13px;
+    }
+    .testimonial .text-subdued {
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 9px;
+    }
+    .rating-container {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .rating svg{
+      width: 8px;
+      height: 7px;
+    }
+    .announcement-bar__scrolling-list {
+    }
+    .announcement-bar__item {
+      margin-right: 23px;
+      display: flex;
+      flex-direction: row;
+      gap: 23px;
+    }
+    .announcement-bar__item.reverse {
+      animation: translateFullReverse var(--marquee-animation-duration, 0s) linear infinite !important;
+    }
+
+    .rtl-marquee:hover .announcement-bar__item {
+      animation-play-state:paused;
+    }
+
+    .ltr-marquee:hover .announcement-bar__item.reverse {
+      animation-play-state:paused !important;
+    }
+
+    #shopify-section-{{ section.id }} .overlay-goshop-right {
+      display: none;
+    }
     @media screen and (min-width: 700px) {
       #shopify-section-{{ section.id }} {
         --testimonial-list-items-per-row: 2;
         --testimonial-list-carousel-item-width: 52vw;
+      }
+      .scrollable-with-controls {
+        gap: 30px;
+      }
+      .testimonial {
+        gap: 16px;
+        padding: 33px 38px;
+        width: 550px;
+      }
+      .testimonial img {
+        width: 60px;
+        height: 60px;
+      }
+      .testnomial-content {
+        font-size: 16px;
+        line-height: 22.5px;
+      }
+      .testimonial .text-subdued {
+        font-size: 12px;
+        line-height: 12px;
+      }
+      .rating svg{
+        width: 16px;
+        height: 15px;
+      }
+      #shopify-section-{{ section.id }} .overlay-goshop-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 16px;
+        gap: 8px;
       }
     }
 
@@ -37,64 +125,1137 @@
 
   <div {% render 'section-properties' %}>
     <div class="section-stack">
-      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url -%}
+      <div class="text-center">
+        <div class="overlay-goshop-right">
+          <div class="overlay-goshop-reviewstar-container">
+            {%- render 'review-star' -%}
+            {%- render 'review-star' -%}
+            {%- render 'review-star' -%}
+            {%- render 'review-star' -%}
+            {%- render 'review-star' -%}
+          </div>
+          <p>Loved by <b>785</b> Happy Customers</p>
+        </div>
+        {%- render 'section-header',
+          subheading: section.settings.subheading,
+          heading: section.settings.title,
+          heading_color: section.settings.heading_color,
+          heading_gradient: section.settings.heading_gradient,
+          content: section.settings.content,
+          link_text: section.settings.link_text,
+          link_url: section.settings.link_url
+        -%}
+      </div>
 
       <div class="scrollable-with-controls">
         {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+        {% assign rtl_blocks = '' %}
+        {% assign ltr_blocks = '' %}
 
-        <scroll-carousel id="{{ scroll_area_id }}" class="testimonial-list scroll-area bleed {% if section.blocks.size > 3 %}is-scrollable{% endif %}">
-          {%- for block in section.blocks -%}
-            <div {% render 'surface', class: 'testimonial rounded-sm', background: section.settings.testimonial_card_background, text_color: section.settings.testimonial_card_text_color, background_fallback: 'bg-secondary' %} {{ block.shopify_attributes }}>
-              {%- if block.settings.image != blank or block.settings.author != blank or block.settings.show_rating -%}
-                {%- liquid
-                  assign loading_strategy = nil
-        
-                  if section.index > 3 or forloop.index > 3
-                    assign loading_strategy = 'lazy'
-                  endif
-                -%}
+        {% for block in section.blocks %}
+          {% if block.settings.ltr == false %}
+            {% assign rtl_blocks = rtl_blocks | append: block.id | append: ',' %}
+          {% else %}
+            {% assign ltr_blocks = ltr_blocks | append: block.id | append: ',' %}
+          {% endif %}
+        {% endfor %}
 
-                <div class="h-stack align-start gap-4 sm:gap-6">
-                  {%- if block.settings.image != blank -%}
-                    {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
-                    {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: loading_strategy, sizes: '(max-width: 699px) 40px, 56px', widths: '40,56,80,112,120,168', class: image_class -}}
-                  {%- endif -%}
+        {% comment %}
+          Convert the comma-separated strings to arrays
+        {% endcomment %}
+        {% assign rtl_blocks_array = rtl_blocks | split: ',' | uniq %}
+        {% assign ltr_blocks_array = ltr_blocks | split: ',' | uniq %}
 
-                  <div class="v-stack gap-2 sm:gap-2.5">
-                    {%- if block.settings.show_rating -%}
-                      <div class="rating">
-                        <div class="rating__stars" role="img" aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}">
-                          {%- for i in (1..5) -%}
-                            {%- if i <= block.settings.rating -%}
-                              {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
-                            {%- else -%}
-                              {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
-                            {%- endif -%}
-                          {%- endfor -%}
+        <marquee-text
+          scrolling-speed="10"
+          class="announcement-bar__scrolling-list rtl-marquee"
+          style="--marquee-animation-duration: 23.905s;"
+        >
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
                         </div>
                       </div>
-                    {%- endif -%}
-
-                    {%- if block.settings.author != blank -%}
-                      <p class="text-subdued">{{ block.settings.author | escape }}</p>
-                    {%- endif -%}
+                    {% endif %}
                   </div>
-                </div>
-              {%- endif -%}
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
 
-              {%- if block.settings.title != blank or block.settings.content != blank -%}
-                <div class="v-stack gap-2 sm:gap-2.5">
-                  {%- if block.settings.title != blank -%}
-                    <p class="bold">{{ block.settings.title | escape }}</p>
-                  {%- endif -%}
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
 
-                  {{- block.settings.content -}}
-                </div>
-              {%- endif -%}
-            </div>
-          {%- endfor -%}
-        </scroll-carousel>
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
 
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item">
+            {%- for block_id in rtl_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+        </marquee-text>
+        <marquee-text
+          scrolling-speed="10"
+          class="announcement-bar__scrolling-list ltr-marquee"
+          style="--marquee-animation-duration: 23.905s;"
+        >
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+          <span class="announcement-bar__item reverse">
+            {%- for block_id in ltr_blocks_array -%}
+              {% for block in section.blocks %}
+                {% if block.id == block_id %}
+                  <div
+                    {% render 'surface',
+                      class: 'testimonial',
+                      background: section.settings.testimonial_card_background,
+                      text_color: section.settings.testimonial_card_text_color,
+                      background_fallback: 'bg-secondary'
+                    %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.image != blank
+                      or block.settings.author != blank
+                      or block.settings.show_rating
+                    -%}
+                      {%- liquid
+                        assign loading_strategy = null
+
+                        if section.index > 3 or forloop.index > 3
+                          assign loading_strategy = 'lazy'
+                        endif
+                      -%}
+
+                      {%- if block.settings.image != blank -%}
+                        {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
+                        {{-
+                          block.settings.image
+                          | image_url: width: '60x60'
+                          | image_tag:
+                            loading: loading_strategy,
+                            sizes: '(max-width: 699px) 37px, 37px',
+                            widths: '37,40,56,80,112,120,168',
+                            class: image_class
+                        -}}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {% if block.settings.title != blank or block.settings.content != blank %}
+                      <div class="v-stack gap-2 sm:gap-2.5">
+                        <div class="testnomial-content">
+                          <p>
+                            “{{ block.settings.content }}
+                            <b>{{ block.settings.title }}</b>
+                            ”
+                          </p>
+                        </div>
+                        <div class="v-stack gap-2 sm:gap-2.5 rating-container">
+                          {%- if block.settings.author != blank -%}
+                            <p class="text-subdued">{{ block.settings.author | escape }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.show_rating -%}
+                            <div class="rating">
+                              <div
+                                class="rating__stars"
+                                role="img"
+                                aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}"
+                              >
+                                {%- for i in (1..5) -%}
+                                  {%- if i <= block.settings.rating -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--full' -%}
+                                  {%- else -%}
+                                    {%- render 'icon' with 'rating-star', class: 'rating__star rating__star--empty' -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+        </marquee-text>
         {%- unless section.settings.stack_testimonials -%}
           {%- assign default_progress = 3.0 | divided_by: section.blocks.size -%}
           {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
@@ -155,10 +1316,16 @@
           "default": "Testimonial"
         },
         {
-          "type": "richtext",
+          "type": "text",
           "id": "content",
           "label": "Content",
-          "default": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+          "default": "Share what your customers are saying about your products, customer service or shipping rates."
+        },
+        {
+          "type": "checkbox",
+          "id": "ltr",
+          "label": "Left to Right Animation",
+          "default": false
         }
       ]
     }
@@ -253,7 +1420,8 @@
             "rating": 4,
             "author": "John S.",
             "title": "Testimonial 1",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "content": "Share what your customers are saying about your products, customer service or shipping rates.",
+            "ltr": false
           }
         },
         {
@@ -262,7 +1430,8 @@
             "rating": 5,
             "author": "Mary U.",
             "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "content": "Share what your customers are saying about your products, customer service or shipping rates.",
+            "ltr": false
           }
         },
         {
@@ -271,7 +1440,38 @@
             "rating": 4,
             "author": "Joshua A.",
             "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "content": "Share what your customers are saying about your products, customer service or shipping rates.",
+            "ltr": false
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 4,
+            "author": "Talha C.",
+            "title": "Testimonial 4",
+            "content": "Share what your customers are saying about your products, customer service or shipping rates.",
+            "ltr": false
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 4,
+            "author": "Cross B.",
+            "title": "Testimonial 5",
+            "content": "Share what your customers are saying about your products, customer service or shipping rates.",
+            "ltr": false
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 4,
+            "author": "Kara A.",
+            "title": "Testimonial 6",
+            "content": "Share what your customers are saying about your products, customer service or shipping rates.",
+            "ltr": false
           }
         }
       ]

@@ -5474,11 +5474,16 @@ product-rerender {
   --transition-direction: -1;
 }
 
+.collection-card__content-wrapper {
+  height: 30px;
+}
+
 .collection-card__content-wrapper svg {
   opacity: 0;
   visibility: hidden;
   transition: opacity .2s, visibility .2s, transform .2s;
   display: inline-block;
+  transform: translateY(calc(var(--transition-direction)* 1px));
 }
 
 .collection-card__content+svg {

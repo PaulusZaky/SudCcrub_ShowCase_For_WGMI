@@ -80,6 +80,7 @@
         "image": "shopify:\/\/shop_images\/gradient-top-bk.png",
         "mobile_image": "shopify:\/\/shop_images\/gradient-top-bk-mobile.png",
         "image_for_content": "shopify:\/\/shop_images\/gradient-top-product-bk.png",
+        "image_for_content_mobile": "shopify:\/\/shop_images\/gradient-top-product-bk-mobile.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center-start sm:text-start",
         "text_color": "#ffffff",
@@ -119,7 +120,7 @@
         "item_fWCMin": {
           "type": "item",
           "settings": {
-            "icon": "picto-money",
+            "icon": "picto-money-back",
             "mobile_icon_width": 24,
             "icon_width": 32,
             "icon_background_type": "none",
@@ -167,7 +168,7 @@
         "1664424046b00c932c-0": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hi_res-d-Sud_Scrub_r1_0195_2_be849b9b-df42-4b73-a2b4-f42d375b0e71.png",
+            "image": "shopify:\/\/shop_images\/hi_res-d-Sud_Scrub_r1_group.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -206,7 +207,7 @@
         "1664424046b00c932c-2": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/silicone-hook-lifestyle-clay-2_09007b41-bdb6-4f1c-8f9d-9857fcfbd162.png",
+            "image": "shopify:\/\/shop_images\/silicone-hook-lifestyle-clay.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -219,7 +220,7 @@
         "1664424046b00c932c-3": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/mint-face-scrubber-female_612f72fa-c7d2-458e-bad2-885caf667246.png",
+            "image": "shopify:\/\/shop_images\/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -239,6 +240,7 @@
       ],
       "settings": {
         "full_width": true,
+        "wrap_image": false,
         "block_size": "large",
         "title": "",
         "subheading": "",
@@ -262,13 +264,13 @@
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": false,
-        "products_count": 6,
+        "products_count": 34,
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 3,
         "subheading": "SELF-CARE ESSENTIALS LOVED BY THOUSANDS",
         "title": "EXPLORE CUSTOMER FAVORITES",
         "content": "",
-        "link_url": "",
+        "link_url": "shopify:\/\/collections\/all",
         "link_text": "",
         "background": "",
         "background_gradient": "",
@@ -285,24 +287,48 @@
         "tab_aQAnin": {
           "type": "tab",
           "settings": {
-            "title": "Tab 1",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+            "icon": "stubborn",
+            "title": "STUBBORN BREAKOUTS",
+            "proimg": "shopify:\/\/shop_images\/breakout_debd98a8-5bf8-4183-b52f-98132f3b3f51.png",
+            "content": "<p>Conquer your breakouts with a cleaner scrub! Infused<br\/>with antimicrobial silver and zinc, these products resist<br\/>bacteria that can worsen your breakouts.<\/p>",
+            "text": "",
+            "url": "shopify:\/\/collections\/all",
             "page": ""
           }
         },
         "tab_dLxi8G": {
           "type": "tab",
           "settings": {
-            "title": "Tab 2",
-            "content": "<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "icon": "bumpy-skin",
+            "title": "FLAKY BUMPY SKIN",
+            "proimg": "shopify:\/\/shop_images\/fakey-skin.png",
+            "content": "<p>Touchably smooth skin is just a scrub away! Sud Scrub products help gently buff away dead skin and smooth out rough texture, leaving your skin irresistibly<br\/>soft and silky.<\/p>",
+            "text": "",
+            "url": "shopify:\/\/collections\/all",
             "page": ""
           }
         },
         "tab_wTeRT9": {
           "type": "tab",
           "settings": {
-            "title": "Tab 3",
-            "content": "<p>Share information about your shipping rates, return policy or contact information.<\/p>",
+            "icon": "sensitive-skin",
+            "title": "SENSITIVE SKIN",
+            "proimg": "shopify:\/\/shop_images\/sensitive-skin_28db1b3d-a000-47d9-b6bd-9f92e93790bc.png",
+            "content": "<p>Gentle, effective, and always kind to your skin–that’s what you can expect from Sud Scrub. Designed for sensitive skin types, our products gently cleanse and exfoliate without being harsh or irritating.<\/p>",
+            "text": "",
+            "url": "shopify:\/\/collections\/all",
+            "page": ""
+          }
+        },
+        "tab_9rg43w": {
+          "type": "tab",
+          "settings": {
+            "icon": "pollution",
+            "title": "WASTE & POLL UTION",
+            "proimg": "shopify:\/\/shop_images\/waste_d11f2174-2520-4ecb-a4ea-2ad0661bdf3e.png",
+            "content": "<p>Together, let’s create a greener tomorrow. Sud Scrub products are built to last and utilize recyclable materials to reduce waste. Every purchase goes to fund plastic waste cleanup around the world so you can feel proud knowing you’re contributing to a cleaner, greener earth.<\/p>",
+            "text": "FIND OUT MORE",
+            "url": "https:\/\/www.cleanhub.com\/impact-report\/sud-scrub",
             "page": ""
           }
         }
@@ -310,15 +336,16 @@
       "block_order": [
         "tab_aQAnin",
         "tab_dLxi8G",
-        "tab_wTeRT9"
+        "tab_wTeRT9",
+        "tab_9rg43w"
       ],
       "settings": {
         "full_width": true,
         "content_size": "medium",
         "subheading": "CREATED WITH CARE FOR YOU AND THE PLANET",
         "title": "THE ONE SOLUTION FOR YOUR TOUGHEST PROBLEMS",
-        "link_url": "",
-        "link_text": "View all",
+        "url": "shopify:\/\/collections\/all",
+        "btn_text": "SHOP NOW",
         "text_alignment": "center",
         "first_tab_open": false,
         "background": "",
@@ -406,41 +433,89 @@
         "testimonial_VP6wfX": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify:\/\/shop_images\/overlay-reviewer-1.png",
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "John S.",
-            "title": "Testimonial 1",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+            "rating": 5,
+            "author": "Jenna R.",
+            "title": "Mauris justo dolor lobortis!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "ltr": false
           }
         },
         "testimonial_AgdfEQ": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify:\/\/shop_images\/reviewer4.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Mary U.",
-            "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+            "author": "Jenna R.",
+            "title": "Mauris justo dolor lobortis!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "ltr": false
           }
         },
-        "testimonial_zgj6mX": {
+        "testimonial_AA3Qqp": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify:\/\/shop_images\/reviewer3.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Jenna R.",
+            "title": "Mauris justo dolor lobortis!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "ltr": false
+          }
+        },
+        "testimonial_a8J6Rb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/reviewer2.png",
             "round_avatar": true,
             "show_rating": true,
             "rating": 4,
-            "author": "Joshua A.",
-            "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+            "author": "Jenna R.",
+            "title": "Mauris justo dolor lobortis!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "ltr": true
+          }
+        },
+        "testimonial_3jAfCY": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/reviewer4.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Jenna R.",
+            "title": "Mauris justo dolor lobortis!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "ltr": true
+          }
+        },
+        "testimonial_cGGQ3y": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/reviewer3.png",
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Jenna R.",
+            "title": "Mauris justo dolor lobortis!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "ltr": true
           }
         }
       },
       "block_order": [
         "testimonial_VP6wfX",
         "testimonial_AgdfEQ",
-        "testimonial_zgj6mX"
+        "testimonial_AA3Qqp",
+        "testimonial_a8J6Rb",
+        "testimonial_3jAfCY",
+        "testimonial_cGGQ3y"
       ],
       "settings": {
         "full_width": true,
@@ -455,7 +530,7 @@
         "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
-        "testimonial_card_background": "",
+        "testimonial_card_background": "#ffffff",
         "testimonial_card_text_color": ""
       }
     },
@@ -465,12 +540,12 @@
         "item_eYynnh": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/New_Founders_Pic.jpg",
+            "image": "shopify:\/\/shop_images\/image-with-text.png",
             "image_rotation_degrees": -2,
             "subheading": "",
             "title": "CHANGE STARTS WITH YOU",
             "content": "<p>With every Sud Scrub product you buy, you’re not just treating yourself–you’re helping fund the collection and removal of 5 pounds of plastic waste from the environment through our partnership with CleanHub. With your help, we can clean up the planet together.<\/p>",
-            "button_url": "shopify:\/\/products\/extender-handle",
+            "button_url": "https:\/\/Nehttps\/\/www.cleanhub.com\/impact-report\/sud-scrubws",
             "button_text": "FIND OUT MORE"
           }
         }
@@ -495,28 +570,28 @@
         "166442457738b23caf-0": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "title": "HOW IS SUD SCRUB DIFFERENT FROM OTHER SILICONE BODY SCRUBBERS?",
+            "content": "<p>Sud Scrub isn't just any silicone scrubber. We use food-grade silicone infused with silver and zinc to help resist bacteria and fungi growth. Our unique scrubbing fins are gentle on your skin and give you a relaxing massage that other scrubbers just can't match.<\/p><p>Note: Sud Scrub doesn't protect against disease-causing bacteria, fungi, or viruses.<\/p>"
           }
         },
         "166442457738b23caf-1": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
+            "title": "HOW DO I CLEAN MY SUD SCRUB?",
             "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
           }
         },
         "166442457738b23caf-2": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
+            "title": "HOW OFTEN SHOULD I REPLACE MY SUD SCRUB?",
             "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
           }
         },
         "item_UfwbCn": {
           "type": "item",
           "settings": {
-            "title": "Question",
+            "title": "I HAVE SMALL HANDS, AND THE HANDLE STRAP ON MY SUD SCRUB FEELS LOOSE. WHAT CAN I DO?",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>"
           }
         }
@@ -555,7 +630,7 @@
         "item_rnCEBm": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hi_res-3b-SudScrub_r1_04Z_0266.jpg",
+            "image": "shopify:\/\/shop_images\/clay-face-scrubber-female.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -568,7 +643,7 @@
         "item_PEbn9A": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sud-scrub-20-419313.jpg",
+            "image": "shopify:\/\/shop_images\/hi_res-d-Sud_Scrub_r1_group.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -581,7 +656,7 @@
         "item_dAdaTY": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/original-sud-scrub-805941.jpg",
+            "image": "shopify:\/\/shop_images\/hi_res-5c-SudScrub_r2_04Z_0152.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -594,7 +669,7 @@
         "item_NttJLb": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hi_res-5f-SudScrub_r2_04Z_0034.jpg",
+            "image": "shopify:\/\/shop_images\/blue-face-scrubber-male.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -607,7 +682,20 @@
         "item_VJQBYR": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/original-sud-scrub-434215.jpg",
+            "image": "shopify:\/\/shop_images\/hi_res-5f-SudScrub_r2_04Z_0034.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_Ki6Kpk": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hi_res-5a-SudScrub_r2_04Z_0206.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -623,10 +711,12 @@
         "item_PEbn9A",
         "item_dAdaTY",
         "item_NttJLb",
-        "item_VJQBYR"
+        "item_VJQBYR",
+        "item_Ki6Kpk"
       ],
       "settings": {
         "full_width": true,
+        "wrap_image": true,
         "block_size": "large",
         "title": "",
         "subheading": "",
@@ -638,6 +728,84 @@
         "text_color": "",
         "heading_color": "",
         "heading_gradient": ""
+      }
+    },
+    "image_with_text_overlay_bVdyBL": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_HnbtGH": {
+          "type": "heading",
+          "settings": {
+            "text": "READY FOR RADIANT SKIN",
+            "heading_tag": "h1"
+          }
+        },
+        "subheading_3hQgkc": {
+          "type": "subheading",
+          "settings": {
+            "text": "CLEAN AND PAMPER YOURSELF WITH A SCRUBBER THAT WON’T QUIT ON YOU."
+          }
+        },
+        "richtext_mkR33L": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Resists odor-causing bacteria<\/p>"
+          }
+        },
+        "richtext_qdeGrW": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Gently unclogs pores for radiantly clear skin<\/p>"
+          }
+        },
+        "richtext_eVwcPE": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Lasts for 1 year<\/p>"
+          }
+        },
+        "button_cmcacf": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "SHOP NOW",
+            "url": "shopify:\/\/collections\/our-products",
+            "background": "#fcd817",
+            "text_color": "#000000"
+          }
+        },
+        "reviewer_cgkPDq": {
+          "type": "reviewer",
+          "settings": {
+            "image_for_reviewer": "shopify:\/\/shop_images\/overlay-reviewer-1.png",
+            "review_content": "Love it! Makes me feel clean. Easy to care for",
+            "review_text": "Love this product!",
+            "reviewer_name": "Cathy J."
+          }
+        }
+      },
+      "block_order": [
+        "heading_HnbtGH",
+        "subheading_3hQgkc",
+        "richtext_mkR33L",
+        "richtext_qdeGrW",
+        "richtext_eVwcPE",
+        "button_cmcacf",
+        "reviewer_cgkPDq"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/radiant-skin-banner_Desktop.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/radiant-skin-banner_Mobile.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
       }
     },
     "text_with_icons_BMLhYh": {
@@ -726,6 +894,7 @@
     "multiple_images_with_text_PhJVV9",
     "faq",
     "image_link_blocks_xn8PLp",
+    "image_with_text_overlay_bVdyBL",
     "text_with_icons_BMLhYh"
   ]
 }

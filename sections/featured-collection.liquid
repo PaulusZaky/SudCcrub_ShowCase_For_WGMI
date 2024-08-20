@@ -15,12 +15,203 @@
     --product-list-carousel-item-width: 74vw;
     --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
   }
+  .swiper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 46px;
+  }
+  .swiper-wrapper .swiper-slide:first-child.swiper-slide-prev{
+    margin-left:35px;
+  }
 
+  .swiper-wrapper .swiper-slide:last-child.swiper-slide-next {
+    margin-right:35px;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-footer {
+    display: flex;
+    column-gap: 10px;
+  }
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: auto;
+  }
+  .swiper-pagination {
+    position: relative !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet{
+    width: 20px;
+    height: 4px;
+    border: none;
+    background: #FFFFFF;
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet-active{
+    width: 65px;
+    background: #000000;
+  }
+  .product-card__info .rating-with-text {
+    grid-auto-flow: unset;
+    gap: 10px;
+    margin: auto;
+  }
+  #shopify-section-{{ section.id }} .bg-custom {
+    background: unset;
+  }
+  .goshop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11.62px;
+    line-height: 11.39px;
+    gap:4.65px;
+    padding: 12.78px 24px;
+    margin: auto;
+  }
+
+  .product-card .goshop {
+    display: none;
+  }
+  .product-card {
+    border-radius: 0;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .product-card__info .v-stack{
+    justify-content: center;
+  }
+  .product-card:hover,
+  .product-card:focus{
+    background: rgb(var(--background)) !important;
+  }
+  .product-card:hover .product-card__info,
+  .product-card:focus .product-card__info {
+    padding: 20px 24px !important;
+  }
+  .product-card:hover .goshop,
+  .product-card:focus .goshop {
+    display: flex;
+  }
+
+  .rating-with-text .jdgm-preview-badge {
+    margin: auto;
+  }
+
+  .rating-with-text .product-card__title{
+    display: block;
+    text-align: center;
+    font-family: var(--heading-font-family);
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 3%;
+  }
+
+  .rating-with-text .jdgm-preview-badge .jdgm-prev-badge__text{
+    display: none;
+  }
+  .rating-with-text .jdgm-prev-badge__stars .jdgm-star {
+    color: #FF6A00;
+  }
+
+  .price-list {
+    padding: 12px 0 0 0;
+    justify-content: center;
+    font-size: 14px;
+    font-family: var(--heading-font-family);
+    font-weight: 700;
+    line-height: 16.73px;
+  }
+  .product-card__info .product-comment {
+    text-align: center;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 450;
+    padding: 12px 0;
+  }
+  .product-card__figure a img {
+    border-radius: 0 !important;
+  }
   @media screen and (min-width: 700px) {
     #shopify-section-{{ section.id }} .product-list {
       --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
       --product-list-items-per-row: 2;
       --product-list-carousel-item-width: 36vw;
+    }
+
+    .product-list {
+      padding: 37.5px 0;
+      gap: 3rem;
+    }
+
+    .product-card .product-card__info {
+      padding: 48px 24px 0 24px;
+    }
+
+    .bg-coustom {
+      background: none !important;
+    }
+
+    .product-card__info .rating-with-text {
+      gap: var(--spacing-4);
+    }
+
+    .product-card__info .product-comment {
+      font-size: 18px;
+      line-height: 26px;
+      padding: 20px 0;
+    }
+
+    .rating-with-text .product-card__title{
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    .product-card__info  .price-list {
+      padding: 21px 0 0 0;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+    .goshop {
+      font-size: 20px;
+      line-height: 19.6px;
+      gap: 8px;
+      padding: 22px 60px;
+    }
+    .product-card:hover,
+    .product-card:focus {
+    }
+
+    .swiper-pagination .swiper-pagination-bullet{
+      width: 40px;
+    }
+
+    .swiper-pagination .swiper-pagination-bullet-active{
+      width: 100px;
     }
   }
 
@@ -44,88 +235,95 @@
       link_text: section.settings.link_text,
       link_url: link_url
     -%}
-
-    <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
+    <div class="swiper mySwiper">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
       {%- assign products = section.settings.products | default: section.settings.collection.products -%}
 
-      <scroll-carousel
-        selector="product-card"
-        id="{{ scroll_area_id }}"
-        class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}"
-      >
-        <reveal-items selector=".product-list > *">
-          <product-list class="product-list">
-            {%- for product in products limit: section.settings.products_count -%}
-              {%- render 'product-card',
-                product: product,
+      <div class="swiper-wrapper">
+        {%- for product in products limit: section.settings.products_count -%}
+          {%- render 'product-card',
+            product: product,
+            stacked: section.settings.stack_products,
+            position: forloop.index,
+            background: section.settings.product_card_background,
+            text_color: section.settings.product_card_text_color,
+            class: 'swiper-slide',
+            show_badges: true
+          -%}
+        {%- else -%}
+          {%- for i in (1..section.settings.products_count) -%}
+            {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
+            <div class="swiper-slide">
+              {%- render 'product-card-placeholder',
                 stacked: section.settings.stack_products,
-                position: forloop.index,
+                placeholder_image: placeholder_image,
                 background: section.settings.product_card_background,
                 text_color: section.settings.product_card_text_color,
-                show_badges: true
+                text_alignment: settings.product_info_alignment
               -%}
-            {%- else -%}
-              {%- for i in (1..section.settings.products_count) -%}
-                {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
-                {%- render 'product-card-placeholder',
-                  stacked: section.settings.stack_products,
-                  placeholder_image: placeholder_image,
-                  background: section.settings.product_card_background,
-                  text_color: section.settings.product_card_text_color,
-                  text_alignment: settings.product_info_alignment
-                -%}
-              {%- endfor -%}
-            {%- endfor -%}
-          </product-list>
-        </reveal-items>
-        {%- if products.size > 1 -%}
-          <page-dots aria-controls="carousel-{{ section.id }}" class="page-dots peer-not-scrollable:hidden">
-            {%- for index in (1..products.size) -%}
-              <button
-                type="button"
-                class="tap-area"
-                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
-              >
-                <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: index }}</span>
-              </button>
-            {%- endfor -%}
-          </page-dots>
-        {%- endif -%}
-      </scroll-carousel>
-
-      {%- if section.settings.stack_products == false -%}
-        {%- if section.settings.show_progress_bar -%}
-          {%- assign default_progress = section.settings.products_per_row_desktop
-            | times: 1.0
-            | divided_by: section.settings.products_count
-          -%}
-          {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
-        {%- else -%}
-          <button
-            is="prev-button"
-            class="circle-button circle-button--lg circle-button--fill border group"
-            aria-controls="{{ scroll_area_id }}"
-            disabled
-          >
-            <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
-            <span class="animated-arrow animated-arrow--reverse"></span>
-          </button>
-
-          <button
-            is="next-button"
-            class="circle-button circle-button--lg circle-button--fill border group"
-            aria-controls="{{ scroll_area_id }}"
-          >
-            <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
-            <span class="animated-arrow"></span>
-          </button>
-        {%- endif -%}
-      {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+      <div class="swiper-footer">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </div>
   </div>
 </div>
+<!-- Swiper JS -->
 
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1,
+    spaceBetween: 22,
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    grabCursor: true,
+    {% comment %} loop: true, {% endcomment %}
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+      '@0.00': {
+        slidesPerView: 1.2,
+        spaceBetween: 10,
+      },
+      '450': {
+        slidesPerView: 1.6,
+        spaceBetween: 24,
+      },
+      '680': {
+        slidesPerView: 2.2,
+        spaceBetween: 24,
+      },
+      '1000': {
+        slidesPerView: 3.2,
+        spaceBetween: 16,
+      },
+      '1200': {
+        slidesPerView: 3.3,
+        spaceBetween: 24,
+      },
+      '1500': {
+        slidesPerView: 3.3,
+        spaceBetween: 48,
+      },
+    },
+  });
+</script>
 {% schema %}
 {
   "name": "Featured collection",
