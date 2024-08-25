@@ -6,12 +6,260 @@
       {% if section.settings.remove_vertical_spacing %}--section-spacing-block: 0px;{% endif %}
       {% if section.settings.remove_horizontal_spacing %}--section-spacing-inline: 0px;{% endif %}
     }
+    #shopify-section-{{ section.id }} .section {
+      padding: 32px 28px;
+    }
+    .section-stack {
+      margin-top: 32px;
+    }
+    .overlay-goshop-right {
+      gap: 10px;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .jdgm-rev-widg {
+      padding-top: 0 !important;
+    }
+    .jdgm-histogram,
+    .jdgm-widget-actions-wrapper {
+      border: none;
+    }
+    .jdgm-histogram__bar-content {
+      background: #F15A28;
+    }
+    .jdgm-histogram__row {
+      margin-bottom: 6.5px;
+    }
+    .jdgm-rev-widg__summary,
+    .jdgm-histogram {
+      margin: 0 !important;
+    }
+    .jdgm-widget-actions-wrapper {
+      margin-bottom: 32px !important;
+    }
+    .jdgm-histogram__frequency {
+      font-family: var(--btn-font-family);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 11.76px;
+      text-align: left;
+    }
+    .jdgm-link,
+    .jdgm-rev-widg__title,
+    .jdgm-row-search,
+    .jdgm-rev__actions,
+    .jdgm-rev-widg__summary-average {
+      display: none;
+    }
+    .jdgm-row-stars {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .jdgm-star:before {
+      width: 16.06px;
+      height: 15.26px;
+      gap: 0px;
+      opacity: 0px;
+      color: #F15A28;
+    }
+    .jdgm-histogram__bar {
+      height: 11.23px !important;
+    }
+    .jdgm-histogram__frequency {
+      text-align: right;
+    }
+    .jdgm-rev-widg__summary-text {
+      font-family: var(--btn-font-family);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 15.68px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .jdgm-row-actions {
+      text-align: center;
+      padding: 0;
+      margin-bottom: 32px;
+    }
+    .jdgm-rev-widg__sort-wrapper:before {
+      content: "Sort by:";
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 25.2px;
+      text-align: left;
+      margin-right: 19px;
+    }
+    .jdgm-rev__icon:after {
+      border-radius: 50% !important;
+    }
+    .jdgm-sort-dropdown-wrapper {
+      height: 48px;
+      padding: 10px 22px 10px 22px;
+      gap: 39px;
+      border-radius: 120px;
+      border: 2px solid #000000;
+    }
+    .jdgm-sort-dropdown {
+      padding: 0 !important;
+    }
+    .jdgm-sort-dropdown-arrow {
+      position: relative !important;
+    }
+    .jdgm-row-actions {
+      border: none !important;
+    }
+    .jdgm-widget-actions-wrapper a{
+      height: 48px;
+      max-width: 284px !important;
+      padding: 10px 26px 10px 22px;
+      gap: 8px;
+      border-radius: 45px;
+      opacity: 0px;
+      color: #FFFFFF;
+      background: #000000 !important;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-transform: capitalize;
+      border: 2px solid #000000 !important;
+    }
+    .jdgm-widget-actions-wrapper a:before {
+      content: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/edit_fill.svg?v=1724593666");
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .jdgm-rev-widg__body .jdgm-rev__location-country-flag-img,
+    .jdgm-rev-widg__body .jdgm-rev__buyer-badge-wrapper {
+      display: none;
+    }
+    .jdgm-rev-widg__reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .jdgm-rev {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: #FFFFFF;
+      padding: 34px 18px !important;
+    }
+    .jdgm-rev__header {
+      margin-bottom: 0 !important;
+    }
+    .jdgm-rev__icon {
+      border-radius: 50% !important;
+      width: 70px;
+      height: 70px;
+      background-size: contain;
+    }
+    .jdgm-rev__author {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20.51px;
+      text-align: left;
+      color: #000000 !important;
+    }
+    .jdgm-rev__timestamp {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+      text-align: center;
+      color: #000 !important;
+    }
+    .jdgm-rev__title {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 23.08px;
+    }
+    .jdgm-rev__body:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+    }
+    .jdgm-rev__body:after {
+
+    }
+    .jdgm-rev__body p {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 19.11px;
+      text-align: left;
+    }
+    .jdgm-sort-dropdown-wrapper select,
+    .jdgm-sort-dropdown-wrapper span {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: left;
+      color: #000 !important;
+    }
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} .section {
+        padding: 82.5px 80px;
+      }
+      .section-stack {
+        margin-top: 58px;
+      }
+      .overlay-goshop-right {
+        display: flex;
+      }
+      .jdgm-row-stars {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .jdgm-rev-widg__summary-inner {
+        text-align: left;
+      }
+      .jdgm-widget-actions-wrapper {
+        place-content: flex-end
+      }
+      .jdgm-row-actions {
+        margin-bottom: 58px;
+      }
+    }
+    @media screen and (min-width: 1300px) {
+      #shopify-section-{{ section.id }} .section {
+        padding: 82.5px 120px;
+      }
+      .jdgm-row-stars {
+        gap: 78px;
+      }
+    }
+    @media screen and (min-width: 1500px) {
+      #shopify-section-{{ section.id }} .section {
+        padding: 82.5px 200px;
+      }
+    }
   </style>
 
   <div {% render 'section-properties' %}>
-    {%- for block in section.blocks -%}
-      {%- render block -%}
-    {%- endfor -%}
+    <div class="text-center">
+      <div class="overlay-goshop-right">
+        <div class="overlay-goshop-reviewstar-container">
+          {%- render 'review-star' -%}
+          {%- render 'review-star' -%}
+          {%- render 'review-star' -%}
+          {%- render 'review-star' -%}
+          {%- render 'review-star' -%}
+        </div>
+        <p>Loved by <b>785</b> Happy Customers</p>
+      </div>
+      {%- render 'section-header',
+        subheading: section.settings.subheading,
+        heading: section.settings.title,
+        heading_color: section.settings.heading_color,
+        heading_gradient: section.settings.heading_gradient
+      -%}
+    </div>
+    <div class="section-stack">
+      {%- for block in section.blocks -%}
+        {%- render block -%}
+      {%- endfor -%}
+    </div>
   </div>
 {%- endif -%}
 
@@ -41,6 +289,16 @@
       "id": "remove_horizontal_spacing",
       "label": "Remove horizontal spacing",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
     },
     {
       "type": "header",

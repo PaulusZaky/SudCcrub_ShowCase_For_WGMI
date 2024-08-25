@@ -571,28 +571,32 @@
           "type": "item",
           "settings": {
             "title": "HOW IS SUD SCRUB DIFFERENT FROM OTHER SILICONE BODY SCRUBBERS?",
-            "content": "<p>Sud Scrub isn't just any silicone scrubber. We use food-grade silicone infused with silver and zinc to help resist bacteria and fungi growth. Our unique scrubbing fins are gentle on your skin and give you a relaxing massage that other scrubbers just can't match.<\/p><p>Note: Sud Scrub doesn't protect against disease-causing bacteria, fungi, or viruses.<\/p>"
+            "content": "<p>Sud Scrub isn't just any silicone scrubber. We use food-grade silicone infused with silver and zinc to help resist bacteria and fungi growth. Our unique scrubbing fins are gentle on your skin and give you a relaxing massage that other scrubbers just can't match.<\/p><p>Note: Sud Scrub doesn't protect against disease-causing bacteria, fungi, or viruses.<\/p>",
+            "is_open": true
           }
         },
         "166442457738b23caf-1": {
           "type": "item",
           "settings": {
             "title": "HOW DO I CLEAN MY SUD SCRUB?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>",
+            "is_open": false
           }
         },
         "166442457738b23caf-2": {
           "type": "item",
           "settings": {
             "title": "HOW OFTEN SHOULD I REPLACE MY SUD SCRUB?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>",
+            "is_open": false
           }
         },
         "item_UfwbCn": {
           "type": "item",
           "settings": {
             "title": "I HAVE SMALL HANDS, AND THE HANDLE STRAP ON MY SUD SCRUB FEELS LOOSE. WHAT CAN I DO?",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>"
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>",
+            "is_open": false
           }
         }
       },

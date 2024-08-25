@@ -7876,9 +7876,9 @@ product-rerender {
     --scroll-shadow-size: 0px;
   }
 
-  .product-gallery--mobile-dots .product-gallery__thumbnail-list-wrapper {
+  /* .product-gallery--mobile-dots .product-gallery__thumbnail-list-wrapper {
     display: none;
-  }
+  } */
 
   .product-gallery:has([data-media-type*="video"].is-selected) .product-gallery__zoom {
     opacity: 0;
@@ -8005,7 +8005,7 @@ product-rerender {
   }
 }
 
-@media screen and (min-width: 1150px) {
+@media screen and (min-width: 1600px) {
   .product-gallery--desktop-thumbnails-left {
     grid: auto / auto-flow auto minmax(0, 1fr);
     align-items: start;

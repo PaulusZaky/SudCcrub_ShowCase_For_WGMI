@@ -16,40 +16,55 @@
       <div class="order">
         <div class="v-stack gap-6">
           {%- comment -%}
-          ----------------------------------------------------------------------------------------------------------------
-          ORDER STATUS
-          ----------------------------------------------------------------------------------------------------------------
+            ----------------------------------------------------------------------------------------------------------------
+            ORDER STATUS
+            ----------------------------------------------------------------------------------------------------------------
           {%- endcomment -%}
 
           {%- if order.cancelled -%}
             {%- assign cancelled_on = order.cancelled_at | date: format: 'date_at_time' -%}
-            {%- assign cancel_message = 'customer.order.cancelled_on' | t: date: cancelled_on, reason: order.cancel_reason_label -%}
+            {%- assign cancel_message = 'customer.order.cancelled_on'
+              | t: date: cancelled_on, reason: order.cancel_reason_label
+            -%}
             {%- render 'banner', status: 'error', content: cancel_message, text_alignment: 'left' -%}
           {%- endif -%}
 
-          {%- assign fulfillment = order.line_items | where: 'fulfillment' | map: 'fulfillment' | sort: 'created_at' | last -%}
+          {%- assign fulfillment = order.line_items
+            | where: 'fulfillment'
+            | map: 'fulfillment'
+            | sort: 'created_at'
+            | last
+          -%}
 
           {%- if order.shipping_address and fulfillment -%}
             {%- assign created_at = fulfillment.created_at | date: format: 'date' -%}
 
             {%- if fulfillment.tracking_number -%}
-              {%- assign fulfillment_message = 'customer.order.fulfillment_with_number' | t: date: created_at, tracking_number: fulfillment.tracking_number -%}
+              {%- assign fulfillment_message = 'customer.order.fulfillment_with_number'
+                | t: date: created_at, tracking_number: fulfillment.tracking_number
+              -%}
             {%- else -%}
               {%- assign fulfillment_message = 'customer.order.fulfillment' | t: date: created_at -%}
             {%- endif -%}
 
             {%- if fulfillment.tracking_url -%}
               {%- assign button_content = 'customer.order.track_shipment' | t -%}
-              {%- render 'banner', status: 'success', content: fulfillment_message, button_href: fulfillment.tracking_url, button_content: button_content, text_alignment: 'left' -%}
+              {%- render 'banner',
+                status: 'success',
+                content: fulfillment_message,
+                button_href: fulfillment.tracking_url,
+                button_content: button_content,
+                text_alignment: 'left'
+              -%}
             {%- else -%}
               {%- render 'banner', status: 'success', content: fulfillment_message, text_alignment: 'left' -%}
             {%- endif -%}
           {%- endif -%}
 
           {%- comment -%}
-          ----------------------------------------------------------------------------------------------------------------
-          ORDER SUMMARY
-          ----------------------------------------------------------------------------------------------------------------
+            ----------------------------------------------------------------------------------------------------------------
+            ORDER SUMMARY
+            ----------------------------------------------------------------------------------------------------------------
           {%- endcomment -%}
           <table class="order-summary">
             <thead class="order-summary__header">
@@ -65,7 +80,9 @@
                 <tr>
                   <td>{%- render 'line-item', line_item: line_item -%}</td>
                   <td class="hidden align-center text-center text-subdued sm:table-cell">{{ line_item.quantity }}</td>
-                  <td class="hidden align-center text-subdued text-end sm:table-cell">{{ line_item.final_line_price | money }}</td>
+                  <td class="hidden align-center text-subdued text-end sm:table-cell">
+                    {{ line_item.final_line_price | money }}
+                  </td>
                 </tr>
               {%- endfor -%}
             </tbody>
@@ -98,9 +115,15 @@
                     {%- for tax_line in order.tax_lines -%}
                       <div class="h-stack gap-4 justify-between">
                         {%- if cart.taxes_included -%}
-                          <span>{{ 'customer.order.taxes_included' | t }} ({{ tax_line.title }} {{ tax_line.rate_percentage }}%)</span>
+                          <span>
+                            {{- 'customer.order.taxes_included' | t }} ({{ tax_line.title }}
+                            {{ tax_line.rate_percentage }}%)</span
+                          >
                         {%- else -%}
-                          <span>{{ 'customer.order.taxes_excluded' | t }} ({{ tax_line.title }} {{ tax_line.rate_percentage }}%)</span>
+                          <span>
+                            {{- 'customer.order.taxes_excluded' | t }} ({{ tax_line.title }}
+                            {{ tax_line.rate_percentage }}%)</span
+                          >
                         {%- endif -%}
 
                         <span>{{ tax_line.price | money }}</span>

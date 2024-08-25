@@ -1,0 +1,305 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+<style>
+  {%- assign block_size = section.settings.block_size -%}
+
+  #shopify-section-{{ section.id }} .section-blends {
+    background-image: none;
+    background-color: #FFFFFF;
+  }
+  #shopify-section-{{ section.id }} .section {
+    padding: 32px 0;
+  }
+  #shopify-section-{{ section.id }} .styled_text::part(split-lines)::after {
+    background: #B9D6EF;
+  }
+  .image-container  {
+    width: 100%;
+  }
+  .image-container img {
+    box-shadow: 0px 4px 20px 0px #00000026;
+  }
+  .paragraph {
+    width: 100%;
+    padding: 24px 0 24px 8px;
+  }
+  .sample-gallery-container .item-1 {
+    grid-area: item-1;
+  }
+  .sample-gallery-container .item-2 {
+    grid-area: item-2;
+  }
+  .sample-gallery-container .item-3 {
+    grid-area: item-3;
+  }
+  .sample-gallery-container .item-4 {
+    grid-area: item-4;
+  }
+  .sample-gallery-container .item-5 {
+    grid-area: item-5;
+  }
+  .sample-gallery-container .item-6 {
+    grid-area: item-6;
+  }
+  .sample-gallery-container .item-7 {
+    grid-area: item-7;
+  }
+
+  .sample-gallery-container {
+    display: grid;
+    padding: 0 22px;
+    grid-template-areas:
+        "item-1"
+        "item-2"
+        "item-4"
+        "item-3"
+        "item-5"
+        "item-6";
+  }
+
+  .paragraph-title {
+    font-family: var(--btn-font-family);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .overlay-paragraph {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .overlay-paragraph p {
+    font-size:13px;
+    line-height: 19.5px;
+    font-weight: 450;
+    margin-bottom: 4px;
+    flex: 1;
+  }
+  .overlay-paragraph svg {
+    width: 16px;
+    height: 16px;
+  }
+  @media screen and (min-width: 700px) {
+    .sample-gallery-container {
+      display: flex;
+      flex-flow: wrap;
+      row-gap: 15px;
+      padding: 0 50px;
+    }
+    .image-container  {
+      width: 49%;
+    }
+    .paragraph {
+      width: 49%;
+    }
+    .paragraph {
+      padding-left: 5%;
+      margin: auto;
+    }
+    .paragraph-title {
+      font-size: 28px;
+      line-height: 27.44px;
+      margin-bottom: 20px;
+    }
+    .overlay-paragraph p {
+      font-size:20px;
+      line-height: 30px;
+      margin-bottom: 8px;
+    }
+    .overlay-paragraph svg {
+      width: 24px;
+      height: 24px;
+    }
+    .overlay-paragraph {
+      gap: 3px;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .sample-gallery-container {
+      row-gap: 22px;
+      padding: 0 70px;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .sample-gallery-container {
+      row-gap: 33px;
+      padding: 0 124px;
+    }
+  }
+</style>
+
+{%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    {%- render 'section-header',
+      subheading: section.settings.subheading,
+      heading: section.settings.title,
+      heading_color: section.settings.heading_color,
+      heading_gradient: section.settings.heading_gradient,
+      content: section.settings.content,
+      link_text: section.settings.link_text,
+      link_url: section.settings.link_url
+    -%}
+
+    <div class="sample-gallery-container">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {% when 'image_block' %}
+            <div class="image-container item-{{ forloop.index}}">
+              {% if block.settings.product_image != blank %}
+                {{-
+                  block.settings.product_image
+                  | image_url: width: image.width
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                    class: 'zoom-image'
+                -}}
+              {% endif %}
+            </div>
+          {% when 'paragraph' %}
+            <div class="paragraph item-{{ forloop.index}}">
+              {%- if block.settings.pargraph_title != blank -%}
+                <div class="paragraph-title">
+                  {{- block.settings.pargraph_title -}}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.paragraph1 != blank -%}
+                <div class="overlay-paragraph">
+                  {%- render 'image-overlay-paragraph-checkicon' -%}
+                  {{- block.settings.paragraph1 -}}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.paragraph2 != blank -%}
+                <div class="overlay-paragraph">
+                  {%- render 'image-overlay-paragraph-checkicon' -%}
+                  {{- block.settings.paragraph2 -}}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.paragraph3 != blank -%}
+                <div class="overlay-paragraph">
+                  {%- render 'image-overlay-paragraph-checkicon' -%}
+                  {{- block.settings.paragraph3 -}}
+                </div>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sample Gallery",
+  "class": "shopify-section--sample-gallery",
+  "tag": "section",
+  "blocks": [
+    {
+      "name": "Paragraph",
+      "type": "paragraph",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pargraph_title",
+          "label": "Title",
+          "default": "<p>Title</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph1",
+          "label": "paragraph",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph2",
+          "label": "paragraph",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph3",
+          "label": "paragraph",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        }
+      ]
+    },
+    {
+      "type": "image_block",
+      "name": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Image",
+          "info": "600 x 330px .jpg recommended"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sample Gallery"
+    }
+  ]
+}
+{% endschema %}
