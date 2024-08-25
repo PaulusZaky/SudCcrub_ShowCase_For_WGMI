@@ -372,63 +372,58 @@
     "product_structure_LTBBCq": {
       "type": "product-structure",
       "blocks": {
-        "str_desc_yUGyWn": {
+        "str_desc_UCgHdf": {
           "type": "str_desc",
           "settings": {
-            "image": "shopify:\/\/shop_images\/45-sud-scrub_r1_mint.png",
-            "image_mobile": "shopify:\/\/shop_images\/sud-scrub-20-530079.jpg",
+            "image": "shopify:\/\/shop_images\/sud-scrub-20-530079.jpg",
             "main_part": false,
-            "desc_title": "SCRUBBING FINS",
-            "content": "<p>Gently exfoliates to unclog pores and remove impurities<\/p>"
+            "desc_title": "HANDLE STRAP",
+            "content": "<p>Provides a secure grip to keep it from slipping out of your hand<\/p>"
           }
         },
-        "str_desc_LAwBNA": {
+        "str_desc_n9j3Ak": {
           "type": "str_desc",
           "settings": {
             "image": "shopify:\/\/shop_images\/silicone-hook-blue.png",
-            "image_mobile": "shopify:\/\/shop_images\/silicone-hook-blue.png",
             "main_part": false,
-            "desc_title": "HANGER LOOP",
-            "content": "<p>Easy to hang for fast drying and convenient storage<\/p>"
+            "desc_title": "TREATED SILICONE",
+            "content": "<p>Infused with silver and zinc to resist odor-causing bacteria and fungi<\/p>"
           }
         },
         "str_desc_3rwQrT": {
           "type": "str_desc",
           "settings": {
             "image": "shopify:\/\/shop_images\/one-scrubber-sesktop.png",
-            "image_mobile": "shopify:\/\/shop_images\/one-scrubber-mobile.png",
             "main_part": true,
             "desc_title": "",
             "content": ""
           }
         },
-        "str_desc_n9j3Ak": {
+        "str_desc_LAwBNA": {
+          "type": "str_desc",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/45-sud-scrub_r1_mint.png",
+            "main_part": false,
+            "desc_title": "HANGER LOOP",
+            "content": "<p>Easy to hang for fast drying and convenient storage<\/p>"
+          }
+        },
+        "str_desc_yUGyWn": {
           "type": "str_desc",
           "settings": {
             "image": "shopify:\/\/shop_images\/3f-sud-scrub_r1_charcoal.png",
-            "image_mobile": "shopify:\/\/shop_images\/45-sud-scrub_r1_mint.png",
             "main_part": false,
-            "desc_title": "TREATED SILICONE",
-            "content": "<p>Infused with silver and zinc to resist odor-causing bacteria and fungi<\/p>"
-          }
-        },
-        "str_desc_UCgHdf": {
-          "type": "str_desc",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/sud-scrub-20-530079.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/3f-sud-scrub_r1_charcoal.png",
-            "main_part": false,
-            "desc_title": "HANDLE STRAP",
-            "content": "<p>Provides a secure grip to keep it from slipping out of your hand<\/p>"
+            "desc_title": "SCRUBBING FINS",
+            "content": "<p>Gently exfoliates to unclog pores and remove impurities<\/p>"
           }
         }
       },
       "block_order": [
-        "str_desc_yUGyWn",
-        "str_desc_LAwBNA",
-        "str_desc_3rwQrT",
+        "str_desc_UCgHdf",
         "str_desc_n9j3Ak",
-        "str_desc_UCgHdf"
+        "str_desc_3rwQrT",
+        "str_desc_LAwBNA",
+        "str_desc_yUGyWn"
       ],
       "settings": {
         "full_width": false,
