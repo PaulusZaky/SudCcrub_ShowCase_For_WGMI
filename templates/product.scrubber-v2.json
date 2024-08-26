@@ -748,6 +748,80 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "text_with_icons_dPcyxX": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_LxqL4B": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-leaf",
+            "mobile_icon_width": 24,
+            "icon_width": 28,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "SUSTAINABLY MADE",
+            "content": ""
+          }
+        },
+        "item_AnzMyt": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-box",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "FREE SHIPPING OVER $19",
+            "content": ""
+          }
+        },
+        "item_gnEjip": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-money-back",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "MONEY-BACK GUARANTEE",
+            "content": ""
+          }
+        },
+        "item_Wh66yM": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-return",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "HASSLE-FREE RETURNS",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_LxqL4B",
+        "item_AnzMyt",
+        "item_gnEjip",
+        "item_Wh66yM"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "#b7e3d8",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -759,6 +833,7 @@
     "collection_list_3rHdW7",
     "1723455318887b3f63",
     "image_link_blocks_MDn3LT",
-    "image_with_text_overlay_EAnUWN"
+    "image_with_text_overlay_EAnUWN",
+    "text_with_icons_dPcyxX"
   ]
 }
