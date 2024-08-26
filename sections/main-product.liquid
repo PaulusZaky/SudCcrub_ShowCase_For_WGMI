@@ -58,6 +58,7 @@
     font-size: 35px;
     font-weight: 400;
     line-height: 41px;
+    text-transform: uppercase;
   }
   .product-info__block-item[data-block-type="subtitle"] {
     margin-top: 7px;
@@ -71,15 +72,17 @@
   }
   .product-info__block-item[data-block-type="@app"] .subtitle {
     margin-top: 7px;
-    margin-bottom: 10px;
+  }
+  .product-info__block-item[data-block-type="@app"] {
+    margin-bottom: 18px;
   }
 
   .product-info__block-item[data-block-type="richtext"] {
     margin: 8px 0 0 0;
   }
-  .product-info__block-item[data-block-type="variant-picker"] {
+  {% comment %} .product-info__block-item[data-block-type="variant-picker"] {
     margin: 10px 0;
-  }
+  } {% endcomment %}
 
   .variant-picker__option {
     display: flex;
@@ -677,6 +680,12 @@
           "type": "checkbox",
           "id": "collapse_content",
           "label": "Collapse content",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "is_open",
+          "label": "Open by default",
           "default": false
         }
       ]

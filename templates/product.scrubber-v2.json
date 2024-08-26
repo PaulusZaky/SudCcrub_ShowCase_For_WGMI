@@ -80,7 +80,8 @@
         "description": {
           "type": "description",
           "settings": {
-            "collapse_content": true
+            "collapse_content": true,
+            "is_open": true
           }
         },
         "collapsible_text_Lrwj8C": {
