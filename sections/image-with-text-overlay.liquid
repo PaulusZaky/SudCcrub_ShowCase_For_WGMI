@@ -186,9 +186,65 @@
   @media screen and (min-width:350px) {
   }
 
+  .overlay-prose {
+    display: inline-block;
+    padding: 22px 28px 14px 28px;
+  }
+
+  .overlay-heading-text-container {
+    position: relative;
+  }
+
+  #overlay-heading-text-container {
+    margin: auto;
+  }
+
+  .overlay-goshop-btn {
+    width: 276px;
+    height: 60px;
+    /* background-color: rgb(var(--button-background)); */
+    background-color: #FCD817;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  .overlay-goshop-btn a {
+    font-family: var(--btn-font-family);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 16px 56px;
+    color: #000;
+    background: unset !important;
+    display: flex;
+    gap: 12px;
+    align-items: center
+  }
+
+  .overlay-prose button {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .section{
+    padding: 0;
+  }
+
+  .prose p{
+    color:black;
+  }
   @media screen and (min-width:700px) {
     .overlay-subheading-text {
       width: 560px;
+    }
+    .overlay-goshop-btn a {
+      font-size: 20px;
+      padding: 25px 56px;
     }
     .overlay-heading-text {
         font-size: 46px;
@@ -354,59 +410,6 @@
     .overlay-goshop-right p:nth-of-type(2) {
         display: none;
     }
-  }
-
-  .overlay-prose {
-    display: inline-block;
-    padding: 22px 28px 14px 28px;
-  }
-
-  .overlay-heading-text-container {
-    position: relative;
-  }
-
-  #overlay-heading-text-container {
-    margin: auto;
-  }
-
-  .overlay-goshop-btn {
-    width: 276px;
-    height: 60px;
-    /* background-color: rgb(var(--button-background)); */
-    background-color: #FCD817;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0;
-    font-size: 16px;
-    gap: 12px;
-  }
-
-  .overlay-goshop-btn a {
-    font-family: var(--btn-font-family);
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    padding: 16px 56px;
-    color: #000;
-    background: unset !important;
-    display: flex;
-    gap: 12px;
-    align-items: center
-  }
-
-  .overlay-prose button {
-    display: none;
-  }
-
-  #shopify-section-{{ section.id }} .section{
-    padding: 0;
-  }
-
-  .prose p{
-    color:black;
   }
 </style>
 
