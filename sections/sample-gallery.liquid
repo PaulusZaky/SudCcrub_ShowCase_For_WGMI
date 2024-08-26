@@ -49,7 +49,15 @@
   .sample-gallery-container .item-7 {
     grid-area: item-7;
   }
-
+  .jdgm-sort-dropdown:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .jdgm-sort-dropdown option {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 450;
+  }
   .sample-gallery-container {
     display: grid;
     padding: 0 22px;
@@ -87,6 +95,9 @@
     height: 16px;
   }
   @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .section {
+      padding: 82.5px 0;
+    }
     .sample-gallery-container {
       display: flex;
       flex-flow: wrap;
@@ -120,6 +131,12 @@
     .overlay-paragraph {
       gap: 3px;
     }
+    .jdgm-sort-dropdown option {
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 450;
+    }
+
   }
 
   @media screen and (min-width: 1000px) {
