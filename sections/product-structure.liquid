@@ -11,13 +11,14 @@
   #shopify-section-{{ section.id }} .section-blends {
     background-image: none;
     background-color: #FFFFFF;
-    padding: 32px 21.5px;
+    padding: 32px 0;
   }
 
   .structure-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 16px;
+    padding: 0 21.5px
   }
   .structure-part {
     display: flex;
@@ -73,6 +74,7 @@
     font-size: 16px;
     font-weight: 700;
     line-height: 15.8px;
+    gap: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,6 +96,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 12px;
   }
   .goshop-btn-container div p {
@@ -109,12 +112,8 @@
   }
 
   @media screen and (min-width: 700px) {
-    .sample-gallery-container {
-      display: flex;
-      flex-flow: wrap;
-      row-gap: 15px;
-      padding: 0 50px;
-      align-items: center;
+    #shopify-section-{{ section.id }} .section-blends {
+      padding: 80px 0;
     }
     .goshop {
       width: 343px;
@@ -125,8 +124,9 @@
     }
     .structure-container {
       grid-template-columns: 18% auto 18%;
-      row-gap: 48px;
+      padding: 0 50px;
       column-gap: 13px;
+      row-gap: 48px;
     }
     .primary-image {
       grid-row: 1 / 3;
@@ -157,16 +157,14 @@
   }
 
   @media screen and (min-width: 1000px) {
-    .sample-gallery-container {
-      row-gap: 22px;
+    .structure-container {
       padding: 0 70px;
     }
   }
 
   @media screen and (min-width: 1400px) {
-    .sample-gallery-container {
-      row-gap: 33px;
-      padding: 0 124px;
+    .structure-container {
+      padding: 0 120px;
     }
   }
 </style>

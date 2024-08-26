@@ -86,7 +86,7 @@
         MEDIA LIST
         --------------------------------------------------------------------------------------------------------------------
       {%- endcomment -%}
-      <scroll-carousel
+      <media-carousel
         desktop-mode="{{ section.settings.desktop_media_layout }}"
         adaptive-height
         initial-index="{{ default_media.position | minus: 1 }}"
@@ -149,7 +149,7 @@
             {%- endif -%}
           </div>
         {%- endfor -%}
-      </scroll-carousel>
+      </media-carousel>
 
       {%- if section.settings.enable_image_zoom -%}
         <div class="product-gallery__zoom {% if section.settings.desktop_media_layout contains 'grid' %}md:hidden{% endif %}">

@@ -8,9 +8,9 @@
         "text": {
           "type": "text",
           "settings": {
-            "logo_image": "shopify:\/\/shop_images\/SUD_SCRUB_Logo_7b56aebf-0e6f-405b-963a-b962cfaf6189.png",
+            "logo_image": "shopify://shop_images/SUD_SCRUB_Logo_7b56aebf-0e6f-405b-963a-b962cfaf6189.png",
             "title": "",
-            "content": "<p>Sud Scrub products are tested in accordance with ISO-22196 and ASTM-G21. These tests prove that the finished articles are protected from the effects of microbial growth and odor. The products do not protect users or others from disease-causing pathogens.<\/p>",
+            "content": "<p>Sud Scrub products are tested in accordance with ISO-22196 and ASTM-G21. These tests prove that the finished articles are protected from the effects of microbial growth and odor. The products do not protect users or others from disease-causing pathogens.</p>",
             "enable_follow_on_shop": false,
             "show_social_media": false,
             "show_payment_icons": true
@@ -28,7 +28,7 @@
           "type": "text",
           "settings": {
             "title": "CONTACT US",
-            "content": "<p>support@sudscrub.com<\/p>",
+            "content": "<p>support@sudscrub.com</p>",
             "enable_follow_on_shop": false,
             "show_social_media": true,
             "show_payment_icons": false
@@ -44,12 +44,7 @@
           }
         }
       },
-      "block_order": [
-        "text",
-        "links",
-        "text_4gFCJx",
-        "newsletter"
-      ],
+      "block_order": ["text", "links", "text_4gFCJx", "newsletter"],
       "settings": {
         "show_country_selector": false,
         "show_country_flag": false,
@@ -59,7 +54,5 @@
       }
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer"]
 }

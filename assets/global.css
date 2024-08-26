@@ -128,6 +128,35 @@
     transform: rotate(180deg);
 }
 
+.swiper-footer {
+    display: flex;
+    column-gap: 10px;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: auto;
+}
+
+.swiper-pagination {
+    position: relative !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    width: 20px;
+    height: 4px;
+    border: none;
+    background: #FFFFFF;
+    opacity: 1;
+    border-radius: 0;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+    width: 65px;
+    background: #000000;
+}
+
 /* section header */
 
 .section-blends .section-header {

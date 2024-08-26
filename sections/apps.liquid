@@ -22,7 +22,7 @@
     }
     .jdgm-histogram,
     .jdgm-widget-actions-wrapper {
-      border: none;
+      border: none !important;
     }
     .jdgm-histogram__bar-content {
       background: #F15A28;
@@ -30,6 +30,7 @@
     .jdgm-histogram__row {
       margin-bottom: 6.5px !important;
       display: flex;
+      justify-content: center;
     }
     .jdgm-rev-widg__summary,
     .jdgm-histogram {
@@ -96,16 +97,19 @@
     }
     .jdgm-sort-dropdown-wrapper {
       height: 48px;
-      padding: 10px 22px 10px 22px;
+      width: 190px;
       gap: 39px;
       border-radius: 120px;
       border: 2px solid #000000;
     }
     .jdgm-sort-dropdown {
       padding: 0 !important;
+      height: 48px;
+      width: 190px;
+      padding: 10px 22px 10px 22px !important;
     }
     .jdgm-sort-dropdown-arrow {
-      position: relative !important;
+      right: 22px !important
     }
     .jdgm-row-actions {
       border: none !important;

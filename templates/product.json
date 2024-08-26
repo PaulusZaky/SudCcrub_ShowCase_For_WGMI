@@ -5,8 +5,7 @@
       "blocks": {
         "vendor": {
           "type": "vendor",
-          "settings": {
-          }
+          "settings": {}
         },
         "title": {
           "type": "title",
@@ -15,14 +14,12 @@
           }
         },
         "judge_me_reviews_preview_badge_LJNt7G": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -37,8 +34,7 @@
         },
         "payment_terms": {
           "type": "payment_terms",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
@@ -67,7 +63,7 @@
           "type": "collapsible_text",
           "settings": {
             "title": "SHIPPING INPORMATION",
-            "content": "<p>Share some content to your customers about your products.<\/p>",
+            "content": "<p>Share some content to your customers about your products.</p>",
             "page": ""
           }
         }
@@ -106,9 +102,7 @@
       "type": "related-products",
       "settings": {
         "recommendations_count": 6,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
@@ -130,14 +124,11 @@
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_yB3LbK": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
-      "block_order": [
-        "judge_me_reviews_review_widget_yB3LbK"
-      ],
+      "block_order": ["judge_me_reviews_review_widget_yB3LbK"],
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
@@ -148,9 +139,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "related-products",
-    "1723455318887b3f63"
-  ]
+  "order": ["main", "related-products", "1723455318887b3f63"]
 }

@@ -13,16 +13,23 @@
     {%- else -%}
       --collection-list-grid: auto / auto-flow 73vw;
     {%- endif -%}
+    gap: 0;
   }
   #shopify-section-{{ section.id }} .section-blends {
     background-image: unset !important;
     background-color: #FFFFFF;
   }
 
+  #shopify-section-{{ section.id }} .section {
+    padding: 32px 0;
+  }
+
+  #shopify-section-{{ section.id }} .collection-list-mobile .content-over-media{
+    padding: 0 24px;
+  }
   #shopify-section-{{ section.id }} .collection-list {
     justify-content: center;
-    padding: 0 115px;
-    gap: var(--spacing-4);
+    {% comment %} gap: var(--spacing-4); {% endcomment %}
   }
   .content-over-media {
     display: flex;
@@ -30,14 +37,33 @@
     gap: 10px;
     grid-template: none;
   }
+  #shopify-section-{{ section.id }} .collection-list-mobile .content-over-media{
+    padding: 0 24px;
+  }
   #shopify-section-{{ section.id }} .styled_text::part(split-lines)::after {
     background: #B9D6EF;
+  }
+  .swiper-wrapper {
+    display: none;
+  }
+  .collection-list-mobile {
+    display: flex;
+    grid: none !important;
+    flex-direction: column;
+    gap: 23px;
+  }
+  .swiper-wrapper .collection-card {
+    margin-right: 0 !important;
   }
   .collection-card__content:first-child {
     margin-block-end: 0;
   }
   .collection-card__content-wrapper {
     margin: auto;
+  }
+
+  .collection-list-mobile .collection-card__content-wrapper {
+    height: auto;
   }
   .collection-card__content-wrapper svg{
     opacity: 1;
@@ -72,16 +98,14 @@
     line-height: 18px;
     font-weight: 400;
   }
+  .collection-list-mobile .collection-card__content .subheading {
+    line-height: 24px;
+  }
 
   @media screen and (min-width: 700px) {
     #shopify-section-{{ section.id }} .collection-list {
       --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 36vw{% endif %};
     }
-
-    .collection-list {
-      gap: var(--grid-gutter);
-    }
-
     .collection-card__content .subheading {
       font-size: 28px;
     }
@@ -90,7 +114,8 @@
       height: 24px;
     }
     .collection-list {
-      gap: 30px;
+      {% comment %} gap: 30px; {% endcomment %}
+      gap: 0;
     }
   }
 
@@ -98,8 +123,38 @@
     #shopify-section-{{ section.id }} .collection-list {
       --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat({{ 3 | at_most: section.settings.collections_per_row }}, minmax(0, 1fr)){% else %}auto / auto-flow calc(var(--container-inner-width) / {{ section.settings.collections_per_row }} - (var(--grid-gutter) / 3 * 2)){% endif %};
     }
-    .collection-list {
+    #shopify-section-{{ section.id }} .section {
+      padding: 80px 0;
+    }
+    #shopify-section-{{ section.id }} .scroll-area{
+      margin: 0 115px;
+    }
+    .swiper-wrapper {
       display: flex;
+    }
+
+    .collection-list-mobile {
+      display: none;
+    }
+    .navigation-with-controls .collection-list {
+      padding-bottom: 48px;
+    }
+    .swiper-pagination {
+      position: absolute !important;
+      left:0;
+      right: 0;
+    }
+    .swiper-pagination .swiper-pagination-bullet {
+      background: #B7E3D8;
+    }
+    .swiper-pagination .swiper-pagination-bullet-active {
+      background: #000;
+    }
+    #shopify-section-{{ section.id }} .swiper-button-next {
+      right: 0 !important;
+    }
+    #shopify-section-{{ section.id }} .swiper-button-prev {
+      left: 0 !important;
     }
   }
 
@@ -129,21 +184,21 @@
       link_url: link_url
     -%}
 
-    <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
+    <div class="{% if section.settings.show_navigation_bar %}navigation-with-controls{% else %}floating-controls-container{% endif %}">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
 
       <scroll-carousel
         selector=".collection-card"
         id="{{ scroll_area_id }}"
-        class="scroll-area bleed {% if section.blocks.size > section.settings.collections_per_row %}is-scrollable{% endif %}"
+        class="swiper collection-swiper scroll-area bleed {% if section.blocks.size > section.settings.collections_per_row %}is-scrollable{% endif %}"
       >
-        <collection-list class="collection-list">
+        <collection-list class="collection-list swiper-wrapper">
           {%- for block in section.blocks -%}
             {%- assign collection = block.settings.collection -%}
             {%- assign collection_url = block.settings.url | default: collection.url -%}
 
             <div
-              class="collection-card {% if block.settings.text_position contains 'place-self-end' %}collection-card--reverse-transition{% endif %} shadow"
+              class="swiper-slide collection-card {% if block.settings.text_position contains 'place-self-end' %}collection-card--reverse-transition{% endif %} shadow"
               reveal-js
             >
               <div
@@ -224,34 +279,133 @@
             </div>
           {%- endfor -%}
         </collection-list>
+        {% if section.settings.show_navigation_bar %}
+          <div class="swiper-footer">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        {% endif %}
+        {% if section.settings.mobile_no_wrap %}
+          <div>
+            <collection-list class="collection-list-mobile">
+              {%- for block in section.blocks -%}
+                {%- assign collection = block.settings.collection -%}
+                {%- assign collection_url = block.settings.url | default: collection.url -%}
+
+                <div
+                  class="collection-card {% if block.settings.text_position contains 'place-self-end' %}collection-card--reverse-transition{% endif %} shadow"
+                  reveal-js
+                >
+                  <div
+                    class="content-over-media group rounded-sm"
+                    style="--content-over-media-overlay: {{ block.settings.overlay_color.rgb }} / {{ block.settings.overlay_opacity | divided_by: 100.0 }}"
+                  >
+                    {%- if collection != blank or block.settings.image != blank -%}
+                      {%- assign image = block.settings.image | default: collection.featured_image -%}
+
+                      {%- if image != blank -%}
+                        {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                        <div>
+                          {{-
+                            image
+                            | image_url: width: image.width
+                            | image_tag:
+                              loading: 'lazy',
+                              sizes: sizes,
+                              widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                              class: 'zoom-image'
+                          -}}
+                        </div>
+                      {%- endif -%}
+                      <div
+                        class="collection-card__content-wrapper text-custom {{ block.settings.text_position }}"
+                        style="--text-color: {{ block.settings.text_color.rgb }}"
+                      >
+                        {% comment %}
+                          {%- if block.settings.text_position contains 'place-self-end' -%}
+                            {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                          {%- endif -%}
+                        {% endcomment %}
+
+                        <div class="collection-card__content prose">
+                          {%- if block.settings.subheading != blank -%}
+                            <a
+                              {% if collection_url != blank %}
+                                href="{{ collection_url }}"
+                              {% endif %}
+                              class="subheading"
+                            >
+                              {{- block.settings.subheading | escape -}}
+                              {%- render 'collection-two-arrow-right-icon' -%}
+                            </a>
+                          {%- endif -%}
+
+                          <p class="{{ block.settings.heading_tag }}">
+                            {{ block.settings.title | default: collection.title | escape }}
+                          </p>
+                        </div>
+
+                        {%- unless block.settings.text_position contains 'place-self-end' -%}
+                          {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                        {%- endunless -%}
+                      </div>
+                    {%- else -%}
+                      {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                      {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+
+                      <div
+                        class="collection-card__content-wrapper text-custom {{ block.settings.text_position }}"
+                        style="--text-color: {{ block.settings.text_color.rgb }}"
+                      >
+                        {%- if block.settings.text_position contains 'place-self-end' -%}
+                          {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                        {%- endif -%}
+
+                        <div class="collection-card__content prose">
+                          <p class="{{ block.settings.heading_tag }}">
+                            {{- 'general.on_boarding.collection_title' | t -}}
+                          </p>
+                        </div>
+
+                        {%- unless block.settings.text_position contains 'place-self-end' -%}
+                          {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                        {%- endunless -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </collection-list>
+          </div>
+        {% endif %}
       </scroll-carousel>
-
-      {%- if section.settings.stack_collections == false -%}
-        {%- if section.settings.show_progress_bar -%}
-          {%- assign default_progress = section.settings.collections_per_row
-            | times: 1.0
-            | divided_by: section.blocks.size
-          -%}
-          {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
-        {%- else -%}
-          <button
-            is="prev-button"
-            class="prev-button circle-button circle-button--lg circle-button--fill border group"
-            aria-controls="{{ scroll_area_id }}"
-            disabled
-          ></button>
-
-          <button
-            is="next-button"
-            class="next-button circle-button circle-button--lg circle-button--fill border group"
-            aria-controls="{{ scroll_area_id }}"
-          ></button>
-        {%- endif -%}
-      {%- endif -%}
     </div>
   </div>
 </div>
+<script>
+  var swiper = new Swiper('.collection-swiper', {
+    slidesPerView: 1,
 
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+      1000: {
+        slidesPerView: 3,
+      },
+    },
+  });
+</script>
 {% schema %}
 {
   "name": "Collection list",
@@ -300,8 +454,8 @@
     },
     {
       "type": "checkbox",
-      "id": "show_progress_bar",
-      "label": "Show carousel progress bar",
+      "id": "show_navigation_bar",
+      "label": "Show carousel navigation bar",
       "default": false
     },
     {
@@ -330,6 +484,12 @@
       "id": "link_text",
       "label": "Link text",
       "default": "View all"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_no_wrap",
+      "label": "Mobile no-wrap",
+      "default": false
     },
     {
       "type": "header",
