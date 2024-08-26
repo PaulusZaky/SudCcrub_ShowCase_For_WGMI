@@ -335,61 +335,19 @@
     "product_structure_MVfrJz": {
       "type": "product-structure",
       "blocks": {
-        "str_desc_yUGyWn": {
-          "type": "str_desc",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/hi_res-12-Sud_Scrub_r1_0242_Brown.png",
-            "image_mobile": "shopify:\/\/shop_images\/hi_res-12-Sud_Scrub_r1_0242_Brown.png",
-            "main_part": false,
-            "desc_title": "SCRUBBING FINS",
-            "content": "<p>Gently exfoliates to unclog pores and remove impurities<\/p>"
-          }
-        },
-        "str_desc_UCgHdf": {
-          "type": "str_desc",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
-            "image_mobile": "shopify:\/\/shop_images\/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
-            "main_part": false,
-            "desc_title": "HANDLE STRAP",
-            "content": "<p>Provides a secure grip to keep it from slipping out of your hand<\/p>"
-          }
-        },
-        "str_desc_UcVqmn": {
-          "type": "str_desc",
-          "settings": {
-            "main_part": false,
-            "desc_title": "<p>Title<\/p>",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
-        },
         "str_desc_3rwQrT": {
           "type": "str_desc",
           "settings": {
-            "image": "shopify:\/\/shop_images\/product-page-face.png",
+            "image": "shopify:\/\/shop_images\/product-page-hook.png",
             "image_mobile": "shopify:\/\/shop_images\/one-scrubber-mobile.png",
             "main_part": true,
             "desc_title": "",
             "content": ""
           }
-        },
-        "str_desc_n9j3Ak": {
-          "type": "str_desc",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/blue-face-scrubber-male_circle.png",
-            "image_mobile": "shopify:\/\/shop_images\/blue-face-scrubber-male_circle.png",
-            "main_part": false,
-            "desc_title": "TREATED SILICONE",
-            "content": "<p>Infused with silver and zinc to resist odor-causing bacteria and fungi<\/p>"
-          }
         }
       },
       "block_order": [
-        "str_desc_yUGyWn",
-        "str_desc_UCgHdf",
-        "str_desc_UcVqmn",
-        "str_desc_3rwQrT",
-        "str_desc_n9j3Ak"
+        "str_desc_3rwQrT"
       ],
       "settings": {
         "full_width": false,
