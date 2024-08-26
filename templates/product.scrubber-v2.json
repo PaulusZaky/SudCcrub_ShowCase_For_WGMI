@@ -669,14 +669,21 @@
         "heading_HnbtGH": {
           "type": "heading",
           "settings": {
-            "text": "STILL SCRUBBING WITH BACTERIA MAGNETS?",
+            "text": "STILL SCRUBBING WITH",
+            "heading_tag": "h1"
+          }
+        },
+        "heading_JVTeYD": {
+          "type": "heading",
+          "settings": {
+            "text": "BACTERIA MAGNETS?",
             "heading_tag": "h1"
           }
         },
         "subheading_3hQgkc": {
           "type": "subheading",
           "settings": {
-            "text": "Upgrade to sud scrub for a cleaner scrub!"
+            "text": "UPGRADE TO SUD SCRUB FOR A CLEANER SCRUB!"
           }
         },
         "richtext_mkR33L": {
@@ -720,6 +727,7 @@
       },
       "block_order": [
         "heading_HnbtGH",
+        "heading_JVTeYD",
         "subheading_3hQgkc",
         "richtext_mkR33L",
         "richtext_qdeGrW",
