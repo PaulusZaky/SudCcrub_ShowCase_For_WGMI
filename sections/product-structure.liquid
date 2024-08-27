@@ -10,7 +10,6 @@
 
   #shopify-section-{{ section.id }} .section-blends {
     background-image: none;
-    background-color: #FFFFFF;
     padding: 32px 0;
   }
 
@@ -95,10 +94,15 @@
   #shopify-section-{{ section.id }} .overlay-goshop-right {
     margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 12px;
+  }
+  #shopify-section-{{ section.id }} .overlay-goshop-right div,
+  #shopify-section-{{ section.id }} .overlay-goshop-right p
+  {
+    line-height: 0;
   }
   .goshop-btn-container div p {
     margin: auto;
