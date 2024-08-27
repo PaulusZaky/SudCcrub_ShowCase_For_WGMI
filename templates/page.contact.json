@@ -3,17 +3,12 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "contact": {
       "type": "contact",
-      "settings": {
-      }
+      "settings": {}
     }
   },
-  "order": [
-    "main",
-    "contact"
-  ]
+  "order": ["main", "contact"]
 }

@@ -5,30 +5,20 @@
       "blocks": {
         "totals": {
           "type": "totals",
-          "settings": {
-          }
+          "settings": {}
         },
         "cart_note": {
           "type": "cart_note",
-          "settings": {
-          }
+          "settings": {}
         },
         "checkout_button": {
           "type": "checkout_button",
-          "settings": {
-          }
+          "settings": {}
         }
       },
-      "block_order": [
-        "totals",
-        "cart_note",
-        "checkout_button"
-      ],
-      "settings": {
-      }
+      "block_order": ["totals", "cart_note", "checkout_button"],
+      "settings": {}
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

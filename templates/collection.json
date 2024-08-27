@@ -35,8 +35,5 @@
       }
     }
   },
-  "order": [
-    "banner",
-    "main"
-  ]
+  "order": ["banner", "main"]
 }

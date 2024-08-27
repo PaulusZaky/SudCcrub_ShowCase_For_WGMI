@@ -10,14 +10,12 @@
           }
         },
         "judge_me_reviews_preview_badge_LJNt7G": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -32,8 +30,7 @@
         },
         "payment_terms": {
           "type": "payment_terms",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
@@ -63,7 +60,7 @@
           "type": "collapsible_text",
           "settings": {
             "title": "SHIPPING INPORMATION",
-            "content": "<p>Share some content to your customers about your products.<\/p>",
+            "content": "<p>Share some content to your customers about your products.</p>",
             "is_open": false,
             "page": ""
           }
@@ -178,7 +175,7 @@
         "1664424046b00c932c-0": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hook-blue.png",
+            "image": "shopify://shop_images/hook-blue.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -191,7 +188,7 @@
         "1664424046b00c932c-1": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hook-pink.png",
+            "image": "shopify://shop_images/hook-pink.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -204,7 +201,7 @@
         "e4a0ef18-1856-4ddd-83d8-871a60d7acac": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hook-clay.png",
+            "image": "shopify://shop_images/hook-clay.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -217,7 +214,7 @@
         "1664424046b00c932c-2": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hook-black.png",
+            "image": "shopify://shop_images/hook-black.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -230,7 +227,7 @@
         "1664424046b00c932c-3": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hook-white.png",
+            "image": "shopify://shop_images/hook-white.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -270,46 +267,46 @@
         "image_block_NjURPG": {
           "type": "image_block",
           "settings": {
-            "product_image": "shopify:\/\/shop_images\/silicone-hook-lifestyle-mint.png"
+            "product_image": "shopify://shop_images/silicone-hook-lifestyle-mint.png"
           }
         },
         "paragraph_tgEt7C": {
           "type": "paragraph",
           "settings": {
             "pargraph_title": "ANTIMICROBIAL PROPERTIES",
-            "paragraph1": "<p>Infused with antimicrobial silver and zinc<\/p>",
-            "paragraph2": "<p>Proven to resist 99.99% of bacteria and 90% of fungi on its surface<\/p>",
-            "paragraph3": "<p>Stays odor-free use after use. Never stinks!<\/p>"
+            "paragraph1": "<p>Infused with antimicrobial silver and zinc</p>",
+            "paragraph2": "<p>Proven to resist 99.99% of bacteria and 90% of fungi on its surface</p>",
+            "paragraph3": "<p>Stays odor-free use after use. Never stinks!</p>"
           }
         },
         "paragraph_m7xKgR": {
           "type": "paragraph",
           "settings": {
             "pargraph_title": "PERFECT FOR PROBLEM-PRONE SKIN",
-            "paragraph1": "<p>Gentle on sensitive skin<\/p>",
-            "paragraph2": "<p>Won't aggravate skin issues<\/p>",
-            "paragraph3": "<p>Does not harm your skin barrier<\/p>"
+            "paragraph1": "<p>Gentle on sensitive skin</p>",
+            "paragraph2": "<p>Won't aggravate skin issues</p>",
+            "paragraph3": "<p>Does not harm your skin barrier</p>"
           }
         },
         "image_block_Gg4CAw": {
           "type": "image_block",
           "settings": {
-            "product_image": "shopify:\/\/shop_images\/silicone-hook-lifestyle-purple.png"
+            "product_image": "shopify://shop_images/silicone-hook-lifestyle-purple.png"
           }
         },
         "image_block_6BRbGz": {
           "type": "image_block",
           "settings": {
-            "product_image": "shopify:\/\/shop_images\/silicone-hook-lifestyle-black.png"
+            "product_image": "shopify://shop_images/silicone-hook-lifestyle-black.png"
           }
         },
         "paragraph_tRnADq": {
           "type": "paragraph",
           "settings": {
             "pargraph_title": "GREEN AND CLEAN",
-            "paragraph1": "<p>Plastic-free, No microplastics<\/p>",
-            "paragraph2": "<p>100% recyclable though our send-back program<\/p>",
-            "paragraph3": "<p>Lasts a whole year, no need for constant replacements<\/p>"
+            "paragraph1": "<p>Plastic-free, No microplastics</p>",
+            "paragraph2": "<p>100% recyclable though our send-back program</p>",
+            "paragraph3": "<p>Lasts a whole year, no need for constant replacements</p>"
           }
         }
       },
@@ -338,23 +335,21 @@
         "str_desc_3rwQrT": {
           "type": "str_desc",
           "settings": {
-            "image": "shopify:\/\/shop_images\/product-page-hook.png",
-            "image_mobile": "shopify:\/\/shop_images\/one-scrubber-mobile.png",
+            "image": "shopify://shop_images/product-page-hook.png",
+            "image_mobile": "shopify://shop_images/one-scrubber-mobile.png",
             "main_part": true,
             "desc_title": "",
             "content": ""
           }
         }
       },
-      "block_order": [
-        "str_desc_3rwQrT"
-      ],
+      "block_order": ["str_desc_3rwQrT"],
       "settings": {
         "full_width": false,
         "title": "EVERYTHING YOU NEED IN ONE SCRUBBER",
         "subheading": "",
         "btn_text": "SHOP NOW",
-        "btn_url": "shopify:\/\/products\/sud-scrub-2-0",
+        "btn_url": "shopify://products/sud-scrub-2-0",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -369,10 +364,10 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/collection-product-thumnail-skin.png",
+            "image": "shopify://shop_images/collection-product-thumnail-skin.png",
             "subheading": "BODY SCRUBBERS",
             "title": "",
-            "url": "https:\/\/www.sudscrub.com\/products\/sud-scrub-2-0",
+            "url": "https://www.sudscrub.com/products/sud-scrub-2-0",
             "heading_tag": "h2",
             "text_position": "place-self-end-center text-center",
             "text_color": "#ffffff",
@@ -384,10 +379,10 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/collection-product-thumbnail-face.png",
+            "image": "shopify://shop_images/collection-product-thumbnail-face.png",
             "subheading": "FACE SCRUBBERS",
             "title": "",
-            "url": "https:\/\/www.sudscrub.com\/collections\/our-products\/products\/face-scrubber-1",
+            "url": "https://www.sudscrub.com/collections/our-products/products/face-scrubber-1",
             "heading_tag": "h2",
             "text_position": "place-self-end-center text-center",
             "text_color": "#ffffff",
@@ -399,10 +394,10 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/collection-product-thumbnail-accessories.png",
+            "image": "shopify://shop_images/collection-product-thumbnail-accessories.png",
             "subheading": "ACCESSORIES",
             "title": "",
-            "url": "https:\/\/www.sudscrub.com\/collections\/accessories",
+            "url": "https://www.sudscrub.com/collections/accessories",
             "heading_tag": "h2",
             "text_position": "place-self-end-center text-center",
             "text_color": "#ffffff",
@@ -414,10 +409,10 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/collection-product-thumbnail-accessories.png",
+            "image": "shopify://shop_images/collection-product-thumbnail-accessories.png",
             "subheading": "ACCESSORIES",
             "title": "",
-            "url": "https:\/\/www.sudscrub.com\/collections\/accessories",
+            "url": "https://www.sudscrub.com/collections/accessories",
             "heading_tag": "h2",
             "text_position": "place-self-end-center text-center",
             "text_color": "#ffffff",
@@ -455,14 +450,11 @@
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_yB3LbK": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
-      "block_order": [
-        "judge_me_reviews_review_widget_yB3LbK"
-      ],
+      "block_order": ["judge_me_reviews_review_widget_yB3LbK"],
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
@@ -480,7 +472,7 @@
         "1664424046b00c932c-0": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hi_res-d-Sud_Scrub_r1_group.png",
+            "image": "shopify://shop_images/hi_res-d-Sud_Scrub_r1_group.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -493,7 +485,7 @@
         "1664424046b00c932c-1": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sud-scrub-20-530079.jpg",
+            "image": "shopify://shop_images/sud-scrub-20-530079.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -506,7 +498,7 @@
         "e4a0ef18-1856-4ddd-83d8-871a60d7acac": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/hi_res-5c-SudScrub_r2_04Z_0152.jpg",
+            "image": "shopify://shop_images/hi_res-5c-SudScrub_r2_04Z_0152.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -519,7 +511,7 @@
         "1664424046b00c932c-2": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/silicone-hook-lifestyle-clay.png",
+            "image": "shopify://shop_images/silicone-hook-lifestyle-clay.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -532,7 +524,7 @@
         "1664424046b00c932c-3": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
+            "image": "shopify://shop_images/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -659,19 +651,19 @@
         "richtext_mkR33L": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Resists odor-causing bacteria<\/p>"
+            "content": "<p>Resists odor-causing bacteria</p>"
           }
         },
         "richtext_qdeGrW": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Gently unclogs pores for radiantly clear skin<\/p>"
+            "content": "<p>Gently unclogs pores for radiantly clear skin</p>"
           }
         },
         "richtext_eVwcPE": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Lasts for 1 year<\/p>"
+            "content": "<p>Lasts for 1 year</p>"
           }
         },
         "button_cmcacf": {
@@ -680,7 +672,7 @@
             "style": "fill",
             "size": "lg",
             "text": "SHOP NOW",
-            "url": "shopify:\/\/collections\/our-products",
+            "url": "shopify://collections/our-products",
             "background": "#fcd817",
             "text_color": "#000000"
           }
@@ -688,7 +680,7 @@
         "reviewer_cgkPDq": {
           "type": "reviewer",
           "settings": {
-            "image_for_reviewer": "shopify:\/\/shop_images\/overlay-reviewer-1.png",
+            "image_for_reviewer": "shopify://shop_images/overlay-reviewer-1.png",
             "review_content": "Love it! Makes me feel clean. Easy to care for",
             "review_text": "Love this product!",
             "reviewer_name": "Cathy J."
@@ -709,8 +701,8 @@
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/radiant-skin-banner_Desktop.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/radiant-skin-banner_Mobile.jpg",
+        "image": "shopify://shop_images/radiant-skin-banner_Desktop.jpg",
+        "mobile_image": "shopify://shop_images/radiant-skin-banner_Mobile.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center-start sm:text-start",
         "text_color": "#ffffff",
