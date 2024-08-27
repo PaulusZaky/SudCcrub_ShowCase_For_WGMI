@@ -78,16 +78,16 @@
     text-align: left;
     margin-bottom: 10px;
   }
-  .overlay-paragraph {
+  #shopify-section-{{ section.id }} .overlay-paragraph {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 4px !important;
+    margin-bottom: 4px;
   }
   #shopify-section-{{ section.id }} .overlay-paragraph p {
     font-size:13px !important;
     line-height: 19.5px !important;
     font-weight: 450;
-    margin-bottom: 4px;
     flex: 1;
   }
   #shopify-section-{{ section.id }} .overlay-paragraph svg {
@@ -122,14 +122,16 @@
     #shopify-section-{{ section.id }} .overlay-paragraph p {
       font-size:20px !important;
       line-height: 30px !important;
+    }
+    #shopify-section-{{ section.id }} .overlay-paragraph {
       margin-bottom: 8px;
     }
     .overlay-paragraph svg {
-      width: 24px;
-      height: 24px;
+      width: 24px !important;
+      height: 24px !important;
     }
     .overlay-paragraph {
-      gap: 3px;
+      gap: 8px !important;
     }
     .jdgm-sort-dropdown option {
       padding: 10px;
