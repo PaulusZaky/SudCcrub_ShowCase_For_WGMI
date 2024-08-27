@@ -178,6 +178,9 @@
     justify-content: center;
     gap: 4px;
   }
+  .product__payment-icons p {
+    font-weight: 500;
+  }
   .product-info__block-item .product__payment-icons {
     display: flex;
     flex-direction: column;
@@ -213,7 +216,7 @@
     display: flex;
     height: 52px;
     align-items: center;
-    justify-content: left;
+    justify-content: left !important;
     gap: 8px;
   }
   .overlay-reviewer-avatar {
@@ -257,7 +260,7 @@
       --section-spacing-block-start: {% if section.settings.mobile_media_size == 'expanded' %}0px{% else %}var(--container-gutter){% endif %};
     }
     .product-gallery__zoom {
-      right: 28px;
+      right: 28px !important;
     }
   }
 
