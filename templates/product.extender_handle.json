@@ -414,28 +414,12 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
-        },
-        "collection_3HdRbR": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify:\/\/shop_images\/collection-product-thumbnail-accessories.png",
-            "subheading": "ACCESSORIES",
-            "title": "",
-            "url": "https:\/\/www.sudscrub.com\/collections\/accessories",
-            "heading_tag": "h2",
-            "text_position": "place-self-end-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
         }
       },
       "block_order": [
         "collection-1",
         "collection-2",
-        "collection-3",
-        "collection_3HdRbR"
+        "collection-3"
       ],
       "settings": {
         "full_width": true,
