@@ -28,16 +28,21 @@
     "product_color_display": "swatch",
     "product_info_alignment": "start",
     "cart_icon": "shopping_basket",
-    "social_facebook": "https://facebook.com/sudscrub",
-    "favicon": "shopify://shop_images/favicon-32x32.png",
+    "cart_empty_button_link": "shopify:\/\/collections\/our-products",
+    "cart_show_free_shipping_threshold": true,
+    "social_facebook": "https:\/\/facebook.com\/sudscrub",
+    "favicon": "shopify:\/\/shop_images\/favicon-32x32.png",
     "checkout_accent_color": "#f0c417",
     "checkout_button_color": "#1a1a1a",
-    "content_for_index": [],
+    "content_for_index": [
+
+    ],
     "blocks": {
       "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
-        "settings": {}
+        "settings": {
+        }
       }
     }
   },

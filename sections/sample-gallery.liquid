@@ -28,6 +28,13 @@
     width: 100%;
     padding: 24px 0 24px 8px;
   }
+  .warning-paragraph {
+    font-size: 12px;
+    font-weight: 450;
+    line-height: 18px;
+    text-align: left;
+    margin-top: 20px;
+  }
   .sample-gallery-container .item-1 {
     grid-area: item-1;
   }
@@ -217,6 +224,11 @@
                   {{- block.settings.paragraph3 -}}
                 </div>
               {%- endif -%}
+              {%- if block.settings.paragraph3 != blank -%}
+                <div class="warning-paragraph">
+                  {{- block.settings.warning_text -}}
+                </div>
+              {%- endif -%}
             </div>
         {%- endcase -%}
       {% endfor %}
@@ -257,6 +269,11 @@
           "id": "paragraph3",
           "label": "paragraph",
           "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "text",
+          "id": "warning_text",
+          "label": "Warning Text"
         }
       ]
     },

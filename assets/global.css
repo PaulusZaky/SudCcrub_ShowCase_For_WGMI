@@ -314,4 +314,8 @@
     }
 }
 
+.group:hover .circle-chevron.group-hover\:colors:not([disabled]) {
+    background: inherit;
+}
+
 /* scroll-caroucel */
