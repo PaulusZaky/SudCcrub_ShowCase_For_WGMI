@@ -318,4 +318,8 @@
     background: inherit;
 }
 
+.page {
+    max-width: 693px;
+}
+
 /* scroll-caroucel */
