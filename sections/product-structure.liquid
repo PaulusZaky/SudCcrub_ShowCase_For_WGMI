@@ -15,50 +15,12 @@
   }
 
   .structure-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 16px;
-    padding: 0 21.5px
+
   }
-  .structure-part {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 7px;
-  }
-  .structure-part img {
+
+  img {
     margin: auto;
-    width: 102px;
-    height: 102px;
     object-fit: cover;
-    border-radius: 50%;
-  }
-  .text-wrapper h3{
-    margin-bottom: 15px;
-  }
-  .structure-part h3 {
-    font-family: var(--heading-font-family);
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.02px;
-    text-align: center;
-    margin-bottom: 0;
-  }
-  .structure-part p {
-    font-size: 13px;
-    font-weight: 450;
-    line-height: 18.2px;
-    letter-spacing: -0.03em;
-    text-align: center;
-  }
-  .primary-image {
-    grid-row: 2 / 3;
-    grid-column: 1 / 3;
-  }
-  .primary-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0;
   }
   .goshop-btn-container {
     display: flex;
@@ -143,9 +105,6 @@
       grid-column: 2 / 3;
       margin: auto;
     }
-    .structure-part {
-      flex-direction: column;
-    }
     .overlay-goshop-right {
       flex-direction: row;
       gap: 8px;
@@ -155,22 +114,6 @@
     }
     .image-mobile {
       display: none;
-    }
-    .structure-part.part-1 {
-      grid-row: 2 / 3;
-      grid-column: 3 / 4;
-    }
-    .structure-part.part-5 {
-      grid-row: 1 / 2;
-      grid-column: 1 / 2;
-    }
-    .structure-part h3 {
-      font-size: 28px;
-      line-height: 32.7px;
-    }
-    .structure-part p {
-      font-size: 16px;
-      line-height: 22.4px;
     }
   }
 
@@ -207,37 +150,32 @@
 
     <div class="structure-container">
       {% for block in section.blocks %}
-        <div class="structure-part part-{{ forloop.index }} {% if block.settings.main_part %}primary-image{% endif %}">
-          <picture>
-            {%- if block.settings.image_mobile != blank -%}
-              {{-
-                block.settings.image_mobile
-                | image_url: width: block.settings.image_mobile.width
-                | image_tag:
-                  sizes: sizes,
-                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
-                  class: 'image-mobile'
-              -}}
-            {%- endif -%}
-            {% if block.settings.image != blank %}
-              {{-
-                block.settings.image
-                | image_url: width: block.settings.image.width
-                | image_tag:
-                  sizes: sizes,
-                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
-                  class: 'image-desktop'
-              -}}
-            {% endif %}
-          </picture>
-          <div class="text-wrapper">
-            {% if block.settings.desc_title != blank %}
-              <h3>{{ block.settings.desc_title }}</h3>
-            {% endif %}
-            {% if block.settings.content != blank %}
-              <p>{{ block.settings.content }}</p>
-            {% endif %}
-          </div>
+        <picture>
+          {%- if block.settings.image_mobile != blank -%}
+            {{-
+              block.settings.image_mobile
+              | image_url: width: block.settings.image_mobile.width
+              | image_tag: sizes: sizes, widths: '50,100,200,300,400,500,600', class: 'image-mobile'
+            -}}
+          {%- endif -%}
+          {% if block.settings.image != blank %}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag:
+                sizes: sizes,
+                widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                class: 'image-desktop'
+            -}}
+          {% endif %}
+        </picture>
+        <div class="text-wrapper">
+          {% if block.settings.desc_title != blank %}
+            <h3>{{ block.settings.desc_title }}</h3>
+          {% endif %}
+          {% if block.settings.content != blank %}
+            <p>{{ block.settings.content }}</p>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -288,20 +226,8 @@
         },
         {
           "type": "checkbox",
-          "id": "main_part",
-          "label": "Primary Image"
-        },
-        {
-          "type": "text",
-          "id": "desc_title",
-          "label": "Title",
-          "default": "<p>Title</p>"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          "id": "abs_position",
+          "label": "Absolute Position"
         }
       ]
     }

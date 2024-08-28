@@ -277,7 +277,8 @@
             "pargraph_title": "REACH FURTHER",
             "paragraph1": "<p>Increases reach of Sud Scrub Body Scrubber</p>",
             "paragraph2": "<p>Helps clean hard-to-reach areas</p>",
-            "paragraph3": "<p>Scrub without stretching or straining</p>"
+            "paragraph3": "<p>Scrub without stretching or straining</p>",
+            "warning_text": ""
           }
         },
         "paragraph_tgEt7C": {
@@ -286,7 +287,8 @@
             "pargraph_title": "GREEN WAY TO GET CLEAN",
             "paragraph1": "<p>Made with hemp polymer</p>",
             "paragraph2": "<p>Recyclable via send-back program</p>",
-            "paragraph3": "<p>Lasts as long as you need it to</p>"
+            "paragraph3": "<p>Lasts as long as you need it to</p>",
+            "warning_text": ""
           }
         },
         "image_block_Gg4CAw": {
@@ -316,38 +318,16 @@
     "product_structure_BLxWh9": {
       "type": "product-structure",
       "blocks": {
-        "str_desc_yUGyWn": {
-          "type": "str_desc",
-          "settings": {
-            "image": "shopify://shop_images/hi_res-5f-sud_scrub_r2_04Z_0034.png",
-            "image_mobile": "shopify://shop_images/hi_res-12-Sud_Scrub_r1_0242_Brown.png",
-            "main_part": false,
-            "desc_title": "SCRUBBING FINS",
-            "content": "<p>Gently exfoliates to unclog pores and remove impurities</p>"
-          }
-        },
-        "str_desc_UCgHdf": {
-          "type": "str_desc",
-          "settings": {
-            "image": "shopify://shop_images/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
-            "image_mobile": "shopify://shop_images/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
-            "main_part": false,
-            "desc_title": "HANDLE STRAP",
-            "content": "<p>Provides a secure grip to keep it from slipping out of your hand</p>"
-          }
-        },
         "str_desc_3rwQrT": {
           "type": "str_desc",
           "settings": {
             "image": "shopify://shop_images/product-page-extender.png",
             "image_mobile": "shopify://shop_images/one-scrubber-mobile.png",
-            "main_part": true,
-            "desc_title": "",
-            "content": ""
+            "abs_position": false
           }
         }
       },
-      "block_order": ["str_desc_yUGyWn", "str_desc_UCgHdf", "str_desc_3rwQrT"],
+      "block_order": ["str_desc_3rwQrT"],
       "settings": {
         "full_width": false,
         "title": "EVERYTHING YOU NEED IN ONE SCRUBBER",
@@ -456,7 +436,7 @@
         "1664424046b00c932c-0": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/hi_res-d-Sud_Scrub_r1_group.png",
+            "image": "shopify://shop_images/clay-face-scrubber-female.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -469,7 +449,7 @@
         "1664424046b00c932c-1": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/sud-scrub-20-530079.jpg",
+            "image": "shopify://shop_images/hi_res-d-Sud_Scrub_r1_group.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -495,7 +475,7 @@
         "1664424046b00c932c-2": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/silicone-hook-lifestyle-clay.png",
+            "image": "shopify://shop_images/blue-face-scrubber-male.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -508,7 +488,7 @@
         "1664424046b00c932c-3": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
+            "image": "shopify://shop_images/hi_res-5f-SudScrub_r2_04Z_0034.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
