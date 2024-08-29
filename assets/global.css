@@ -263,13 +263,14 @@
     .section-header .prose h2 {
         font-size: 50px;
         line-height: 58.4px;
+        letter-spacing: -2px;
         padding: 0;
-
     }
 
     .section-header .prose p {
         font-size: 20px;
         line-height: 19.6px;
+        letter-spacing: 1px;
         padding: 0;
     }
 }
@@ -320,6 +321,26 @@
 
 .page {
     max-width: 693px;
+}
+
+/* badge */
+.badge {
+    border-radius: 29.05px;
+    font-family: var(--heading-font-family);
+    font-size: 9.3px;
+    line-height: 9.11px;
+    text-align: center;
+    background: #FFC9D0;
+    padding: 5px 9px;
+    color: #000;
+}
+
+@media screen and (min-width:700px) {
+    .badge {
+        font-size: 16px;
+        line-height: 18.75px;
+        padding: 5px 20px;
+    }
 }
 
 /* scroll-caroucel */

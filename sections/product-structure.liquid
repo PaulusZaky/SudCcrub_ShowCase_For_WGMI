@@ -15,10 +15,11 @@
   }
 
   .structure-container {
-
+    padding: 0 21.5px;
   }
 
-  img {
+  .structure-container img {
+    width: 300px;
     margin: auto;
     object-fit: cover;
   }
@@ -27,6 +28,10 @@
     flex-direction: column;
     justify-content: center;
     gap: 12px;
+  }
+  .goshop-btn-container.abs-position {
+    position: relative;
+    max-width: auto;
   }
   .goshop {
     width: 276px;
@@ -42,7 +47,6 @@
     align-items: center;
     justify-content: center;
   }
-
   .goshop svg {
     width: 16px;
     height: 16px;
@@ -84,18 +88,47 @@
       padding: 80px 0;
       background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/structure-section-bg-desktop.png?v=1724731827") !important;
     }
+    .structure-container img {
+      width: auto;
+    }
+    .goshop-btn-container {
+      gap: 20.7px;
+    }
+
+    .goshop-btn-container.abs-position {
+      position: absolute;
+      max-width: auto;
+      bottom: 80px;
+      left: 64.7vw;
+      gap: 12px;
+    }
     .goshop {
       width: 343px;
+    }
+    .goshop-btn-container.abs-position .goshop {
+      margin-left: 0;
+      width: calc(100vw * 0.2286);
+      padding: 12px;
     }
     .goshop a {
       font-size: 20px;
       line-height: 19.8px;
     }
+    .abs-position .goshop a {
+      font-size: 15px;
+      line-height: 14.8px;
+    }
     .structure-container {
-      grid-template-columns: 18% auto 18%;
       padding: 0 50px;
-      column-gap: 0;
-      row-gap: 18px;
+    }
+    .structure-container.abs-position {
+      padding: 0 74px 0 40px;
+    }
+    .goshop-btn-container.abs-position {
+      max-width: auto;
+      justify-content: left;
+      bottom: 80px;
+      left: calc(40px + (100vw - 40px - 74px) * 0.668);
     }
     .goshop-btn-container div p {
       font-size: 16px;
@@ -109,23 +142,104 @@
       flex-direction: row;
       gap: 8px;
     }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right {
+      flex-direction: column;
+      gap: 10px;
+    }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right svg{
+      width: 12px;
+      height: 12px;
+    }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right p{
+      font-size: 12px;
+    }
+
     .image-desktop {
       display: block;
     }
     .image-mobile {
       display: none;
     }
+
+    {% comment %} .abs-position .image-desktop {
+      display: none;
+    }
+    .abs-position .image-mobile {
+      display: block;
+    } {% endcomment %}
   }
 
   @media screen and (min-width: 1000px) {
     .structure-container {
       padding: 0 70px;
     }
+    .structure-container.abs-position {
+      padding: 0 147px 0 80px;
+    }
+    .goshop-btn-container.abs-position {
+      left: calc(80px + (100vw - 80px - 147px) * 0.668);
+      gap: 16px;
+    }
+    .goshop-btn-container.abs-position .goshop {
+      padding: 15px;
+    }
+    .goshop-btn-container.abs-position .goshop a {
+      font-size: 18px;
+      line-height: 17.8px;
+    }
+    {% comment %} .abs-position .image-desktop {
+      display: block;
+    }
+    .abs-position .image-mobile {
+      display: none;
+    } {% endcomment %}
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right {
+      flex-direction: row;
+      gap: 8px;
+    }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right svg{
+      width: 14px;
+      height: 14px;
+    }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right p{
+      font-size: 12px;
+    }
   }
-
+  @media screen and (min-width: 1200px) {
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right {
+      flex-direction: row;
+      gap: 8px;
+    }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right svg{
+      width: 16px;
+      height: 16px;
+    }
+    #shopify-section-{{ section.id }} .abs-position .overlay-goshop-right p{
+      font-size: 16px;
+    }
+  }
   @media screen and (min-width: 1400px) {
     .structure-container {
       padding: 0 120px;
+    }
+    .structure-container.abs-position {
+      padding: 0 311px 0 169px;
+    }
+    .goshop-btn-container.abs-position {
+      left: calc(169px + (100vw - 169px - 311px) * 0.668);
+      gap: 20.7px;
+    }
+    .goshop-btn-container.abs-position .goshop {
+      padding: 18px;
+    }
+    .goshop-btn-container.abs-position .goshop a {
+      font-size: 20px;
+      line-height: 17.8px;
+    }
+  }
+  @media screen and (min-width: 1800px) {
+    .goshop-btn-container.abs-position .goshop {
+      width: 410px;
     }
   }
 </style>
@@ -148,14 +262,17 @@
       link_url: section.settings.link_url
     -%}
 
-    <div class="structure-container">
+    <div class="structure-container{% if section.settings.abs_position %} abs-position{% endif %}">
       {% for block in section.blocks %}
         <picture>
           {%- if block.settings.image_mobile != blank -%}
             {{-
               block.settings.image_mobile
               | image_url: width: block.settings.image_mobile.width
-              | image_tag: sizes: sizes, widths: '50,100,200,300,400,500,600', class: 'image-mobile'
+              | image_tag:
+                sizes: sizes,
+                widths: '50,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                class: 'image-mobile'
             -}}
           {%- endif -%}
           {% if block.settings.image != blank %}
@@ -179,7 +296,7 @@
         </div>
       {% endfor %}
     </div>
-    <div class="goshop-btn-container">
+    <div class="goshop-btn-container{% if section.settings.abs_position %} abs-position{% endif %}">
       {%- if section.settings.btn_text != blank -%}
         <div class="goshop">
           <a href="{{section.settings.url}}">
@@ -223,11 +340,6 @@
           "id": "image_mobile",
           "label": "Image for mobile",
           "info": "150 x 150px .jpg recommended"
-        },
-        {
-          "type": "checkbox",
-          "id": "abs_position",
-          "label": "Absolute Position"
         }
       ]
     }
@@ -259,6 +371,11 @@
       "type": "url",
       "id": "btn_url",
       "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "abs_position",
+      "label": "Absolute Position"
     },
     {
       "type": "color",

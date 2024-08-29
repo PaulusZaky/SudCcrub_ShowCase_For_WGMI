@@ -88,6 +88,7 @@
       # When color or image is not explicitly passed, we parse the config
       assign swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />'
       assign swatch_style = '--swatch-background: linear-gradient(to right, ' | append: downcase_label | append: ', ' | append: downcase_label | append: ')'
+      assign speckled = false
 
       if downcase_label == 'charcoal'
         assign swatch_style = '--swatch-background: linear-gradient(to right, ' | append: '#4B4F54' | append: ', ' | append: '#4B4F54' | append: ')'
@@ -103,6 +104,7 @@
         assign swatch_style = '--swatch-background: linear-gradient(to right, ' | append: '#CBC4BC' | append: ', ' | append: '#CBC4BC' | append: ')'
       elsif downcase_label == 'speckled white'
         assign swatch_style = '--swatch-background: linear-gradient(to right, ' | append: '#F4F4F0' | append: ', ' | append: '#F4F4F0' | append: ')'
+        assign speckled = true
       endif
 
       for swatch_item in swatch_config
@@ -230,7 +232,7 @@
     {%- assign white_label_list = 'general.label.white' | t | replace: ', ', ',' | downcase | split: ',' -%}
 
     <{{ option_value_tag }}
-      class="color-swatch {% if settings.color_swatch_style == 'rectangle' %}color-swatch--rectangle{% endif %} {% if size == 'sm' %}color-swatch--sm{% endif %} {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %} {% if white_label_list contains downcase_label %}ring-inset{% endif %} {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %}"
+      class="color-swatch {% if speckled %}speckled {%endif%}{% if settings.color_swatch_style == 'rectangle' %}color-swatch--rectangle{% endif %} {% if size == 'sm' %}color-swatch--sm{% endif %} {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %} {% if white_label_list contains downcase_label %}ring-inset{% endif %} {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %}"
       {% if show_tooltip %}
         data-tooltip="{{ label | default: value | escape }}"
       {% endif %}

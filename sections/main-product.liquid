@@ -112,6 +112,9 @@
     inset: unset;
     line-height: 0px;
   }
+  .color-swatch.speckled:before {
+    content:url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/check-mark-black.svg?v=1724226774');
+  }
   .variant-picker__option-info {
     margin-bottom: 12px;
   }
@@ -255,6 +258,7 @@
     font-size: 12px;
     line-height: 15.38px;
   }
+
   @media screen and (max-width: 999px) {
     #shopify-section-{{ section.id }} {
       --section-spacing-block-start: {% if section.settings.mobile_media_size == 'expanded' %}0px{% else %}var(--container-gutter){% endif %};
