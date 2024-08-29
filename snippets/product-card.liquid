@@ -70,10 +70,6 @@
     --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
-  {%- if show_badges and product.media.size > 0 -%}
-    {%- render 'product-badges', product: product, class: 'product-card__badge-list' -%}
-  {%- endif -%}
-
   {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------
     PRODUCT MEDIA
@@ -82,6 +78,9 @@
 
   {%- if product.media.size > 0 -%}
     <div class="product-card__figure">
+      {%- if show_badges and product.media.size > 0 -%}
+        {%- render 'product-badges', product: product, class: 'product-card__badge-list' -%}
+      {%- endif -%}
       <a data-instant>
         {%- capture sizes -%}
           {%- if stacked -%}
