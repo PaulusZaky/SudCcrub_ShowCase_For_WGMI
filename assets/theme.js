@@ -912,7 +912,7 @@ split_fn = function(force = false) {
             z-index: -1;
           }
         </style>
-        <span class="split-lines" part="split-lines" style="display: ruby; ">${line}</span>
+        <span class="split-lines" part="split-lines" style="display: table-row; ">${line}</span>
       </span>
     `)));
   __privateSet(this, _requireSplit, false);
