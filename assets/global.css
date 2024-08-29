@@ -343,4 +343,16 @@
     }
 }
 
+.product-card__badge-list {
+    top: 8px !important;
+    left: 6px !important;
+}
+
+@media screen and (min-width:700px) {
+    .product-card__badge-list {
+        top: 14px !important;
+        left: 12px !important;
+    }
+}
+
 /* scroll-caroucel */
