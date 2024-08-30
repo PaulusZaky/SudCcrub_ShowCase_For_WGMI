@@ -233,18 +233,6 @@
       <div class="product-comment">
         Refresh & relax with this body scrubber that's gentle on skin, but tough on dirt.
       </div>
-      <a href="{{product.url}}" class="goshop">
-        SHOP NOW
-        {%- render 'overlay-shopnow-btn-arrowicon' -%}
-      </a>
-    </div>
-
-    {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
-      {%- capture rating_class -%}{% unless text_alignment == 'center' %}sm:hidden{% endunless %}{%- endcapture -%}
-      {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
-    {%- endif -%}
-
-    {% comment %}
       {%- if settings.product_color_display != 'hide' and show_swatches != false -%}
         {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
 
@@ -318,6 +306,15 @@
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
-    {% endcomment %}
+      <a href="{{product.url}}" class="goshop">
+        SHOP NOW
+        {%- render 'overlay-shopnow-btn-arrowicon' -%}
+      </a>
+    </div>
+
+    {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
+      {%- capture rating_class -%}{% unless text_alignment == 'center' %}sm:hidden{% endunless %}{%- endcapture -%}
+      {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
+    {%- endif -%}
   </div>
 </product-card>

@@ -252,7 +252,7 @@
         "1664424046b00c932c-3": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/mint-face-scrubber-female_8a7edf1a-876e-40b2-87ff-2fee9f720875.png",
+            "image": "shopify:\/\/shop_images\/clay-face-scrubber-female.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -377,6 +377,7 @@
         "subheading": "",
         "btn_text": "SHOP NOW",
         "btn_url": "shopify:\/\/products\/sud-scrub-2-0",
+        "abs_position": false,
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -473,8 +474,8 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "title": "",
-        "subheading": "",
+        "title": "GLOWING SKIN, GLOWING REVIEWS",
+        "subheading": "HEAR IT FROM THOSE WHO FELL IN LOVE AT FIRST SCRUB",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -547,6 +548,19 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
+        },
+        "item_AzCU4M": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hi_res-5a-SudScrub_r2_04Z_0206.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
         }
       },
       "block_order": [
@@ -554,11 +568,12 @@
         "1664424046b00c932c-1",
         "e4a0ef18-1856-4ddd-83d8-871a60d7acac",
         "1664424046b00c932c-2",
-        "1664424046b00c932c-3"
+        "1664424046b00c932c-3",
+        "item_AzCU4M"
       ],
       "settings": {
         "full_width": true,
-        "wrap_image": false,
+        "wrap_image": true,
         "block_size": "large",
         "title": "",
         "subheading": "",

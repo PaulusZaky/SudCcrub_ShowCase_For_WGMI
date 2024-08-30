@@ -300,7 +300,7 @@
     height: 40px;
 }
 
-.circle-chevron::after {
+.accordion.group .circle-chevron::after {
     content: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/plus-chevron.svg?v=1723912409")
 }
 
@@ -308,7 +308,7 @@
     background: unset;
 }
 
-.group[aria-expanded=true] .circle-chevron.group-expanded\:colors:not([disabled])::after {
+.accordion.group[aria-expanded=true] .circle-chevron.group-expanded\:colors:not([disabled])::after {
     content: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/minus-chevron.svg?v=1723912409")
 }
 
@@ -364,3 +364,43 @@
 }
 
 /* scroll-caroucel */
+
+/* checkbox */
+.custom-checkbox[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border: 2px solid #000;
+    /* Set the border color and thickness */
+    border-radius: 4px;
+    /* This gives the rounded corners */
+    position: relative;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: none;
+    border: solid 1px #000;
+}
+
+/* Checkmark for checked state */
+.custom-checkbox[type="checkbox"]:checked {
+    background-color: #000;
+    /* Set the background color for the checked state */
+    border-color: #000;
+    /* Adjust the border color */
+}
+
+/* swatch */
+.color-swatch:before {
+    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/check-mark.svg?v=1724226774');
+    box-shadow: none;
+    border-radius: 0;
+    inset: unset;
+    line-height: 0px;
+}
+
+.color-swatch.speckled:before {
+    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/check-mark-black.svg?v=1724226774');
+}
