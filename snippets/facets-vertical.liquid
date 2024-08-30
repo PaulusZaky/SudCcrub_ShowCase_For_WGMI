@@ -166,7 +166,9 @@
         {%- assign iterated_filters_count = iterated_filters_count | plus: 1 -%}
       {%- endif -%}
     {%- endfor -%}
-
+    <a href="/collections/our-products" is="facet-link" class="facet-clear-all">
+      <span>RESET FILTERS</span>
+    </a>
     {%- unless update_on_change -%}
       <div class="facets-drawer__floating-apply">
         {%- assign apply_label = 'collection.faceting.apply_filters' | t -%}
@@ -179,7 +181,6 @@
         -%}
       </div>
     {%- endunless -%}
-
     <noscript style="display: block; margin-top: 20px;">
       {%- assign button_content = 'collection.faceting.apply_filters' | t -%}
       {%- render 'button', type: 'submit', content: button_content, size: 'lg', stretch: true -%}

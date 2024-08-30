@@ -6,6 +6,13 @@
   #shopify-section-{{ section.id }} .collection-header {
     margin: 0;
   }
+  #shopify-section-{{ section.id }} .section-blends {
+    padding: 76px 0;
+  }
+
+  #shopify-section-{{ section.id }} .section-header {
+    padding: 0;
+  }
 </style>
 {%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
   {%- assign show_image = true -%}
