@@ -131,9 +131,10 @@
     {% comment %} product-card {% endcomment %}
     #shopify-section-{{ section.id }} .product-card {
       border-radius: 0;
-      transition: .5s;
+      transition: display 3s;
       display: flex;
       flex-direction: column;
+      transition: 0.3s;
       gap: 0;
     }
     #shopify-section-{{ section.id }} .product-card__info {
@@ -310,17 +311,34 @@
       #shopify-section-{{ section.id }} .container {
         margin: 0 80px;
       }
+      #shopify-section-{{ section.id }} .desktop-collection  {
+        column-gap: 24px;
+        row-gap: 18px;
+      }
       #shopify-section-{{ section.id }} .container .product-list {
         row-gap: 18px;
         column-gap: 30px;
       }
-
+      #shopify-section-{{ section.id }} .collection__top-bar {
+        margin: 0px;
+      }
+      #shopify-section-{{ section.id }} .sort-by-facet {
+        gap: 37px;
+      }
+      #shopify-section-{{ section.id }} .desktop-collection .collection__facets {
+        margin: 0;
+      }
+      #shopify-section-{{ section.id }} .collection .collection__facets .text-with-icon {
+        padding: 25px 0 25px 20px;
+      }
       #shopify-section-{{ section.id }} .goshop {
         display: none;
       }
       #shopify-section-{{ section.id }} .product-card:hover .goshop,
       #shopify-section-{{ section.id }} .product-card:focus .goshop {
         display: flex;
+        transition: 3s;
+        cursor: point;
       }
     }
 
