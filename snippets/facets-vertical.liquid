@@ -166,7 +166,7 @@
         {%- assign iterated_filters_count = iterated_filters_count | plus: 1 -%}
       {%- endif -%}
     {%- endfor -%}
-    <a href="/collections/our-products" is="facet-link" class="facet-clear-all">
+    <a href="/collections/our-products" is="facet-link" class="facet-clear-all" onlick="closeFilterSortDig()">
       <span>RESET FILTERS</span>
     </a>
     {%- unless update_on_change -%}

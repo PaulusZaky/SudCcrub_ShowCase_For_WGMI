@@ -2213,7 +2213,21 @@ var FacetLink = class extends HTMLAnchorElement {
   }
   _onFacetUpdate(event) {
     event.preventDefault();
-    const sectionId = event.target.closest(".shopify-section").id.replace("shopify-section-", ""), url = new URL(this.href);
+    let sectionId;
+    let url = new URL(this.href);
+    
+    if (event.target.closest(".shopify-section")) {
+        sectionId = event.target.closest(".shopify-section").id.replace("shopify-section-", "");
+    } else {
+        sectionId = event.target.closest('.facets-vertical').getAttribute('section-id').replace("shopify-section-", "");
+    }
+
+    const shadowHost = document.querySelector('#facets-drawer');
+    const closeButton = shadowHost.shadowRoot.querySelector('button');
+    if (closeButton) {
+      closeButton.click();
+    }
+    
     url.searchParams.set("section_id", sectionId);
     this.dispatchEvent(new CustomEvent("facet:update", {
       bubbles: true,

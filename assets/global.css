@@ -9,6 +9,13 @@
     padding: 0;
 }
 
+.checkbox~label {
+    opacity: 1 !important;
+}
+
+.checkbox:checked~label {
+    font-weight: 600;
+}
 
 /* section */
 .section-blends {
@@ -325,6 +332,7 @@
 
 .group:hover .circle-chevron.group-hover\:colors:not([disabled]) {
     background: inherit;
+    color: inherit;
 }
 
 .page {
@@ -366,7 +374,8 @@
 /* scroll-caroucel */
 
 /* checkbox */
-.custom-checkbox[type="checkbox"] {
+.custom-checkbox[type="checkbox"],
+.custom-checkbox[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -385,7 +394,8 @@
 }
 
 /* Checkmark for checked state */
-.custom-checkbox[type="checkbox"]:checked {
+.custom-checkbox[type="checkbox"]:checked,
+.custom-checkbox[type="radio"]:checked {
     background-color: #000;
     /* Set the background color for the checked state */
     border-color: #000;

@@ -176,6 +176,23 @@
             anchor-horizontal="end"
             anchor-vertical="end"
           >
+            {% comment %}
+              <div class="checkbox-list">
+                {%- assign selected_sort_by = results.sort_by | default: results.default_sort_by -%}
+
+                {%- for option in results.sort_options -%}
+                  {%- if option.name != blank -%}
+                    {%- if option.value == selected_sort_by -%}
+                      {%- assign checked = true -%}
+                    {%- else -%}
+                      {%- assign checked = false -%}
+                    {%- endif -%}
+
+                    {%- render 'checkbox', type: 'radio', label: option.name, name: 'sort_by', value: option.value, checked: checked, id_prefix: id_prefix -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {% endcomment %}
             <x-listbox class="popover-listbox" aria-owns="{{ sort_by_popover_id }}-value">
               {%- for sort_option in results.sort_options -%}
                 {%- if sort_option.name != blank -%}
@@ -188,7 +205,20 @@
                       aria-selected="true"
                     {% endif %}
                   >
-                    <span class="reversed-link">{{ sort_option.name }}</span>
+                    {%- if sort_option.value == selected_sort_by_value -%}
+                      {%- assign checked = true -%}
+                    {%- else -%}
+                      {%- assign checked = false -%}
+                    {%- endif -%}
+
+                    {%- render 'checkbox',
+                      type: 'radio',
+                      label: sort_option.name,
+                      name: 'sort_by',
+                      value: sort_option.value,
+                      checked: checked,
+                      id_prefix: id_prefix
+                    -%}
                   </button>
                 {%- endif -%}
               {%- endfor -%}
