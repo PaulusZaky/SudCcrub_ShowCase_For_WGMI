@@ -145,7 +145,7 @@
           {%- endcase -%}
         {%- endcapture -%}
 
-        {%- if section.settings.open_first_filter_group and iterated_filters_count == 0 -%}
+        {%- if section.settings.open_filter_group -%}
           {%- assign open_accordion = true -%}
         {%- else -%}
           {%- assign open_accordion = false -%}

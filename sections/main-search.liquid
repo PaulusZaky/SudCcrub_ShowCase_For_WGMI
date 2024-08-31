@@ -71,7 +71,9 @@
   {%- if search.performed and search.results_count > 0 or active_filters.size > 0 -%}
     <div class="page-spacer">
       <div class="v-stack gap-6 sm:gap-8">
-        <h1 class="h2 text-center">{{- 'search.results_count' | t: count: search.results_count, terms: search.terms -}}</h1>
+        <h1 class="h2 text-center">
+          {{- 'search.results_count' | t: count: search.results_count, terms: search.terms -}}
+        </h1>
         {{- search_form -}}
       </div>
 
@@ -84,26 +86,54 @@
 
             <facet-drawer header-bordered id="facets-drawer" class="facets-drawer drawer" open-from="left">
               <p class="h5" slot="title">{{ 'collection.faceting.filters' | t }}</p>
-              {%- render 'facets-vertical', results: search, show_filters: true, show_sort_by: section.settings.show_sort_by, update_on_change: false -%}
+              {%- render 'facets-vertical',
+                results: search,
+                show_filters: true,
+                show_sort_by: section.settings.show_sort_by,
+                update_on_change: false
+              -%}
             </facet-drawer>
 
             {%- if section.settings.filter_layout == 'horizontal' -%}
-              {%- render 'collection-top-bar', results: search, show_filters: show_filters, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
+              {%- render 'collection-top-bar',
+                results: search,
+                show_filters: show_filters,
+                show_active_filters: show_filters,
+                show_sort_by: section.settings.show_sort_by
+              -%}
             {%- else -%}
-              {%- render 'collection-top-bar', results: search, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
+              {%- render 'collection-top-bar',
+                results: search,
+                show_filters: false,
+                show_active_filters: show_filters,
+                show_sort_by: section.settings.show_sort_by
+              -%}
             {%- endif -%}
 
             {%- comment -%}We also need to render the button, that is floating on mobile{%- endcomment -%}
             <facet-floating-filter class="facets__floating-filter md:hidden">
               {%- assign filter_label = 'collection.faceting.filter_and_sort' | t -%}
-              {%- render 'button', size: 'xl', content: filter_label, icon: 'filter', style: 'fill', background: settings.text_color, text_color: settings.background, aria_controls: 'facets-drawer' -%}
+              {%- render 'button',
+                size: 'xl',
+                content: filter_label,
+                icon: 'filter',
+                style: 'fill',
+                background: settings.text_color,
+                text_color: settings.background,
+                aria_controls: 'facets-drawer'
+              -%}
             </facet-floating-filter>
           {%- endif -%}
 
           {%- if show_filters and section.settings.filter_layout == 'sidebar' -%}
             <div class="collection__facets">
               <safe-sticky class="collection__facets-scroller">
-                {%- render 'facets-vertical', results: search, show_filters: true, show_sort_by: false, update_on_change: true -%}
+                {%- render 'facets-vertical',
+                  results: search,
+                  show_filters: true,
+                  show_sort_by: false,
+                  update_on_change: true
+                -%}
               </safe-sticky>
             </div>
           {%- endif -%}
@@ -135,7 +165,12 @@
                     {%- assign product_results = search.results | where: 'object_type', 'product' -%}
 
                     {%- for product in product_results -%}
-                      {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true -%}
+                      {%- render 'product-card',
+                        product: product,
+                        stacked: true,
+                        position: forloop.index,
+                        show_badges: true
+                      -%}
                     {%- endfor -%}
                   </product-list>
                 </reveal-items>
@@ -168,7 +203,7 @@
   "class": "shopify-section--main-search",
   "tag": "section",
   "settings": [
-      {
+    {
       "type": "range",
       "id": "products_per_page",
       "label": "Products per page",
@@ -254,8 +289,8 @@
     },
     {
       "type": "checkbox",
-      "id": "open_first_filter_group",
-      "label": "Open first group by default",
+      "id": "open_filter_group",
+      "label": "Open group by default",
       "default": false
     }
   ]
