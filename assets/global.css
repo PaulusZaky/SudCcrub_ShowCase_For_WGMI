@@ -1,4 +1,8 @@
 /* global */
+html {
+    padding-bottom: 0 !important;
+}
+
 .full-bleed {
     margin: 0;
     padding: 0;

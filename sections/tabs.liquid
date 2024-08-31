@@ -4,6 +4,7 @@
   <style>
     #shopify-section-{{ section.id }} .section-blends {
       background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/problem-solutions-mobile-bg.jpg?v=1723836640") !important;
+      background-size: cover;
     }
     .tabs-container {
       background: #FFFFFF;
@@ -70,8 +71,15 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      width: 100%;
       gap: 12px;
     }
+
+    #tabs-swiper .overlay-goshop-right .overlay-goshop-reviewstar-container {
+      display: flex;
+      gap: 2px;
+    }
+
     #tabs-swiper .overlay-goshop-right {
       margin: auto;
     }
@@ -84,11 +92,18 @@
     }
     #tabs-swiper .overlay-goshop-right p:nth-of-type(1) {
       display: block;
+      font-family: var(--btn-font-family);
+      font-size: 12px;
+      font-weight: 300;
+      text-align: left;
     }
 
     #tabs-swiper .goshop{
       padding: 18px 40px;
       gap: 24px;
+      margin: 0 auto;
+      width: 70%;
+      max-width: 276px;
     }
     #tabs-swiper .goshop span{
       font-size: 16px;
