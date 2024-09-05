@@ -85,9 +85,10 @@
     }
 
     .footer__wrapper .form-control .floating-label {
-      padding: 18.13px 21.46px;
+      padding: 0px 21.46px;
       margin: 0px;
       font-size: 14px;
+      height: 43.6px;
     }
 
     .footer__aside {
@@ -109,7 +110,7 @@
       background-color: white;
       font-size: 18px;
       width: 296px;
-      height: 59px;
+      height: 43.6px;
     }
 
     .footer .form-control label {
@@ -128,7 +129,7 @@
     }
     /* Style the newsletter submit button */
     .newsletter-submit-button {
-      background-color: #FCD817;
+      background-color: #fcd817;
       color: black;
       padding: 10px 20px;
       border: none;
@@ -143,12 +144,12 @@
       justify-content: center;
       border-radius: 50px;
       width: 296px;
-      height: 64px;
+      height: 44.4px;
     }
 
     .footer__block--newsletter {
       width: 296px;
-      /* height: 207px; */
+      margin: auto;
       gap: 20px;
     }
 
@@ -173,88 +174,88 @@
       line-height: 16px;
     }
 
-    @media screen and (min-width:700px) {
+    @media screen and (min-width: 700px) {
       .footer__block-list {
-          width: 640px;
-          gap: var(--footer-block-list-gap);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
       }
 
       .footer__wrapper .form-control .floating-label {
-          padding: 17.75px 29px;
-          margin: 0px;
-          font-size: 18px;
+        padding: 0px 29px;
+        margin: 0px;
+        height: 59px;
+        font-size: 18px;
       }
 
       .footer__copyright {
-          font-size: 16px;
-          line-height: 16px;
-          font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: 400;
       }
 
       .text-subdued-mobile {
-          display: none;
+        display: none;
       }
 
       .text-subdued-desktop {
-          display: block;
+        display: block;
       }
 
       .footer .form-control input {
-          border-radius: 50px;
-          background-color: #fff;
-          width: 400px;
-          font-size: 18px;
-          height: 59px;
+        width: 100%;
+        max-width: 400px;
+        font-size: 18px;
+        height: 59px;
       }
 
       .newsletter-submit-button {
-          padding: 10px 20px;
-          font-size: 20px;
-          line-height: 28px;
-          width: 400px;
+        padding: 10px 20px;
+        font-size: 20px;
+        line-height: 28px;
+        width: 100%;
+        max-width: 400px;
+        height: 64px;
       }
 
       .footer__block--newsletter {
-          width: 400px;
-          height: 207px;
-          gap: 20px;
+        width: 100%;
+        max-width: 400px;
+        {% comment %} height: 207px; {% endcomment %}
+        margin: 0;
+        gap: 20px;
       }
 
       .footer__aside-bottom {
-          justify-content: space-between !important;
-          flex-flow: row-reverse;
+        justify-content: space-between !important;
+        flex-flow: row-reverse;
       }
 
       .footer__block-list div:nth-child(1) .footer_aboutus p {
-          width: 260px;
+        width: 260px;
+      }
+      .footer__block--text, .footer__block--newsletter {
+        grid-column: auto;
       }
     }
 
-    @media screen and (min-width:900px) {
-      .footer__block-list {
-          width: 864px
-      }
-    }
-
-    @media screen and (max-width:1300px) {
-      .footer__block-list {
-          flex-wrap: wrap;
-      }
-    }
-
-    @media screen and (min-width:1300px) {
-      .footer__block-list {
-          width: 1280px;
-          flex-wrap: nowrap;
-      }
-    }
     @media screen and (min-width: 1000px) {
-      #shopify-section-{{ section.id }} {
-        {%- if newsletter_block != blank -%}
-          --footer-block-list-gap: var(--spacing-10);
-        {%- endif -%}
+      .footer__block-list {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 83.34vw;
+        gap: 16px;
+      }
+    }
 
-        --footer-block-list-justify-content: space-between;
+    @media screen and (min-width: 1150px) {
+      .footer__block-list {
+        gap: 32px;
+      }
+    }
+    @media screen and (min-width: 1300px) {
+      .footer__block-list {
+        justify-content: space-around;
       }
     }
   </style>
