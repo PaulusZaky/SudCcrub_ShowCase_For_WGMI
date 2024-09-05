@@ -9,16 +9,12 @@
           "type": "message",
           "settings": {
             "text": "FREE US SHIPPING ON ALL $19+ ORDERS!",
-            "url": "https:\/\/www.sudscrub.com\/policies\/shipping-policy"
+            "url": "https://www.sudscrub.com/policies/shipping-policy"
           }
         }
       },
-      "block_order": [
-        "message"
-      ],
-      "custom_css": [
-
-      ],
+      "block_order": ["message"],
+      "custom_css": [],
       "settings": {
         "enable_sticky": false,
         "autoplay": false,
@@ -39,7 +35,7 @@
         "logo": "{{shop.brand.logo}}",
         "logo_max_width": 180,
         "logo_mobile_max_width": 100,
-        "menu": "main-menu",
+        "menu": "main-menu-for-new-theme",
         "sidebar_menu": "",
         "secondary_menu": "",
         "menu_open_trigger": "click",
@@ -57,8 +53,5 @@
       }
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+  "order": ["announcement-bar", "header"]
 }

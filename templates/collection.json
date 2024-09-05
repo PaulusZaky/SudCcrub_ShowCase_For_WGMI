@@ -1,5 +1,27 @@
 {
   "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": {
+        "full_width": false,
+        "title": "FIND YOU PERFECT MATCH",
+        "subheading": "FACE, BODY, AND ALL THE ACCESSORIES YOU NEED",
+        "allow_transparent_header": false,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "text_with_icons_dYypKP": {
       "type": "text-with-icons",
       "blocks": {
@@ -74,26 +96,6 @@
         "text_color": ""
       }
     },
-    "banner": {
-      "type": "collection-banner",
-      "settings": {
-        "full_width": false,
-        "allow_transparent_header": false,
-        "enable_parallax": true,
-        "show_collection_title": true,
-        "show_collection_description": true,
-        "show_collection_image": true,
-        "collection_title_size": "h0",
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "featured_product": "",
-        "featured_product_heading": "Featured product",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
-      }
-    },
     "main": {
       "type": "main-collection",
       "settings": {
@@ -114,7 +116,7 @@
         "item_rnCEBm": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/clay-face-scrubber-female.png",
+            "image": "shopify:\/\/shop_images\/clay-face-scrubber-female.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -127,7 +129,7 @@
         "item_PEbn9A": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/hi_res-d-Sud_Scrub_r1_group.png",
+            "image": "shopify:\/\/shop_images\/hi_res-d-Sud_Scrub_r1_group.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -140,7 +142,7 @@
         "item_dAdaTY": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/hi_res-5c-SudScrub_r2_04Z_0152.jpg",
+            "image": "shopify:\/\/shop_images\/hi_res-5c-SudScrub_r2_04Z_0152.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -153,7 +155,7 @@
         "item_NttJLb": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/blue-face-scrubber-male.png",
+            "image": "shopify:\/\/shop_images\/blue-face-scrubber-male.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -166,7 +168,7 @@
         "item_VJQBYR": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/hi_res-5f-SudScrub_r2_04Z_0034.jpg",
+            "image": "shopify:\/\/shop_images\/hi_res-5f-SudScrub_r2_04Z_0034.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -179,7 +181,7 @@
         "item_Ki6Kpk": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/hi_res-5a-SudScrub_r2_04Z_0206.jpg",
+            "image": "shopify:\/\/shop_images\/hi_res-5a-SudScrub_r2_04Z_0206.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -290,8 +292,8 @@
     }
   },
   "order": [
-    "text_with_icons_dYypKP",
     "banner",
+    "text_with_icons_dYypKP",
     "main",
     "image_link_blocks_xn8PLp",
     "text_with_icons_dYypKP1"

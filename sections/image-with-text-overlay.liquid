@@ -269,7 +269,12 @@
         font-size: 18px;
         line-height: 23.08px;
     }
-
+    .overlay-prose {
+      display: inline-block;
+      position: relative;
+      padding: 56.5px 0 !important;
+      margin-left: 8.2%;
+    }
     .overlay-subheading-text {
         font-family: var(--btn-font-family);
         font-weight: 700;
@@ -301,13 +306,6 @@
         background-color: #ffc9d0;
         z-index: -1;
         bottom: 5px;
-    }
-
-    .overlay-prose {
-        display: inline-block;
-        position: relative;
-        padding: 56.5px 0 !important;
-        margin-left: 123px;
     }
 
     .gradient-top-product-bk {
@@ -420,6 +418,12 @@
 
     #shopify-section-{{ section.id }} .overlay-goshop-right p:nth-of-type(2) {
         display: none;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .overlay-prose {
+      margin-left: 123px;
     }
   }
 </style>
