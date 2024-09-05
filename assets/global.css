@@ -66,6 +66,14 @@ html {
 }
 
 /* swiper */
+.swiper-container {
+    width: 100vw;
+}
+
+.swiper-footer {
+    padding-bottom: 5px;
+}
+
 .next-button,
 .prev-button {
     opacity: 1;
@@ -79,7 +87,7 @@ html {
     position: relative;
     color: #000;
     width: 32px;
-    height: 32px;
+    height: 32px !important;
     border-radius: 50%;
     text-align: center;
     box-shadow: 0px 0px 14.69px 0px #0000001A;
@@ -88,14 +96,15 @@ html {
 
 .swiper-button-next,
 .swiper-button-prev {
+    position: relative !important;
     box-shadow: none;
+    background-image: none !important;
 }
 
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled,
 .circle-button[disabled] {
-    opacity: 1;
-    background: #FFFFFF;
+    opacity: 1 !important;
 }
 
 .swiper-button-next,
@@ -116,8 +125,8 @@ html {
 
 .swiper-button-next::after,
 .next-button::after {
-    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow.svg?v=1723870614');
-    line-height: 0;
+    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow.svg?v=1723870614') !important;
+    line-height: 0 !important;
     transform: rotate(180deg);
     display: flex;
     justify-content: center;
@@ -126,15 +135,15 @@ html {
 
 .swiper-button-next[aria-disabled="true"]::after,
 .next-button:disabled::after {
-    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow.svg?v=1723870614');
+    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow.svg?v=1723870614') !important;
     transform: rotate(0deg);
 }
 
 .swiper-button-prev::after,
 .prev-button::after {
-    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow.svg?v=1723537216');
+    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow.svg?v=1723537216') !important;
     transform: rotate(0deg);
-    line-height: 0;
+    line-height: 0 !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,7 +151,7 @@ html {
 
 .swiper-button-prev[aria-disabled="true"]::after,
 .prev-button:disabled::after {
-    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow.svg?v=1723537216');
+    content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow.svg?v=1723537216') !important;
     transform: rotate(180deg);
 }
 
@@ -153,12 +162,17 @@ html {
 
 .swiper-pagination-bullets.swiper-pagination-horizontal {
     width: auto;
+    bottom: 0;
 }
 
 .swiper-pagination {
     position: relative !important;
     margin-left: auto;
     margin-right: auto;
+    display: block;
+    line-height: 1;
+    gap: 8px;
+    bottom: 9px !important;
 }
 
 .swiper-pagination .swiper-pagination-bullet {
@@ -221,7 +235,7 @@ html {
     .swiper-button-prev,
     .next-button,
     .prev-button {
-        position: absolute;
+        position: absolute !important;
         top: 43%;
         width: 58px;
         height: 58px;
@@ -247,7 +261,7 @@ html {
 
     .swiper-button-next::after,
     .next-button::after {
-        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow-ds.svg?v=1723870614');
+        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow-ds.svg?v=1723870614') !important;
         line-height: 0;
         transform: rotate(180deg);
         display: flex;
@@ -257,13 +271,13 @@ html {
 
     .swiper-button-next[aria-disabled="true"]::after,
     .next-button:disabled::after {
-        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow-ds.svg?v=1723870614');
+        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow-ds.svg?v=1723870614') !important;
         transform: rotate(0deg);
     }
 
     .swiper-button-prev::after,
     .prev-button::after {
-        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow-ds.svg?v=1723537216');
+        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/green-arrow-ds.svg?v=1723537216') !important;
         transform: rotate(0deg);
         line-height: 0;
         display: flex;
@@ -273,7 +287,7 @@ html {
 
     .swiper-button-prev[aria-disabled="true"]::after,
     .prev-button:disabled::after {
-        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow-ds.svg?v=1723537216');
+        content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow-ds.svg?v=1723537216') !important;
         transform: rotate(180deg);
     }
 }

@@ -1,5 +1,6 @@
 {%- render 'section-spacing-collapsing' -%}
-
+{% comment %} {{- 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/css/swiper.css' | stylesheet_tag: preload: true -}} {% endcomment %}
+{{- 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css' | stylesheet_tag -}}
 <style>
   {%- assign section_background = section.settings.background | default: settings.background -%}
   {%- assign card_background = section.settings.product_card_background | default: settings.product_card_background -%}
@@ -24,13 +25,13 @@
     flex-direction: column;
     gap: 46px;
   }
-  #shopify-section-{{ section.id }} .swiper-wrapper .swiper-slide:first-child.swiper-slide-prev{
+  {% comment %} #shopify-section-{{ section.id }} .swiper-wrapper .swiper-slide:first-child.swiper-slide-prev{
     margin-left:35px;
   }
 
   #shopify-section-{{ section.id }} .swiper-wrapper .swiper-slide:last-child.swiper-slide-next {
     margin-right:35px;
-  }
+  } {% endcomment %}
   #shopify-section-{{ section.id }} .product-card .product-card__aside {
     display: none;
   }
@@ -57,8 +58,7 @@
   }
   .swiper-pagination {
     position: relative !important;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
   }
 
   .swiper-pagination .swiper-pagination-bullet{
@@ -107,15 +107,21 @@
     justify-content: center;
   }
   .product-card:hover,
-  .product-card:focus{
+  .product-card:focus,
+  .product-card__info.swiper-slide-active {
+    background: rgb(var(--background)) !important;
+  }
+  .swiper-slide-active {
     background: rgb(var(--background)) !important;
   }
   .product-card:hover .product-card__info,
-  .product-card:focus .product-card__info {
+  .product-card:focus .product-card__info,
+  .product-card.swiper-slide-active .product-card__info{
     padding: 20px 24px !important;
   }
   .product-card:hover .goshop,
-  .product-card:focus .goshop {
+  .product-card:focus .goshop,
+  .product-card.swiper-slide-active .goshop{
     display: flex;
   }
 
@@ -279,16 +285,52 @@
   </div>
 </div>
 <!-- Swiper JS -->
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> {% endcomment %}
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.2/js/swiper.js"></script> {% endcomment %}
 <!-- Initialize Swiper -->
 <script>
   var swiper = new Swiper('.mySwiper', {
-    slidesPerView: 1,
+    slidesPerView: 1.2,
     spaceBetween: 22,
     centeredSlides: true,
-    centeredSlidesBounds: true,
+    {% comment %} centeredSlidesBounds: true, {% endcomment %}
     grabCursor: true,
-    {% comment %} loop: true, {% endcomment %}
+    loop: true,
+    mousewheel: false,
+    simulateTouch: false,
+    allowTouchMove: false,
+    breakpoints: {
+      // You can replace '@0.00' with 0 or remove it
+      0: {
+        slidesPerView: 1.2,
+        spaceBetween: 22,
+      },
+      450: {
+        slidesPerView: 1.6,
+        spaceBetween: 24,
+      },
+      640: {
+        slidesPerView: 2.2,
+        spaceBetween: 24,
+      },
+      768: { // When the viewport is >= 768px
+        slidesPerView: 2.6,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3.2,
+        spaceBetween: 16,
+      },
+      1200: {
+        slidesPerView: 3.3,
+        spaceBetween: 28,
+      },
+      1500: {
+        slidesPerView: 3.3,
+        spaceBetween: 48,
+      },
+    },
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -297,35 +339,9 @@
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    // And if we need scrollbar
+    // Scrollbar configuration
     scrollbar: {
       el: '.swiper-scrollbar',
-    },
-    breakpoints: {
-      '@0.00': {
-        slidesPerView: 1.2,
-        spaceBetween: 22,
-      },
-      '450': {
-        slidesPerView: 1.6,
-        spaceBetween: 24,
-      },
-      '680': {
-        slidesPerView: 2.2,
-        spaceBetween: 24,
-      },
-      '1000': {
-        slidesPerView: 3.2,
-        spaceBetween: 16,
-      },
-      '1200': {
-        slidesPerView: 3.3,
-        spaceBetween: 28,
-      },
-      '1500': {
-        slidesPerView: 3.3,
-        spaceBetween: 48,
-      },
     },
   });
 </script>
