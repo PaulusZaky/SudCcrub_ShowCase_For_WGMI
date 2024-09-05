@@ -904,9 +904,9 @@ split_fn = function(force = false) {
           .split-lines::after {
             content: "";
             position: absolute;
-            height: 20px;
+            height: 14px;
             background-color: #ffc9d0;
-            bottom: 0;
+            bottom: 3px;
             left: 0;
             width: 100%;
             z-index: -1;
