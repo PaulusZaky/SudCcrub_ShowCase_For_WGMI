@@ -23,6 +23,9 @@
   #shopify-section-{{ section.id }} .section {
     padding: 32px 0;
   }
+  #shopify-section-{{ section.id }} .floating-controls-container {
+    display: block;
+  }
 
   #shopify-section-{{ section.id }} .collection-list {
     justify-content: center;
@@ -121,6 +124,16 @@
       {% comment %} gap: 30px; {% endcomment %}
       gap: 0;
     }
+    #shopify-section-{{ section.id }} .swiper-button-next,
+    #shopify-section-{{ section.id }} .swiper-button-prev {
+      top: 55.5%;
+    }
+    #shopify-section-{{ section.id }} .swiper-button-next {
+      right: 54px !important;
+    }
+    #shopify-section-{{ section.id }} .swiper-button-prev {
+      left: 54px !important;
+    }
   }
 
   @media screen and (min-width: 1000px) {
@@ -146,9 +159,6 @@
       padding-bottom: 48px;
     }
     #shopify-section-{{ section.id }} .swiper-pagination {
-      position: absolute !important;
-      left:0;
-      right: 0;
     }
     #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet {
       background: #B7E3D8;
@@ -156,12 +166,12 @@
     .swiper-pagination .swiper-pagination-bullet-active {
       background: #000;
     }
-    #shopify-section-{{ section.id }} .swiper-button-next {
+    {% comment %} #shopify-section-{{ section.id }} .swiper-button-next {
       right: 0 !important;
     }
     #shopify-section-{{ section.id }} .swiper-button-prev {
       left: 0 !important;
-    }
+    } {% endcomment %}
     #shopify-section-{{ section.id }} .navigation-with-controls .swiper-footer {
       display: flex;
     }
@@ -176,6 +186,12 @@
     }
     #shopify-section-{{ section.id }} .scroll-area{
       margin: 0 115px;
+    }
+    #shopify-section-{{ section.id }} .swiper-button-next {
+      right: 92px !important;
+    }
+    #shopify-section-{{ section.id }} .swiper-button-prev {
+      left: 92px !important;
     }
   }
 </style>
@@ -296,13 +312,6 @@
               </div>
             {%- endfor -%}
           </collection-list>
-          {% if section.settings.show_navigation_bar %}
-            <div class="swiper-footer">
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-pagination"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-          {% endif %}
           {% if section.settings.mobile_no_wrap %}
             <div>
               <collection-list class="collection-list-mobile">
@@ -397,6 +406,13 @@
             </div>
           {% endif %}
         </scroll-carousel>
+        {% if section.settings.show_navigation_bar %}
+          <div class="swiper-footer">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        {% endif %}
       {% else %}
         <scroll-carousel
           selector=".collection-card"
