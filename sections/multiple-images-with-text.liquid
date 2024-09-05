@@ -52,11 +52,13 @@
     font-weight: 450;
   }
 
-  .goshop {
+  #shopify-section-{{ section.id }} .goshop {
     padding-top: 17px;
     font-family: var(--heading-font-family);
     padding: 18px 56px;
     gap: 12px;
+    width: 276px;
+    margin: auto;
   }
   .goshop span {
     font-size: 16px;
@@ -67,6 +69,18 @@
   .goshop svg {
     width: 16px;
     height: 16px;
+  }
+  .more-info-with-review .overlay-goshop-right {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+  }
+  .overlay-goshop-reviewstar-container {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
   }
   .more-info-with-review svg {
     width: 16px;
@@ -81,6 +95,7 @@
   }
   .more-info-with-review div p {
     margin: 0;
+    letter-spacing: -1px;
   }
 
   .more-info-with-review {
@@ -105,7 +120,9 @@
       flex-direction: row;
       align-items: end;
     }
-
+    .multiple-images-with-text__content-list {
+      padding: 33px 15% 33px 24px;
+    }
     .multiple-images-with-text__content-list .content-text{
       font-size: 20px;
       margin-top: 23px !important;
@@ -117,6 +134,26 @@
       margin-top: 30.7px !important;
     }
     .more-info-with-review .overlay-goshop-right {
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .goshop {
+      margin: 0;
+      width: auto;
+    }
+    .goshop span {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 19.8px;
+    }
+    .more-info-with-review .overlay-goshop-right {
+      flex-direction: column;
+      gap: 4px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .more-info-with-review .overlay-goshop-right .overlay-goshop-reviewstar-container {
+      display: block;
       margin: 0;
     }
   }
@@ -144,6 +181,12 @@
       --multiple-images-with-text-grid-template-columns: {% if section.settings.images_layout == 'stacked' %}minmax(0, 0.8fr) minmax(0, 1fr){% else %}minmax(0, {% if visible_images_count == 1 %}max-content{% else %}1fr{% endif %}) minmax(0, 0.7fr){% endif %};
       --multiple-images-with-text-column-gap: var(--spacing-24);
       --multiple-images-with-text-alignment: start;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    #shopify-section-{{ section.id }} .goshop {
+      padding: 18px 32px;
     }
   }
 
@@ -248,7 +291,7 @@
                     {%- render 'review-star' -%}
                     {%- render 'review-star' -%}
                   </div>
-                  <p>Based on <b>785</b> Reviews</p>
+                  <p>Loved by <b>785</b> Reviews</p>
                 </div>
               </div>
               <div id="cleanhub-banner"></div>

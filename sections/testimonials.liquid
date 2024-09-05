@@ -8,7 +8,9 @@
 
       --testimonial-list-grid: {% if section.settings.stack_testimonials %}auto / repeat(var(--testimonial-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--testimonial-list-carousel-item-width){% endif %};
     }
-
+    #shopify-section-{{ section.id }} .section-blends {
+      background-image: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/testimonials-gradient-bg.png?v=1725542766') !important;
+    }
     #shopify-section-{{ section.id }} .scrollbar {
       {%- assign controls_color = section.settings.text_color | default: section.settings.heading_color | default: settings.text_color -%}
       --text-color: {{ controls_color.rgb }};
