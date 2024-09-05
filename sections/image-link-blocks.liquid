@@ -43,15 +43,13 @@
       --image-link-blocks-grid:none !important;
     }
   }
-  @media screen and (min-width: 700px) and (max-width: 1280px) {
+  @media screen and (min-width: 700px) {
     .image-link-blocks.wrap-container {
-      --image-link-blocks-items-per-row: none !important;
-      grid-template-columns: auto auto auto;
-      --image-link-blocks-grid:none !important;
-
+      --image-link-blocks-items-per-row: {% if block_size == 'small' %}6{% elsif block_size == 'medium' %}5{% else %}4{% endif %};
+      --image-link-blocks-grid: auto / auto-flow calc(var(--container-inner-width) / var(--image-link-blocks-items-per-row) - (var(--grid-gutter) / var(--image-link-blocks-items-per-row) * (var(--image-link-blocks-items-per-row) - 1)));
     }
   }
-  @media screen and (min-width: 1280px) and (max-width: 1400px) {
+  {% comment %} @media screen and (min-width: 1280px) and (max-width: 1400px) {
     .image-link-blocks.wrap-container {
       --image-link-blocks-items-per-row: none !important;
       grid-template-columns: auto auto auto auto;
@@ -67,7 +65,7 @@
       --image-link-blocks-items-per-row: 5 !important;
       grid: var(--image-link-blocks-grid);
     }
-  }
+  } {% endcomment %}
   @media screen and (min-width: 1500px) {
     #shopify-section-{{ section.id }} .image-link-blocks {
         --image-link-blocks-item-width: 20vw;
