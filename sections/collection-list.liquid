@@ -27,10 +27,10 @@
     display: block;
   }
 
-  #shopify-section-{{ section.id }} .collection-list {
+  {% comment %} #shopify-section-{{ section.id }} .collection-list {
     justify-content: center;
     {% comment %} gap: var(--spacing-4); {% endcomment %}
-  }
+  } {% endcomment %}
   .content-over-media {
     display: flex;
     flex-direction: column;
@@ -108,10 +108,13 @@
   #shopify-section-{{ section.id }} .navigation-with-controls .swiper-footer {
     display: none;
   }
+  #shopify-section-{{ section.id }} .content-over-media:before {
+    background: none;
+  }
 
   @media screen and (min-width: 700px) {
     #shopify-section-{{ section.id }} .collection-list {
-      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 36vw{% endif %};
+      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 33.3vw{% endif %};
     }
     .collection-card__content .subheading {
       font-size: 20px;
@@ -139,6 +142,7 @@
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} .collection-list {
       --collection-list-grid: auto / repeat({{ 3 | at_most: section.settings.collections_per_row }}, minmax(0, 1fr));
+      {% comment %} --collection-list-grid: auto / auto-flow 33.3%; {% endcomment %}
     }
     #shopify-section-{{ section.id }} .section {
       padding: 80px 0;
@@ -161,10 +165,10 @@
     #shopify-section-{{ section.id }} .swiper-pagination {
     }
     #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet {
-      background: #B7E3D8;
+      background: #000 !important;
     }
-    .swiper-pagination .swiper-pagination-bullet-active {
-      background: #000;
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet-active {
+      background: #B7E3D8 !important;
     }
     {% comment %} #shopify-section-{{ section.id }} .swiper-button-next {
       right: 0 !important;
@@ -182,7 +186,7 @@
       --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat({{ section.settings.collections_per_row }}, minmax(0, 1fr)){% else %}auto / auto-flow calc(var(--container-inner-width) / {{ section.settings.collections_per_row }} - (var(--grid-gutter) / {{ section.settings.collections_per_row }} * {{ section.settings.collections_per_row | minus: 1 }})){% endif %};
     }
     #shopify-section-{{ section.id }} .flex-list .collection-list {
-      --collection-list-grid: auto / auto auto auto;
+      --collection-list-grid: auto / auto-flow 33.3%;
     }
     #shopify-section-{{ section.id }} .scroll-area{
       margin: 0 115px;
@@ -417,15 +421,15 @@
         <scroll-carousel
           selector=".collection-card"
           id="{{ scroll_area_id }}"
-          class="flex-list scroll-area bleed {% if section.blocks.size > section.settings.collections_per_row %}is-scrollable{% endif %}"
+          class="swiper collection-swiper scroll-area bleed {% if section.settings.mobile_no_wrap %}no-wrap {% endif %}{% if section.blocks.size > section.settings.collections_per_row %}is-scrollable{% endif %}"
         >
-          <collection-list class="collection-list">
+          <collection-list class="collection-list swiper-wrapper">
             {%- for block in section.blocks -%}
               {%- assign collection = block.settings.collection -%}
               {%- assign collection_url = block.settings.url | default: collection.url -%}
 
               <div
-                class="collection-card {% if block.settings.text_position contains 'place-self-end' %}collection-card--reverse-transition{% endif %} shadow"
+                class="swiper-slide collection-card {% if block.settings.text_position contains 'place-self-end' %}collection-card--reverse-transition{% endif %} shadow"
                 reveal-js
               >
                 <div
@@ -508,7 +512,107 @@
               </div>
             {%- endfor -%}
           </collection-list>
+          {% if section.settings.mobile_no_wrap %}
+            <div>
+              <collection-list class="collection-list-mobile">
+                {%- for block in section.blocks -%}
+                  {%- assign collection = block.settings.collection -%}
+                  {%- assign collection_url = block.settings.url | default: collection.url -%}
+
+                  <div
+                    class="collection-card {% if block.settings.text_position contains 'place-self-end' %}collection-card--reverse-transition{% endif %} shadow"
+                    reveal-js
+                  >
+                    <div
+                      class="content-over-media group rounded-sm"
+                      style="--content-over-media-overlay: {{ block.settings.overlay_color.rgb }} / {{ block.settings.overlay_opacity | divided_by: 100.0 }}"
+                    >
+                      {%- if collection != blank or block.settings.image != blank -%}
+                        {%- assign image = block.settings.image | default: collection.featured_image -%}
+
+                        {%- if image != blank -%}
+                          {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}
+                          <div>
+                            {{-
+                              image
+                              | image_url: width: image.width
+                              | image_tag:
+                                loading: 'lazy',
+                                sizes: sizes,
+                                widths: '200,300,400,500,600,800,1000,1200,1400,1600',
+                                class: 'zoom-image'
+                            -}}
+                          </div>
+                        {%- endif -%}
+                        <div
+                          class="collection-card__content-wrapper text-custom {{ block.settings.text_position }}"
+                          style="--text-color: {{ block.settings.text_color.rgb }}"
+                        >
+                          {% comment %}
+                            {%- if block.settings.text_position contains 'place-self-end' -%}
+                              {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                            {%- endif -%}
+                          {% endcomment %}
+
+                          <div class="collection-card__content prose">
+                            {%- if block.settings.subheading != blank -%}
+                              <a
+                                {% if collection_url != blank %}
+                                  href="{{ collection_url }}"
+                                {% endif %}
+                                class="subheading"
+                              >
+                                {{- block.settings.subheading | escape -}}
+                                {%- render 'collection-two-arrow-right-icon' -%}
+                              </a>
+                            {%- endif -%}
+
+                            <p class="{{ block.settings.heading_tag }}">
+                              {{ block.settings.title | default: collection.title | escape }}
+                            </p>
+                          </div>
+
+                          {%- unless block.settings.text_position contains 'place-self-end' -%}
+                            {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                          {%- endunless -%}
+                        </div>
+                      {%- else -%}
+                        {%- capture collection_placeholder -%}{% cycle 'collection-1', 'collection-2', 'collection-3' %}{%- endcapture -%}
+                        {{- collection_placeholder | placeholder_svg_tag: 'placeholder zoom-image' -}}
+
+                        <div
+                          class="collection-card__content-wrapper text-custom {{ block.settings.text_position }}"
+                          style="--text-color: {{ block.settings.text_color.rgb }}"
+                        >
+                          {%- if block.settings.text_position contains 'place-self-end' -%}
+                            {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                          {%- endif -%}
+
+                          <div class="collection-card__content prose">
+                            <p class="{{ block.settings.heading_tag }}">
+                              {{- 'general.on_boarding.collection_title' | t -}}
+                            </p>
+                          </div>
+
+                          {%- unless block.settings.text_position contains 'place-self-end' -%}
+                            {%- render 'icon' with 'circle-button-right-clipped', width: 40, height: 40 -%}
+                          {%- endunless -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </collection-list>
+            </div>
+          {% endif %}
         </scroll-carousel>
+        {% if section.settings.show_navigation_bar %}
+          <div class="swiper-footer">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        {% endif %}
       {% endif %}
     </div>
   </div>

@@ -180,6 +180,7 @@
       text-align: center;
       border: 2px solid #000000;
       margin-top: 24px;
+      height: 57px;
     }
     .collection__top-bar .active-facets .facet-clear-all{
       display: none;
@@ -194,7 +195,7 @@
       background-image: unset;
       background-color: #FFF;
       border-radius: 20px;
-      background-image: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/gradient-bkgd-hover.png?v=1725035039');
+      {% comment %} background-image: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/gradient-bkgd-hover.png?v=1725035039'); {% endcomment %}
       background-size: cover;
       gap: 0;
     }
@@ -394,9 +395,6 @@
       #shopify-section-{{ section.id }} .goshop svg{
         width: 16px;
         height: 16px;
-      }
-      .facet-clear-all {
-        padding: 22px 0;
       }
     }
 

@@ -16,7 +16,7 @@
     --product-list-carousel-item-width: 74vw;
     --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
   }
-  .swiper {
+  #shopify-section-{{ section.id }} .swiper {
     width: 100%;
     height: 100%;
     display: flex;
@@ -294,12 +294,12 @@
     slidesPerView: 1.2,
     spaceBetween: 22,
     centeredSlides: true,
-    {% comment %} centeredSlidesBounds: true, {% endcomment %}
+    centeredSlidesBounds: true,
     grabCursor: true,
     loop: true,
-    mousewheel: false,
+    {% comment %} mousewheel: false,
     simulateTouch: false,
-    allowTouchMove: false,
+    allowTouchMove: false, {% endcomment %}
     breakpoints: {
       // You can replace '@0.00' with 0 or remove it
       0: {
@@ -344,7 +344,24 @@
       el: '.swiper-scrollbar',
     },
   });
+
+  window.onload = function() {
+    // Your custom code here
+    var nextButton = document.querySelector('.mySwiper .swiper-button-next');
+    var prevButton = document.querySelector('.mySwiper .swiper-button-prev');
+
+    if (nextButton) {
+      nextButton.classList.remove('swiper-button-disabled', 'swiper-button-lock');
+      nextButton.setAttribute('aria-disabled', 'false');
+    }
+
+    if (prevButton) {
+      prevButton.classList.remove('swiper-button-disabled', 'swiper-button-lock');
+      prevButton.setAttribute('aria-disabled', 'false');
+    }
+  };
 </script>
+
 {% schema %}
 {
   "name": "Featured collection",

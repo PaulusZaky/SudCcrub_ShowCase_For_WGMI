@@ -194,7 +194,7 @@ html {
 .section-blends .section-header {
     text-align: center;
     display: inline-block;
-    padding: 0 24px;
+    padding: 0 27.5px;
 }
 
 .section-header .prose {
@@ -289,6 +289,14 @@ html {
     .prev-button:disabled::after {
         content: url('https://cdn.shopify.com/s/files/1/0496/2936/4391/files/white-arrow-ds.svg?v=1723537216') !important;
         transform: rotate(180deg);
+    }
+
+    .swiper-pagination .swiper-pagination-bullet {
+        width: 40px;
+    }
+
+    .swiper-pagination .swiper-pagination-bullet-active {
+        width: 100px;
     }
 }
 

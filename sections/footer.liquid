@@ -109,7 +109,7 @@
       border-radius: 50px;
       background-color: white;
       font-size: 18px;
-      width: 296px;
+      width: 100%;
       height: 43.6px;
     }
 
@@ -125,7 +125,7 @@
     .footer__block.footer__block--newsletter .v-stack {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
     /* Style the newsletter submit button */
     .newsletter-submit-button {
@@ -143,14 +143,14 @@
       gap: 10px;
       justify-content: center;
       border-radius: 50px;
-      width: 296px;
+      width: 100%;
       height: 44.4px;
     }
 
-    .footer__block--newsletter {
-      width: 296px;
+    .footer__block--newsletter .form{
+      width: 90%;
       margin: auto;
-      gap: 20px;
+      gap: 8.15px;
     }
 
     .footer__aside-bottom {
@@ -173,14 +173,17 @@
       font-size: 16px;
       line-height: 16px;
     }
-
+    @media screen and (max-width: 345px) {
+      .footer__block--newsletter .form{
+        width: 100%;
+        margin: 0;
+      }
+    }
     @media screen and (min-width: 700px) {
       .footer__block-list {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
       }
-
       .footer__wrapper .form-control .floating-label {
         padding: 0px 29px;
         margin: 0px;
@@ -237,25 +240,38 @@
       .footer__block--text, .footer__block--newsletter {
         grid-column: auto;
       }
+      .footer__block--newsletter .form{
+        width: 100%;
+        margin: 0;
+        gap: 11px;
+      }
     }
 
     @media screen and (min-width: 1000px) {
       .footer__block-list {
         display: flex;
         flex-wrap: nowrap;
-        width: 83.34vw;
+        width: 87.34vw;
+        justify-content: space-around;
         gap: 16px;
+      }
+      .footer__block--text {
+        flex-basis: 0%;
+      }
+      .footer__block-list div:nth-child(3) {
+        width: auto;
       }
     }
 
     @media screen and (min-width: 1150px) {
       .footer__block-list {
-        gap: 32px;
+        width: 84.34vw;
       }
     }
     @media screen and (min-width: 1300px) {
       .footer__block-list {
-        justify-content: space-around;
+        justify-content: space-between;
+        gap:0;
       }
     }
   </style>

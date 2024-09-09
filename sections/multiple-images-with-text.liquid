@@ -35,6 +35,7 @@
   }
   .multiple-images-with-text__content-with-nav {
     max-width: none;
+    margin: auto 0;
   }
   #shopify-section-{{ section.id }} .section-blends {
     background-image: unset !important;
@@ -115,13 +116,16 @@
   #shopify-section-{{ section.id }} .section-blends .section-header h2 {
     letter-spacing: -3px;
   }
+  #cleanhub-banner iframe {
+    {% comment %} height: 60px !important; {% endcomment %}
+  }
   @media screen and (min-width: 980px) {
     .multiple-images-with-text {
       flex-direction: row;
       align-items: end;
     }
     .multiple-images-with-text__content-list {
-      padding: 33px 15% 33px 24px;
+      padding: 52px 15% 40px 24px;
     }
     .multiple-images-with-text__content-list .content-text{
       font-size: 20px;
@@ -183,13 +187,16 @@
       --multiple-images-with-text-alignment: start;
     }
   }
-
   @media screen and (max-width: 1100px) {
     #shopify-section-{{ section.id }} .goshop {
       padding: 18px 32px;
     }
   }
-
+  @media screen and (min-width: 1200px) {
+    .multiple-images-with-text__content-list {
+      padding: 104px 15% 80px 24px;
+    }
+  }
   @media screen and (min-width: 1400px) {
     #shopify-section-{{ section.id }} {
       --multiple-images-with-text-column-gap: var(--spacing-28);
