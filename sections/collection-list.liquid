@@ -15,6 +15,9 @@
     {%- endif -%}
     gap: 0;
   }
+  #shopify-section-{{ section.id }} .swiper {
+    width: auto;
+  }
   #shopify-section-{{ section.id }} .section-blends {
     background-image: unset !important;
     background-color: #FFFFFF;
@@ -42,9 +45,6 @@
   }
   #shopify-section-{{ section.id }} .styled_text::part(split-lines)::after {
     background: #B7E3D8;
-  }
-  #shopify-section-{{ section.id }} .no-wrap .swiper-wrapper {
-    display: none;
   }
   .no-wrap .collection-list-mobile {
     display: flex;
@@ -111,10 +111,16 @@
   #shopify-section-{{ section.id }} .content-over-media:before {
     background: none;
   }
+  .no-wrap .collection-list {
+    display: none;
+  }
+  .no-wrap .collection-list-mobile {
+    display: block;
+  }
 
   @media screen and (min-width: 700px) {
     #shopify-section-{{ section.id }} .collection-list {
-      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 33.3vw{% endif %};
+      --collection-list-grid: {% if section.settings.stack_collections %}auto / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 46vw{% endif %};
     }
     .collection-card__content .subheading {
       font-size: 20px;
@@ -150,7 +156,7 @@
     #shopify-section-{{ section.id }} .scroll-area{
       margin: 0 80px;
     }
-    #shopify-section-{{ section.id }} .no-wrap .swiper-wrapper {
+    #shopify-section-{{ section.id }} .swiper-wrapper {
       display: flex;
     }
     .collection-card__content .subheading {
@@ -417,6 +423,7 @@
             <div class="swiper-button-next"></div>
           </div>
         {% endif %}
+
       {% else %}
         <scroll-carousel
           selector=".collection-card"
@@ -617,28 +624,56 @@
     </div>
   </div>
 </div>
-<script>
-  var swiper = new Swiper('.collection-swiper', {
-    slidesPerView: 1,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-    breakpoints: {
-      1000: {
-        slidesPerView: 3,
+{% if section.settings.mobile_no_wrap %}
+  <script>
+    var swiper = new Swiper('.collection-swiper', {
+      slidesPerView: 1,
+      pagination: {
+        el: '.collection-swiper .swiper-pagination',
+        clickable: true,
       },
-    },
-  });
-</script>
+      navigation: {
+        nextEl: '.collection-swiper .swiper-button-next',
+        prevEl: '.collection-swiper .swiper-button-prev',
+      },
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.collection-swiper .swiper-scrollbar',
+      },
+      breakpoints: {
+        1000: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  </script>
+{% else %}
+  <script>
+    var swiper = new Swiper('.collection-swiper', {
+      slidesPerView: 1,
+      pagination: {
+        el: '.collection-swiper .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.collection-swiper .swiper-button-next',
+        prevEl: '.collection-swiper .swiper-button-prev',
+      },
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.collection-swiper .swiper-scrollbar',
+      },
+      breakpoints: {
+        700: {
+          slidesPerView: 2,
+        },
+        1000: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  </script>
+{% endif %}
 {% schema %}
 {
   "name": "Collection list",
