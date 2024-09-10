@@ -6,6 +6,10 @@
       background-image: url("https://cdn.shopify.com/s/files/1/0496/2936/4391/files/problem-solutions-mobile-bg.jpg?v=1723836640") !important;
       background-size: cover;
     }
+    #shopify-section-{{ section.id }} .section-blends .section-header {
+      padding: 0 49px;
+    }
+
     .tabs-container {
       background: #FFFFFF;
       display: none;
@@ -34,6 +38,7 @@
     #tabs-swiper {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 30px;
     }
 
@@ -41,6 +46,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       gap: 15px;
     }
 
@@ -54,6 +60,7 @@
       padding: 0 15px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
     }
 
@@ -99,7 +106,7 @@
     }
 
     #tabs-swiper .goshop{
-      padding: 18px 40px;
+      padding: 18px 0;
       gap: 24px;
       margin: 0 auto;
       width: 70%;
@@ -398,7 +405,7 @@
               {%- assign content = block.settings.page.content | default: block.settings.content -%}
               {%- assign proimg = block.settings.proimg -%}
               {%- assign solimg = block.settings.solimg -%}
-              <div class="swiper-slide">
+              <div class="swiper-slide {% if block.settings.text != blank %}find_out_more{% endif %}">
                 <div class="img-container">
                   {% if proimg != blank %}
                     <div class="problem-img">
@@ -482,19 +489,19 @@
     slidesPerView: 1,
     spaceBetween: 12,
     centeredSlides: true,
-    centeredSlidesBounds: true,
+    {% comment %} centeredSlidesBounds: true, {% endcomment %}
     grabCursor: true,
     pagination: {
-      el: '.swiper-pagination',
+      el: '#tabs-swiper .swiper-pagination',
       clickable: true,
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '#tabs-swiper .swiper-button-next',
+      prevEl: '#tabs-swiper .swiper-button-prev',
     },
     // And if we need scrollbar
     scrollbar: {
-      el: '.swiper-scrollbar',
+      el: '#tabs-swiper .swiper-scrollbar',
     },
     breakpoints: {
       '@0.00': {
@@ -502,6 +509,28 @@
         spaceBetween: 10,
       },
     },
+    on: {
+      slideChange: function () {
+        let slides = $(this.slides);
+        setTimeout(function() {
+          var $element = $('.swiper-slide.swiper-slide-active');
+          // Get the parent element
+          var $parent = $element.parent();
+          // Get all sibling elements (including the selected element)
+          var $siblings = $parent.children();
+          // Find the index of the selected element among the siblings
+          var index = $siblings.index($element);
+
+          if($('#tabs-swiper').find('.swiper-slide.swiper-slide-active').hasClass('find_out_more')) {
+            $('#tabs-swiper .goshop span').text("FIND OUT MORE")
+            $('#tabs-swiper .goshop').attr('href', 'https://www.cleanhub.com/impact-report/sud-scrub')
+          } else {
+            $('#tabs-swiper .goshop span').text("SHOP NOW")
+            $('#tabs-swiper .goshop').attr('href', '/collections/all')
+          }
+        },300)
+      },
+    }
   });
 </script>
 {% schema %}
