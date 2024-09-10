@@ -314,6 +314,16 @@
       text-transform: uppercase;
     }
 
+    #shopify-section-{{ section.id }} .product-card__quick-buy button {
+      font-size: 8px;
+      padding: 5px 10px;
+    }
+    @media screen and (max-width: 300px) {
+      #shopify-section-{{ section.id }} .product-card__quick-buy button {
+        font-size: 6px;
+        padding: 3px 6px;
+      }
+    }
     @media screen and (max-width: 390px) {
       #shopify-section-{{ section.id }} .rating-with-text .jdgm-prev-badge__text {
         display: block;
@@ -395,6 +405,10 @@
       #shopify-section-{{ section.id }} .goshop svg{
         width: 16px;
         height: 16px;
+      }
+      #shopify-section-{{ section.id }} .product-card__quick-buy button {
+        font-size: 0.75rem;
+        padding: 0.625rem 1.25rem;
       }
     }
 
