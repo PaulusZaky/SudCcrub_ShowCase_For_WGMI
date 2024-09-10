@@ -246,7 +246,7 @@
       link_text: section.settings.link_text,
       link_url: link_url
     -%}
-    <div class="swiper mySwiper">
+    <div class="swiper swiper-container mySwiper">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
       {%- assign products = section.settings.products | default: section.settings.collection.products -%}
 
@@ -329,7 +329,7 @@
       1500: {
         slidesPerView: 3.3,
         spaceBetween: 48,
-      },
+      }
     },
     pagination: {
       el: '.swiper-pagination',
@@ -343,10 +343,25 @@
     scrollbar: {
       el: '.swiper-scrollbar',
     },
-  });
+    on: {
+      slideChange: function () {
+        var nextButton = document.querySelector('.mySwiper .swiper-button-next');
+        var prevButton = document.querySelector('.mySwiper .swiper-button-prev');
+        setTimeout(function() {
+          if (nextButton) {
+            nextButton.classList.remove('swiper-button-disabled', 'swiper-button-lock');
+            nextButton.setAttribute('aria-disabled', 'false');
+          }
 
-  window.onload = function() {
-    // Your custom code here
+          if (prevButton) {
+            prevButton.classList.remove('swiper-button-disabled', 'swiper-button-lock');
+            prevButton.setAttribute('aria-disabled', 'false');
+          }
+        }, 200)
+      }
+    }
+  });
+    window.onload = function() {
     var nextButton = document.querySelector('.mySwiper .swiper-button-next');
     var prevButton = document.querySelector('.mySwiper .swiper-button-prev');
 
@@ -359,7 +374,7 @@
       prevButton.classList.remove('swiper-button-disabled', 'swiper-button-lock');
       prevButton.setAttribute('aria-disabled', 'false');
     }
-  };
+  }
 </script>
 
 {% schema %}
