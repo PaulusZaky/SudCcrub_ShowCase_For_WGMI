@@ -10245,30 +10245,11 @@ product-rerender {
 
 @font-face {
   font-family: "Brown-Regular";
-  src: url("https://db.onlinewebfonts.com/t/4d3847a46ccc828409d7f134d765b8c3.eot");
-  src: url("https://db.onlinewebfonts.com/t/4d3847a46ccc828409d7f134d765b8c3.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/4d3847a46ccc828409d7f134d765b8c3.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/4d3847a46ccc828409d7f134d765b8c3.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/4d3847a46ccc828409d7f134d765b8c3.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/4d3847a46ccc828409d7f134d765b8c3.svg#Brown-Regular")format("svg");
+  src: url("Brown-Regular.woff2")format("woff2");
 }
 
 @font-face {
   font-family: "VinylRegular";
-  src: url("https://db.onlinewebfonts.com/t/233f41f7c56681541e69917ffc48ab2e.eot");
-  src: url("https://db.onlinewebfonts.com/t/233f41f7c56681541e69917ffc48ab2e.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/233f41f7c56681541e69917ffc48ab2e.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/233f41f7c56681541e69917ffc48ab2e.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/233f41f7c56681541e69917ffc48ab2e.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/233f41f7c56681541e69917ffc48ab2e.svg#VinylRegular")format("svg");
-}
-
-@font-face {
-  font-family: "FuturaPT-Bold";
-  src: url("https://db.onlinewebfonts.com/t/d5891031009fb5039a9b5ce6931877fa.eot");
-  src: url("https://db.onlinewebfonts.com/t/d5891031009fb5039a9b5ce6931877fa.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/d5891031009fb5039a9b5ce6931877fa.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/d5891031009fb5039a9b5ce6931877fa.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/d5891031009fb5039a9b5ce6931877fa.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/d5891031009fb5039a9b5ce6931877fa.svg#FuturaPT-Bold")format("svg");
+  src: url("VinylRegular.woff2")format("woff2");
+  font-weight: normal;
 }
